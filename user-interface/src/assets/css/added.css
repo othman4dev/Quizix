@@ -96,4 +96,60 @@ input[type=radio] {
     justify-content: flex-end;
     padding-right: 70px;
     box-sizing: border-box;
+    gap: 20px;
+}
+.add-head {
+    height: 50px;
+    border-radius: 5px;
+    color: #9d72ff;
+    background-color: white;
+    border: solid 2px #9d72ff;
+    padding-inline: 10px;
+}
+.add-head img {
+    width: 10px;
+}
+.heading {
+    background-color: transparent;
+    height: 100px;
+    border: solid 1px #9d72ff;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    padding-left: 15px;
+    font-size: 48px;
+}
+.sub-title {
+    background-color: transparent;
+    height: 50px;
+    border: solid 1px #9d72ff;
+    color: black;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    padding-left: 15px;
+    font-size: 24px;
+}
+.course-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.paragraph {
+    border: solid 1px #9d72ff;
+    flex-grow: 1;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+}
+.course-form label{
+    width: 50%;
 }
