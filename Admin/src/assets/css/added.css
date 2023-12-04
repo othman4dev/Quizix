@@ -22,7 +22,11 @@
 .answers {
     display: flex;
     gap: 10px;
+<<<<<<< HEAD
     padding-left: 25px;
+=======
+    margin: 5px;
+>>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
     box-sizing: border-box;
     flex-grow: 1;
     flex-wrap: wrap;
@@ -96,6 +100,7 @@ input[type=radio] {
     justify-content: flex-end;
     padding-right: 70px;
     box-sizing: border-box;
+<<<<<<< HEAD
     gap: 20px;
 }
 .add-head {
@@ -152,4 +157,6 @@ input[type=radio] {
 }
 .course-form label{
     width: 50%;
+=======
+>>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
 }

@@ -43022,5 +43022,20 @@ div.dataTables_wrapper div.dataTables_filter .dark-mode .nk-header-search input,
   background-color: #854fff !important;
   border-color: #854fff !important;
 }
+.AllAnswers{
+  display: flex;
+  justify-content: space-around;
+}
+.row-table{
+  flex-wrap: wrap;
+
+}
+.answers{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0px;
+  margin-left: 5px;
+
+}
 
 /*! END @iO */
