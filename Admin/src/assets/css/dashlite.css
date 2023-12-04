@@ -30481,13 +30481,13 @@ body.nav-shown {
   opacity: 1;
 }
 .logo-img {
-  max-height: 36px;
+  max-height: 45px;
 }
 .logo-img-lg {
   max-height: 60px;
 }
 .logo-img-sm {
-  max-height: 28px;
+  max-height: 35px;
 }
 .logo-img-icon {
   max-height: 33px;
@@ -36395,6 +36395,8 @@ button.close {
 .nk-tb-item {
   transition: background-color 0.3s, box-shadow 0.3s;
   display: table-row;
+  justify-content: space-around;
+
 }
 .nk-tb-item:not(.nk-tb-head):hover, .nk-tb-item:not(.nk-tb-head).seleted {
   background: #f8f9fc;
