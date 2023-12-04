@@ -43026,6 +43026,10 @@ div.dataTables_wrapper div.dataTables_filter .dark-mode .nk-header-search input,
   display: flex;
   justify-content: space-around;
 }
+.row-table{
+  flex-wrap: wrap;
+
+}
 .answers{
   display: flex;
   justify-content: space-between;
