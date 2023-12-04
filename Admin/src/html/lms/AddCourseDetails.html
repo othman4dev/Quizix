@@ -15,9 +15,10 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png" />
     <!-- Page Title  -->
-    <title>Category | LMS | DashLite Admin Template</title>
+    <title>Quizzes | LMS | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.2.3" />
+    <link rel="stylesheet" href="./assets/css/added.css" />
     <link
       id="skin-default"
       rel="stylesheet"
@@ -39,19 +40,19 @@
               <a href="html/index.html" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
-                  src="./images/logo-dark.svg"
+                  src="./images/logo.png"
                   srcset="./images/logo2x.png 2x"
                   alt="logo"
                 />
                 <img
                   class="logo-dark logo-img"
-                  src="./images/logo.svg"
+                  src="./images/logo-dark.png"
                   srcset="./images/logo-dark2x.png 2x"
                   alt="logo-dark"
                 />
                 <img
                   class="logo-small logo-img logo-img-small"
-                  src="./images/logo-small.svg"
+                  src="./images/logo-small.png"
                   srcset="./images/logo-small2x.png 2x"
                   alt="logo-small"
                 />
@@ -78,44 +79,50 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                      <a href="html/lms/index.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
-                          <span class="nk-menu-text">Statistics</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
+                    <a href="html/lms/index.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-dashboard-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Dashboard</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                      <a href="html/lms/courses.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
-                          <span class="nk-menu-text">Courses</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
-                  <li class="nk-menu-item">
-                      <a href="html/lms/category.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                          <span class="nk-menu-text">Quizzes</span>
-                      </a>
+                    <a href="html/lms/category.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-book-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Courses</span>
+                    </a>
                   </li>
                   <li class="nk-menu-item">
-                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
-                          <span class="nk-menu-text">Instructors</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
-                  <li class="nk-menu-item">
-                      <a href="html/lms/students.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                          <span class="nk-menu-text">Students</span>
-                      </a>
+                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-file-docs"></em
+                      ></span>
+                      <span class="nk-menu-text">Quizzes</span>
+                    </a>
                   </li>
+
                   <li class="nk-menu-item">
-                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                        <span class="nk-menu-icon"
-                          ><em class="icon ni ni-account-setting-fill"></em
-                        ></span>
-                        <span class="nk-menu-text">Profile</span>
-                      </a>
-                    </li>
-              </ul>
+                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-account-setting-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Profile</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                    <a href="html/lms/settings.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-setting-alt-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Settings</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
+                </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -156,9 +163,73 @@
                   </a>
                 </div>
                 <!-- .nk-header-brand -->
+                <div class="nk-header-search ms-3 ms-xl-0"></div>
                 <!-- .nk-header-news -->
                 <div class="nk-header-tools">
                   <ul class="nk-quick-nav">
+                    <li
+                      class="dropdown language-dropdown d-none d-sm-block me-n1"
+                    >
+                      <a
+                        href="#"
+                        class="dropdown-toggle nk-quick-nav-icon"
+                        data-bs-toggle="dropdown"
+                      >
+                        <div class="quick-icon border border-light">
+                          <img
+                            class="icon"
+                            src="./images/flags/english-sq.png"
+                            alt=""
+                          />
+                        </div>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-end dropdown-menu-s1"
+                      >
+                        <ul class="language-list">
+                          <li>
+                            <a href="#" class="language-item">
+                              <img
+                                src="./images/flags/english.png"
+                                alt=""
+                                class="language-flag"
+                              />
+                              <span class="language-name">English</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="language-item">
+                              <img
+                                src="./images/flags/spanish.png"
+                                alt=""
+                                class="language-flag"
+                              />
+                              <span class="language-name">Español</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="language-item">
+                              <img
+                                src="./images/flags/french.png"
+                                alt=""
+                                class="language-flag"
+                              />
+                              <span class="language-name">Français</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" class="language-item">
+                              <img
+                                src="./images/flags/turkey.png"
+                                alt=""
+                                class="language-flag"
+                              />
+                              <span class="language-name">Türkçe</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
                     <li class="dropdown user-dropdown">
                       <a
                         href="#"
@@ -171,10 +242,10 @@
                           </div>
                           <div class="user-info d-none d-xl-block">
                             <div class="user-status user-status-active">
-                              Administator
+                              Student
                             </div>
                             <div class="user-name dropdown-indicator">
-                              Abu Bin Ishityak
+                              Othman Kharbouch
                             </div>
                           </div>
                         </div>
@@ -190,8 +261,10 @@
                               <span>AB</span>
                             </div>
                             <div class="user-info">
-                              <span class="lead-text">Abu Bin Ishtiyak</span>
-                              <span class="sub-text">info@softnio.com</span>
+                              <span class="lead-text">Othman Kharbouch</span>
+                              <span class="sub-text"
+                                >otmankharbouch813@gmail.com</span
+                              >
                             </div>
                           </div>
                         </div>
@@ -240,7 +313,792 @@
           <!-- main header @e -->
           <!-- content @s -->
           <div class="nk-content">
-            
+            <div class="container-fluid">
+              <div class="nk-content-inner">
+                <div class="nk-content-body">
+                  <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                      <div class="nk-block-head-content">
+                        <h3 class="nk-block-title page-title">Quiz Name</h3>
+                        <div class="nk-block-des text-soft">
+                          <p>Cours name | Category name | Instructor</p>
+                        </div>
+                      </div>
+                      <!-- .nk-block-head-content -->
+                      <div class="nk-block-head-content">
+                        <div class="toggle-wrap nk-block-tools-toggle">
+                          <a
+                            href="#"
+                            class="btn btn-icon btn-trigger toggle-expand me-n1"
+                            data-target="pageMenu"
+                            ><em class="icon ni ni-menu-alt-r"></em
+                          ></a>
+                          <div
+                            class="toggle-expand-content"
+                            data-content="pageMenu"
+                          ></div>
+                        </div>
+                        <!-- .toggle-wrap -->
+                      </div>
+                      <!-- .nk-block-head-content -->
+                    </div>
+                    <!-- .nk-block-between -->
+                  </div>
+                  <!-- .nk-block-head -->
+                  <div class="nk-block">
+                    <div class="card card-stretch">
+                      <div class="card-inner-group">
+                        <div class="card-inner p-0">
+                          <form class="quiz">
+                            <div class="row-table head">
+                              <div class="question-num">N°</div>
+                              <div class="question">Questions</div>
+                              
+                            </div>
+                            
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num">1</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >2</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >3</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >4</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >5</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >7</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >8</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >9</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >10</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="card-inner">
+                              <div class="nk-block-between-md g-3">
+                                <input type="submit" value="Cancel" class="cancel-it">
+                                <input type="submit" value="Submit" class="submit-it">
+                              </div>
+                            </div>
+
+                          </form>
+                          
+                          <!-- .nk-block-between -->
+                        </div>
+                        <!-- .card-inner -->
+                      </div>
+                      <!-- .card-inner-group -->
+                    </div>
+                    <!-- .card -->
+                  </div>
+                  <!-- .nk-block -->
+                </div>
+              </div>
+            </div>
           </div>
           <!-- content @e -->
           <!-- footer @s -->
@@ -287,6 +1145,12 @@
                           </li>
                         </ul>
                       </div>
+                    </li>
+                    <li class="nav-item">
+                      <a data-bs-toggle="modal" href="#region" class="nav-link"
+                        ><em class="icon ni ni-globe"></em
+                        ><span class="ms-1">Select Region</span></a
+                      >
                     </li>
                   </ul>
                 </div>
@@ -502,212 +1366,420 @@
       <!-- .modla-dialog -->
     </div>
     <!-- .modal -->
-    <!-- @@ Category Modal @e -->
     <div class="modal fade" id="modalCreate">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
           <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
             <em class="icon ni ni-cross-sm"></em
           ></a>
           <div class="modal-body modal-body-md">
-            <h5 class="title">Add Category</h5>
+            <h5 class="modal-title">Create Course</h5>
             <form action="#" class="pt-2">
-              <div class="form-group">
-                <label class="form-label" for="full-name">Category Name</label>
-                <div class="form-control-wrap">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="full-name"
-                    placeholder="e.g. Web Development"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="description">Description</label>
-                <div class="form-control-wrap">
-                  <textarea
-                    class="form-control"
-                    name="description"
-                    id="description"
-                    placeholder="Write Category Description"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="thumb">Category thumbnail</label>
-                <div class="form-control-wrap">
-                  <div class="form-file">
-                    <input
-                      type="file"
-                      multiple
-                      class="form-file-input"
-                      id="customFile"
-                    />
-                    <label class="form-file-label" for="thumb"
-                      >Choose file</label
+              <div class="row gy-3 gx-gs">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="course-name"
+                      >Course Name</label
                     >
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Subcategory</label>
-                <div class="d-flex gx-3 mb-3">
-                  <div class="g w-100">
                     <div class="form-control-wrap">
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="e.g. Web Development"
+                        id="course-name"
+                        placeholder="e.g. Responsive Design"
                       />
                     </div>
                   </div>
-                  <div class="g">
-                    <button class="btn btn-icon btn-outline-light">
-                      <em class="icon ni ni-plus"></em>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="course-category"
+                      >Course category</label
+                    >
+                    <div class="form-control-wrap">
+                      <select
+                        class="form-select js-select2"
+                        id="course-category"
+                      >
+                        <option>Web Development</option>
+                        <option>Mobile Application</option>
+                        <option>Graphics Design</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="dificulties"
+                      >Course Dificulties</label
+                    >
+                    <select class="form-select js-select2" id="dificulties">
+                      <option>Beginners</option>
+                      <option>Intermediate</option>
+                      <option>Advanced</option>
+                    </select>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="course-lesson"
+                      >Total Lesson</label
+                    >
+                    <div class="form-control-wrap">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="course-lesson"
+                        placeholder="40"
+                      />
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="thumb"
+                      >Course thumbnail</label
+                    >
+                    <div class="form-control-wrap">
+                      <div class="form-file">
+                        <input
+                          type="file"
+                          multiple
+                          class="form-file-input"
+                          id="customFile-create"
+                        />
+                        <label class="form-file-label" for="customFile-create"
+                          >Choose file</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="thumb"
+                      >Course Description</label
+                    >
+                    <div class="form-control-wrap">
+                      <div class="quill-minimal"></div>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="thumb">Status</label>
+                    <div class="form-control-wrap">
+                      <ul
+                        class="custom-control-group g-3 align-center flex-wrap"
+                      >
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              checked
+                              name="reg-public"
+                              id="reg-enable"
+                            />
+                            <label class="custom-control-label" for="reg-enable"
+                              >Active</label
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              name="reg-public"
+                              id="reg-disable"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="reg-disable"
+                              >Pending</label
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              name="reg-public"
+                              id="reg-request"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="reg-request"
+                              >Rejected</label
+                            >
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="course-price"
+                      >Course Price</label
+                    >
+                    <div class="form-control-wrap">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="course-price"
+                        placeholder="30"
+                      />
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label">Deadline</label>
+                    <div class="form-control-wrap">
+                      <div class="form-icon form-icon-left">
+                        <em class="icon ni ni-calendar-alt"></em>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control date-picker"
+                        placeholder="mm/dd/yyyy"
+                      />
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <button
+                      data-bs-dismiss="modal"
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Save Informations
                     </button>
                   </div>
+                  <!-- .form-group -->
                 </div>
-              </div>
-              <div class="form-group">
-                <button
-                  data-bs-dismiss="modal"
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  Save Informations
-                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <!-- .Edit Modal-Content -->
+    <!-- .Create Modal-Content -->
     <div class="modal fade" id="modalEdit">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
           <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
             <em class="icon ni ni-cross-sm"></em
           ></a>
           <div class="modal-body modal-body-md">
-            <h5 class="title">Edit Category</h5>
+            <h5 class="title">Edit Course</h5>
             <form action="#" class="pt-2">
-              <div class="form-group">
-                <label class="form-label" for="edit-full-name"
-                  >Category Name</label
-                >
-                <div class="form-control-wrap">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="edit-full-name"
-                    value="Web Development"
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="edit-description"
-                  >Description</label
-                >
-                <div class="form-control-wrap">
-                  <textarea
-                    class="form-control"
-                    name="description"
-                    id="edit-description"
-                    value="Website Design & Develop the website with web applications"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="category-thumb"
-                  >Category thumbnail</label
-                >
-                <div class="form-control-wrap">
-                  <div class="form-file">
-                    <input
-                      type="file"
-                      multiple
-                      class="form-file-input"
-                      id="edit-customFile"
-                    />
-                    <label class="form-file-label" for="category-thumb"
-                      >Choose file</label
+              <div class="row gy-3 gx-gs">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-course-name"
+                      >Course Name</label
                     >
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Subcategory</label>
-                <div class="d-flex gx-3 mb-3">
-                  <div class="g w-100">
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" value="Figma" />
-                    </div>
-                  </div>
-                  <div class="g">
-                    <button class="btn btn-icon btn-outline-light">
-                      <em class="icon ni ni-cross"></em>
-                    </button>
-                  </div>
-                </div>
-                <div class="d-flex gx-3 mb-3">
-                  <div class="g w-100">
                     <div class="form-control-wrap">
                       <input
                         type="text"
                         class="form-control"
+                        id="edit-course-name"
                         value="Responsive Design"
                       />
                     </div>
                   </div>
-                  <div class="g">
-                    <button class="btn btn-icon btn-outline-light">
-                      <em class="icon ni ni-cross"></em>
-                    </button>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-category"
+                      >Course category</label
+                    >
+                    <select class="form-select js-select2" id="edit-category">
+                      <option>Web Development</option>
+                      <option>Mobile Application</option>
+                      <option>Graphics Design</option>
+                    </select>
                   </div>
                 </div>
-                <div class="d-flex gx-3 mb-3">
-                  <div class="g w-100">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-dificulties"
+                      >Course Dificulties</label
+                    >
+                    <select
+                      class="form-select js-select2"
+                      id="edit-dificulties"
+                    >
+                      <option>Beginners</option>
+                      <option>Intermediate</option>
+                      <option>Advanced</option>
+                    </select>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-lesson"
+                      >Total Lesson</label
+                    >
                     <div class="form-control-wrap">
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
-                        value="Adobe Photoshop"
+                        id="edit-lesson"
+                        value="40"
                       />
                     </div>
                   </div>
-                  <div class="g">
-                    <button class="btn btn-icon btn-outline-light">
-                      <em class="icon ni ni-cross"></em>
-                    </button>
-                  </div>
                 </div>
-                <div class="d-flex gx-3 mb-3">
-                  <div class="g w-100">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="thumb"
+                      >Course thumbnail</label
+                    >
+                    <div class="form-control-wrap">
+                      <div class="form-file">
+                        <input
+                          type="file"
+                          multiple
+                          class="form-file-input"
+                          id="edit-customFile"
+                        />
+                        <label class="form-file-label" for="edit-customFile"
+                          >Choose file</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="edit-description"
+                      >Course Description</label
+                    >
+                    <div class="form-control-wrap">
+                      <div class="quill-minimal"></div>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label" for="status">Status</label>
+                    <div class="form-control-wrap">
+                      <ul
+                        class="custom-control-group g-3 align-center flex-wrap"
+                      >
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              checked
+                              name="reg-public"
+                              id="edit-course-active"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="edit-course-active"
+                              >Active</label
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              name="reg-public"
+                              id="edit-course-pending"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="edit-course-pending"
+                              >Pending</label
+                            >
+                          </div>
+                        </li>
+                        <li>
+                          <div class="custom-control custom-radio">
+                            <input
+                              type="radio"
+                              class="custom-control-input"
+                              name="reg-public"
+                              id="edit-course-reject"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="edit-course-reject"
+                              >Rejected</label
+                            >
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label" for="course-price-edit"
+                      >Course Price</label
+                    >
                     <div class="form-control-wrap">
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
-                        placeholder="e.g. Web Development"
+                        id="course-price-edit"
+                        value="30"
                       />
                     </div>
                   </div>
-                  <div class="g">
-                    <button class="btn btn-icon btn-outline-light">
-                      <em class="icon ni ni-plus"></em>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-label">Deadline</label>
+                    <div class="form-control-wrap">
+                      <div class="form-icon form-icon-left">
+                        <em class="icon ni ni-calendar-alt"></em>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control date-picker"
+                        placeholder="mm/dd/yyyy"
+                      />
+                    </div>
+                  </div>
+                  <!-- .form-group -->
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <button
+                      data-bs-dismiss="modal"
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Save Informations
                     </button>
                   </div>
+                  <!-- .form-group -->
                 </div>
-              </div>
-              <div class="form-group">
-                <button
-                  data-bs-dismiss="modal"
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  Save Informations
-                </button>
               </div>
             </form>
           </div>
@@ -745,6 +1817,8 @@
                 <li>
                   <button
                     data-bs-dismiss="modal"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editEventPopup"
                     class="btn btn-danger btn-dim"
                   >
                     Cancel
@@ -760,5 +1834,8 @@
     <!-- JavaScript -->
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
+    <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
+    <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
+    <script src="./assets/js/editors.js?ver=3.2.3"></script>
   </body>
 </html>
