@@ -1,3 +1,40 @@
+<?php
+  $conn = new mysqli("localhost","root","","quizex");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+// Get the course_id from the URL
+$course_id = isset($_GET['course_id']) ? $_GET['course_id'] : null;
+
+// Check if course_id is provided
+if ($course_id) {
+    // Fetch course content from the database based on course_id
+    $query = "SELECT * FROM cours WHERE courId = $course_id";
+    $result = mysqli_query($conn,$query);
+
+    // Check for query errors
+    if (!$result) {
+        die("Query failed: " . $conn->error);
+    }
+
+    // Fetch the course details
+    $course = $result->fetch_assoc();
+
+    // Close the result set
+    $result->free();
+} else {
+    // Redirect to an error page or handle the situation when course_id is not provided
+    header("Location: error_page.php");
+    exit();
+}
+
+// Close the database connection
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -627,93 +664,38 @@
           <!-- main header @e -->
           <!-- content @s -->
           <div class="nk-content">
-            <div class="container-fluid">
-              <div class="nk-content-inner">
-                <div class="nk-content-body">
-                  <div class="content-page wide-md m-auto">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="content-page wide-md m-auto">
                     <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
-                      <div class="nk-block-head-content text-center">
-                        <h2 class="nk-block-title fw-normal">Course Title</h2>
-                        <div class="nk-block-des">
-                          <p class="lead">
-                            Course Description, Category and Instructor
-                          </p>
+                        <div class="nk-block-head-content text-center">
+                            <h2 class="nk-block-title fw-normal"><?php echo $course['courName']; ?></h2>
                         </div>
-                      </div>
                     </div>
                     <!-- .nk-block-head -->
                     <div class="nk-block">
-                      <div class="card">
-                        <div class="card-inner card-inner-xl">
-                          <article class="entry">
-                            <h3>AJAX : Asynchronous JavaScript and XML</h3>
-                            <p>
-                              AJAX stands for Asynchronous JavaScript and XML.
-                              It is a set of web development techniques using
-                              many web technologies on the client side to create
-                              asynchronous web applications. With AJAX, web
-                              applications can send and retrieve data from a
-                              server asynchronously without interfering with the
-                              display and behavior of the existing page.
-                            </p>
-                            <p>
-                              By decoupling the data interchange layer from the
-                              presentation layer, AJAX allows web pages and, by
-                              extension, web applications, to change content
-                              dynamically without the need to reload the entire
-                              page. In practice, modern implementations commonly
-                              utilize JSON instead of XML due to the advantages
-                              of JSON being native to JavaScript.
-                            </p>
-                            <img src="./images/slides/hq720.jpg" alt="" />
-                            <h4>How AJAX works</h4>
-                            <p>
-                              AJAX works by sending an HTTP request to the
-                              server via JavaScript. This request is sent to a
-                              server-side program (could be PHP, Python,
-                              ASP.NET, etc.), which processes the request and
-                              sends back a response. The JavaScript then uses
-                              the response to update the web page. All this
-                              happens asynchronously, without requiring a page
-                              reload.
-                            </p>
-                            <h4>Benefits of AJAX</h4>
-                            <p>
-                              One of the main benefits of AJAX is the ability to
-                              update parts of a web page, without reloading the
-                              whole page. This leads to better, faster, and more
-                              interactive web applications. AJAX also allows you
-                              to work with data - like retrieving data from a
-                              server, or submitting data to be processed.
-                            </p>
+                        <div class="card">
+                            <div class="card-inner card-inner-xl">
+                                <article class="entry">
+                                        <?php echo $course['courDescription']; ?>
+                                    <!-- Add more dynamic content based on your database fields -->
 
-                            <h4>Drawbacks of AJAX</h4>
-                            <p>
-                              Despite its benefits, AJAX is not without its
-                              drawbacks. AJAX can be dependent on JavaScript,
-                              which may not be enabled on all browsers. It can
-                              also be difficult to debug and test because it's
-                              asynchronous. Additionally, AJAX may not be fully
-                              accessible to all users, particularly those with
-                              slower internet connections or those using screen
-                              readers.
-                            </p>
-                          </article>
+                                    <!-- Continue adding dynamic content based on your database fields -->
+                                </article>
+                            </div>
+                            <div class="quiz-pass">
+                                <a href="html/lms/passquiz.html"><button class="submit-it">Pass Quiz</button></a>
+                            </div>
                         </div>
-                        <div class="quiz-pass">
-                          <a href="html/lms/passquiz.html"
-                            ><button class="submit-it">Pass Quiz</button></a
-                          >
-                        </div>
-                      </div>
                     </div>
                     <!-- .nk-block -->
-                  </div>
-                  <!-- .content-page -->
                 </div>
-              </div>
+                <!-- .content-page -->
             </div>
-          </div>
+        </div>
+    </div>
+</div>
           <!-- content @e -->
           <!-- footer @s -->
           <div class="nk-footer">

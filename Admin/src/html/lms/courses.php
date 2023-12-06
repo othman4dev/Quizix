@@ -1,3 +1,13 @@
+<?php
+  $conn = new mysqli("localhost","root","","quizex");
+//    $query = "SELECT * FROM cours";
+   $query = "SELECT cours.*, administrateur.adminName FROM cours LEFT JOIN administrateur ON cours.adminId = administrateur.adminId";
+   $result = mysqli_query($conn, $query);
+
+   if (!$result) {
+     die("Database query failed.");
+   }
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -206,12 +216,12 @@
                                                             </th>
                                                             <th class="nk-tb-col"><span class="sub-text">Course Name</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Category</span></th>
-                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Instractor</span></th>
-                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Lesson</span></th>
-                                                            <th class="nk-tb-col tb-col-xxl"><span class="sub-text">Enrole Student</span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">AdminName    </span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Quiz</span></th>
+                                                            <!-- <th class="nk-tb-col tb-col-xxl"><span class="sub-text">Enrole Student</span></th> -->
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Price</span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Deadline</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Progre</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">startTime</span></th>
                                                             <th class="nk-tb-col nk-tb-col-tools text-end">
                                                                 <ul class="nk-tb-actions gx-1">
                                                                     <li>
@@ -230,474 +240,42 @@
                                                         </tr><!-- .nk-tb-item -->
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-01">
-                                                                    <label class="custom-control-label" for="pid-01"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-purple"><span>RD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">Responsive Design</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Web Development</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Alex Ashley</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 32</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 25</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$30</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>20.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-02">
-                                                                    <label class="custom-control-label" for="pid-02"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-info"><span>AD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">Android Development</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Mobile Application</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Michael Wood</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 11</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 7</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-warning">Pending</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$65</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>10.5.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-03">
-                                                                    <label class="custom-control-label" for="pid-03"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-warning"><span>UD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">UI/UX Design</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Graphics Design</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Abu Bin Istiak</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 12</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 8</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$20</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>15.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-04">
-                                                                    <label class="custom-control-label" for="pid-04"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-purple"><span>WT</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">WordPress Theme Development</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Web Development</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Emily Smith</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 24</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 3</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$50</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>20.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-05">
-                                                                    <label class="custom-control-label" for="pid-05"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-info"><span>AD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">Android Development</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Mobile Application</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Jhon Doe</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 11</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 7</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-warning">Pending</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$65</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>10.5.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-06">
-                                                                    <label class="custom-control-label" for="pid-06"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-warning"><span>UD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">UI/UX Design</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Graphics Design</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span> Abu Bin Istiak</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 12</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 8</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$20</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>15.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-07">
-                                                                    <label class="custom-control-label" for="pid-07"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-purple"><span>RD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">Responsive Design</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Web Development</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>lara Ashley</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 22</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 29</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$50</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>22.5.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-08">
-                                                                    <label class="custom-control-label" for="pid-08"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-info"><span>AD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">Android Development</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Mobile Application</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Michael Wood</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 11</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 7</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-warning">Pending</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$65</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>10.5.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-09">
-                                                                    <label class="custom-control-label" for="pid-09"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-warning"><span>UD</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">UI/UX Design</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Graphics Design</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Lara Watson</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 22</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 17</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>$20</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>15.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
+                                                    <?php
+
+// Generate HTML dynamically based on the retrieved data
+while ($row = $result->fetch_assoc()) {
+  echo '<tr class="nk-tb-item">
+  <td class="nk-tb-col nk-tb-col-check">
+  <div class="custom-control custom-control-sm custom-checkbox notext">
+  <input type="checkbox" class="custom-control-input" id="pid-all" />
+  <label class="custom-control-label" for="pid-all"></label>
+  </div>
+  </td>
+  <td class="nk-tb-col"><a href="http://localhost/Quizix/user-interface/src/html/lms/passcour.php?course_id=' . $row['courId'] . '"><span class="sub-text">' . $row['courName'] . '</span></a></td>
+  <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['category'] . '</span></td>
+  <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['adminName'] . '</span></td>
+  <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['courName'] . "quiz" . '</span></td>
+  <td class="nk-tb-col tb-col-md"><span class="sub-text">' . $row['status'] . '</span></td>
+  <td class="nk-tb-col tb-col-mb"><span class="sub-text">' . $row['price'] . '</span></td>
+  <td class="nk-tb-col tb-col-mb"><span class="sub-text">' . $row['startTime'] . '</span></td>
+  <td class="nk-tb-col nk-tb-col-tools">
+  <ul class="nk-tb-actions gx-1">
+      <li>
+          <div class="drodown">
+              <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+              <div class="dropdown-menu dropdown-menu-end">
+                  <ul class="link-list-opt no-bdr">
+                      <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
+                      <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
+                  </ul>
+              </div>
+          </div>
+      </li>
+  </ul>
+</td>
+  </th>
+  </tr>';}
+?>
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col nk-tb-col-check">
                                                                 <div class="custom-control custom-control-sm custom-checkbox notext">
