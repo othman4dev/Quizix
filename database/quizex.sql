@@ -1,4 +1,5 @@
 CREATE DATABASE quizex;
+USE quizex;
 CREATE TABLE administrateur ( 
   adminId int PRIMARY KEY AUTO_INCREMENT,
   adminName varchar(255) ,
@@ -43,9 +44,9 @@ CREATE TABLE reponses(
   reponseContent varchar(255),
   status boolean,
   quizId int,
-  FOREIGN KEY ( quizId )REFERENCES quiz( quizId ),
   questionsId int,
-  FOREIGN KEY ( questionsId )REFERENCES questions( questionsId )
+  FOREIGN KEY ( quizId ) REFERENCES quiz( quizId ),
+  FOREIGN KEY ( questionsId ) REFERENCES questions( questionsId )
 );
 CREATE TABLE questions(
   questionsId int  PRIMARY KEY NOT NULL AUTO_INCREMENT, 
@@ -69,3 +70,6 @@ CREATE TABLE passedquiz(
   userId int,
   FOREIGN KEY ( userId )REFERENCES utilisateur( userId )
 );
+USE QUIZIX;
+DROP DATABASE QUIZIX;
+```

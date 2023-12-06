@@ -688,6 +688,12 @@ $conn->close();
                                 <a href="html/lms/passquiz.html"><button class="submit-it">Pass Quiz</button></a>
                             </div>
                         </div>
+                        <div class="quiz-pass">
+                          <a href="html/lms/passquiz.php"
+                            ><button class="submit-it">Pass Quiz</button></a
+                          >
+                        </div>
+                      </div>
                     </div>
                     <!-- .nk-block -->
                 </div>

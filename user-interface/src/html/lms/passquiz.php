@@ -1,3 +1,4 @@
+<?php include "connection.php"; ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -40,7 +41,7 @@
               <a href="html/index.html" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
-                  src="./images/logo.png"
+                  src="./images/logo.svg"
                   srcset="./images/logo2x.png 2x"
                   alt="logo"
                 />
@@ -79,44 +80,50 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                      <a href="html/lms/index.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
-                          <span class="nk-menu-text">Statistics</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
+                    <a href="html/lms/index.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-dashboard-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Dashboard</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                      <a href="html/lms/courses.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
-                          <span class="nk-menu-text">Courses</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
-                  <li class="nk-menu-item">
-                      <a href="html/lms/category.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                          <span class="nk-menu-text">Quizzes</span>
-                      </a>
+                    <a href="html/lms/category.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-book-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Courses</span>
+                    </a>
                   </li>
                   <li class="nk-menu-item">
-                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
-                          <span class="nk-menu-text">Instructors</span>
-                      </a>
-                  </li><!-- .nk-menu-item -->
-                  <li class="nk-menu-item">
-                      <a href="html/lms/students.html" class="nk-menu-link">
-                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                          <span class="nk-menu-text">Students</span>
-                      </a>
+                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-file-docs"></em
+                      ></span>
+                      <span class="nk-menu-text">Quizzes</span>
+                    </a>
                   </li>
+
                   <li class="nk-menu-item">
-                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                        <span class="nk-menu-icon"
-                          ><em class="icon ni ni-account-setting-fill"></em
-                        ></span>
-                        <span class="nk-menu-text">Profile</span>
-                      </a>
-                    </li>
-              </ul>
+                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-account-setting-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Profile</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                    <a href="html/lms/settings.html" class="nk-menu-link">
+                      <span class="nk-menu-icon"
+                        ><em class="icon ni ni-setting-alt-fill"></em
+                      ></span>
+                      <span class="nk-menu-text">Settings</span>
+                    </a>
+                  </li>
+                  <!-- .nk-menu-item -->
+                </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -144,7 +151,7 @@
                   <a href="html/index.html" class="logo-link">
                     <img
                       class="logo-light logo-img"
-                      src="./images/logo.png"
+                      src="./images/logo.svg"
                       srcset="./images/logo2x.png 2x"
                       alt="logo"
                     />
@@ -343,744 +350,58 @@
                     <div class="card card-stretch">
                       <div class="card-inner-group">
                         <div class="card-inner p-0">
-                          <form class="quiz">
+                          <div class="quiz">
                             <div class="row-table head">
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
-                              
-                            </div>
+                              <div>Only One answer is Correct</div>
+                            <?php
+                                $quizId = $_POST["quizId"];
+                                $sql1 = "SELECT questionContent , questionsId FROM questions WHERE quizId = $quizId LIMIT 10;";
+                                
+                                $result1 = $conn->query($sql1);
+                                $num = 0;
+                                if ($result1->num_rows > 0) {
+                                  
+                                  // output data of each row
+                                  while($row = $result1->fetch_assoc()) {
+                                    $num++;
+                                    echo "<div class='row-table'>";
+                                    $questionsId = $row["questionsId"];
+                                    echo "<div class='question'>
+                                      <div class='question-num'>" . $num . "</div>
+                                      " . $row["questionContent"] . "
+                                      </div>";
+                                    ;
+                                    echo "<div class='answers'>";
+                                    $sql2 = "SELECT * FROM reponses WHERE questionsId = $num";
+                                    $result2 = $conn->query($sql2);
+                                    if ($result2->num_rows > 0) {
+                                      while($row2 = $result2->fetch_assoc()) {
+                                        echo "
+                                        <label class='answer'><input type='radio' name='answer" .$num. "' id='' value=' " .$row2["reponseStatus"]. " ' onchange='calculate()'/>" . $row2["reponseContent"] . "</label>";
+                                      }
+                                      echo "</div>";
+                                      echo "</div>";
+                                    }
+                                  }
+                                  
+                                } else {
+                                  echo "0 results";
+                                }
+                            ?>
                             
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">1</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
+                          </div>
+                          <div class="card-inner">
+                            <div class="nk-block-between-md g-3">
+                              <button class="cancel-it">Cancel</button>
+                              <form action="saveResult.php" method="post">
+                                <input type="text" name="quizId" value="<?php echo $quizId ?>">
+                                <input type="text" name="result" id="result" value="">
+                                <button class="submit-it" type="submit">Submit</button>
+                              </form>
                             </div>
-                            
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >2</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >3</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >4</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >5</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >7</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >8</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >9</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >10</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="card-inner">
-                              <div class="nk-block-between-md g-3">
-                                <input type="submit" value="Cancel" class="cancel-it">
-                                <input type="submit" value="Submit" class="submit-it">
-                              </div>
-                            </div>
-
-                          </form>
-                          
+                          </div>
                           <!-- .nk-block-between -->
                         </div>
                         <!-- .card-inner -->
@@ -1830,6 +1151,7 @@
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
     <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
     <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
-    <script src="./assets/js/editors.js?ver=3.2.3"></script>
+    <script src="./assets/js/editors.js?ver=3.2.3"></script>\
+    <script src="./js/added.js"></script>
   </body>
 </html>

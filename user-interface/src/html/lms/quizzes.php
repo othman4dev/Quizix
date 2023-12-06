@@ -385,420 +385,58 @@
                               <!-- .nk-tb-item -->
                             </thead>
                             <tbody>
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-purple">
-                                      <span>RD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Responsive Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Web Development</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Alex Ashley</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 32</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 25</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>30%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-info">
-                                      <span>AD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Android Development</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Mobile Application</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Michael Wood</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 11</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 7</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-warning"
-                                    >Pending</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>0%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>10.5.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-warning">
-                                      <span>UD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">UI/UX Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Graphics Design</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Abu Bin Istiak</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 12</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 8</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>15.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-purple">
-                                      <span>WT</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">
-                                        WordPress Theme Development
-                                      </h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Web Development</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Emily Smith</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 24</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 3</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>50%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-info">
-                                      <span>AD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Android Development</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Mobile Application</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Jhon Doe</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 11</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 7</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-warning"
-                                    >Pending</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>0%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>10.5.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-warning">
-                                      <span>UD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">UI/UX Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Graphics Design</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span> Abu Bin Istiak</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 12</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 8</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>15.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-purple">
-                                      <span>RD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Responsive Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Web Development</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>lara Ashley</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 22</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 29</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>50%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>22.5.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-info">
-                                      <span>AD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Android Development</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Mobile Application</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Michael Wood</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 11</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 7</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-warning"
-                                    >Pending</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>0%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>10.5.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-warning">
-                                      <span>UD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">UI/UX Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Graphics Design</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Lara Watson</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 22</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 17</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>15.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
-                              <tr class="nk-tb-item">
-                                <td class="nk-tb-col nk-tb-col-check"></td>
-                                <td class="nk-tb-col">
-                                  <a
-                                    href="html/lms/passquiz.html"
-                                    class="project-title"
-                                  >
-                                    <div class="user-avatar sq bg-purple">
-                                      <span>WT</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">
-                                        WordPress Theme Development
-                                      </h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Web Development</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Mark Smith</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 18</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 6</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>100%</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools"></td>
-                              </tr>
-                              <!-- .nk-tb-item -->
+                              <?php include "connection.php"; ?>
+                              <?php 
+                                $sql = "SELECT * FROM quiz 
+                                RIGHT JOIN cours ON quiz.courId = cours.courId 
+                                RIGHT JOIN administrateur ON cours.adminId = administrateur.adminId;";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->execute();
+                                $num = 0;
+                                $result = $stmt->get_result();
+                                while ($row = $result->fetch_assoc()) {
+                                  $num++;
+                                  echo "
+                                  <tr class='nk-tb-item'>
+                                  <td class='nk-tb-col'>" .$num. "</td>
+                                  <td class='nk-tb-col'>
+                                    <a
+                                      href='html/lms/passquiz.php'
+                                      class='project-title'
+                                    >
+                                      <div class='user-avatar sq bg-purple'>
+                                        <span>" .substr($row["quizName"], 0, 2). "</span>
+                                      </div>
+                                      <div class='project-info'>
+                                        <h6 class='title'>" .$row["quizName"]. "</h6>
+                                      </div>
+                                    </a>
+                                  </td>
+                                  <td class='nk-tb-col tb-col-lg'>
+                                    <span>" .$row["category"]. "</span>
+                                  </td>
+                                  <td class='nk-tb-col tb-col-lg'>
+                                    <span>" .$row["adminName"]. "</span>
+                                  </td>
+                                  <td class='nk-tb-col tb-col-lg'>
+                                    <span>" .$row["courName"]. "</span>
+                                  </td>
+                                  <td class='nk-tb-col tb-col-md'>
+                                    <span class='badge badge-dim bg-success'
+                                      >" .$row["status"]. "</span
+                                    >
+                                  </td>
+                                  <td class='nk-tb-col tb-col-mb'>
+                                    <span>" .$row["resultat"]. "</span>
+                                  </td>
+                                  <td class='nk-tb-col tb-col-mb'>
+                                    <span>" .$row["creation"]. "</span>
+                                  </td>
+                                  <td class='nk-tb-col nk-tb-col-tools'></td>
+                                </tr>
+                                  ";
+                                }
+                               ?>
                             </tbody>
                           </table>
                           <!-- .nk-tb-list -->
