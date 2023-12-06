@@ -10,7 +10,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Category | LMS | DashLite Admin Template</title>
+    <title>Courses | LMS | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.2.3">
     <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=3.2.3">
@@ -39,7 +39,7 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
-                                <li class="nk-menu-item">
+                                <li class="nk-menu-item active current-page">
                                     <a href="html/lms/index.html" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Statistics</span>
@@ -159,9 +159,9 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Quizzes</h3>
+                                            <h3 class="nk-block-title page-title">Courses</h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>You have total 20 Quizzes.</p>
+                                                <p>You have total 20 Courses.</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
@@ -181,11 +181,9 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="nk-block-tools-opt d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#modalCreate">
-                                                            <a href="AddCourseDetails.html" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Quiz</span></a>
-                                                        </li>
-                                                        <li class="nk-block-tools-opt d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#modalCreate">
-                                                            <a href="#" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
+                                                        <li class="nk-block-tools-opt d-none d-sm-block">
+                                                            <!-- get me here -->
+                                                            <a href="html/lms/createcourse.html" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Course</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -240,7 +238,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
+                                                                <a href="html/lms/passcour.html" class="project-title">
                                                                     <div class="user-avatar sq bg-purple"><span>RD</span></div>
                                                                     <div class="project-info">
                                                                         <h6 class="title">Responsive Design</h6>
@@ -978,134 +976,240 @@
             </div><!-- .modal-content -->
         </div><!-- .modla-dialog -->
     </div><!-- .modal -->
-    <!-- @@ Category Modal @e -->
     <div class="modal fade" id="modalCreate">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
-                    <h5 class="title">Add Category</h5>
+                    <h5 class="modal-title">Create Course</h5>
                     <form action="#" class="pt-2">
-                        <div class="form-group">
-                            <label class="form-label" for="full-name">Category Name</label>
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="full-name" placeholder="e.g. Web Development">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="description">Description</label>
-                            <div class="form-control-wrap">
-                                <textarea class="form-control" name="description" id="description" placeholder="Write Category Description"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="thumb">Category thumbnail</label>
-                            <div class="form-control-wrap">
-                                <div class="form-file">
-                                    <input type="file" multiple class="form-file-input" id="customFile">
-                                    <label class="form-file-label" for="thumb">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Subcategory</label>
-                            <div class="d-flex gx-3 mb-3">
-                                <div class="g w-100">
+                        <div class="row gy-3 gx-gs">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="course-name">Course Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" placeholder="e.g. Web Development">
+                                        <input type="text" class="form-control" id="course-name" placeholder="e.g. Responsive Design">
                                     </div>
-                                </div>
-                                <div class="g">
-                                    <button class="btn btn-icon btn-outline-light"><em class="icon ni ni-plus"></em></button>
-                                </div>
+                                </div><!-- .form-group -->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save Informations</button>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="course-category">Course category</label>
+                                    <div class="form-control-wrap">
+                                        <select class="form-select js-select2" id="course-category">
+                                            <option>Web Development</option>
+                                            <option>Mobile Application</option>
+                                            <option>Graphics Design</option>
+                                        </select>
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="dificulties">Course Dificulties</label>
+                                    <select class="form-select js-select2" id="dificulties">
+                                        <option>Beginners</option>
+                                        <option>Intermediate</option>
+                                        <option>Advanced</option>
+                                    </select>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="course-lesson">Total Lesson</label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" class="form-control" id="course-lesson" placeholder="40">
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="thumb">Course thumbnail</label>
+                                    <div class="form-control-wrap">
+                                        <div class="form-file">
+                                            <input type="file" multiple class="form-file-input" id="customFile-create">
+                                            <label class="form-file-label" for="customFile-create">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="thumb">Course Description</label>
+                                    <div class="form-control-wrap">
+                                        <div class="quill-minimal"></div>
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="thumb">Status</label>
+                                    <div class="form-control-wrap">
+                                        <ul class="custom-control-group g-3 align-center flex-wrap">
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" checked name="reg-public" id="reg-enable">
+                                                    <label class="custom-control-label" for="reg-enable">Active</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" name="reg-public" id="reg-disable">
+                                                    <label class="custom-control-label" for="reg-disable">Pending</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" name="reg-public" id="reg-request">
+                                                    <label class="custom-control-label" for="reg-request">Rejected</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="course-price">Course Price</label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" class="form-control" id="course-price" placeholder="30">
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label">Deadline</label>
+                                    <div class="form-control-wrap">
+                                        <div class="form-icon form-icon-left"> <em class="icon ni ni-calendar-alt"></em>
+                                        </div>
+                                        <input type="text" class="form-control date-picker" placeholder="mm/dd/yyyy">
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save Informations</button>
+                                </div><!-- .form-group -->
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- .Edit Modal-Content -->
+    <!-- .Create Modal-Content -->
     <div class="modal fade" id="modalEdit">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close"> <em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
-                    <h5 class="title">Edit Category</h5>
+                    <h5 class="title">Edit Course</h5>
                     <form action="#" class="pt-2">
-                        <div class="form-group">
-                            <label class="form-label" for="edit-full-name">Category Name</label>
-                            <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="edit-full-name" value="Web Development">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="edit-description">Description</label>
-                            <div class="form-control-wrap">
-                                <textarea class="form-control" name="description" id="edit-description" value="Website Design & Develop the website with web applications"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="category-thumb">Category thumbnail</label>
-                            <div class="form-control-wrap">
-                                <div class="form-file">
-                                    <input type="file" multiple class="form-file-input" id="edit-customFile">
-                                    <label class="form-file-label" for="category-thumb">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Subcategory</label>
-                            <div class="d-flex gx-3 mb-3">
-                                <div class="g w-100">
+                        <div class="row gy-3 gx-gs">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="edit-course-name">Course Name</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" value="Figma">
+                                        <input type="text" class="form-control" id="edit-course-name" value="Responsive Design">
                                     </div>
                                 </div>
-                                <div class="g">
-                                    <button class="btn btn-icon btn-outline-light"><em class="icon ni ni-cross"></em>
-                                    </button>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="edit-category">Course category</label>
+                                    <select class="form-select js-select2" id="edit-category">
+                                        <option>Web Development</option>
+                                        <option>Mobile Application</option>
+                                        <option>Graphics Design</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="d-flex gx-3 mb-3">
-                                <div class="g w-100">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="edit-dificulties">Course Dificulties</label>
+                                    <select class="form-select js-select2" id="edit-dificulties">
+                                        <option>Beginners</option>
+                                        <option>Intermediate</option>
+                                        <option>Advanced</option>
+                                    </select>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="edit-lesson">Total Lesson</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" value="Responsive Design">
+                                        <input type="number" class="form-control" id="edit-lesson" value="40">
                                     </div>
                                 </div>
-                                <div class="g">
-                                    <button class="btn btn-icon btn-outline-light"><em class="icon ni ni-cross"></em>
-                                    </button>
-                                </div>
                             </div>
-                            <div class="d-flex gx-3 mb-3">
-                                <div class="g w-100">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="thumb">Course thumbnail</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" value="Adobe Photoshop">
+                                        <div class="form-file">
+                                            <input type="file" multiple class="form-file-input" id="edit-customFile">
+                                            <label class="form-file-label" for="edit-customFile">Choose file</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="g">
-                                    <button class="btn btn-icon btn-outline-light"><em class="icon ni ni-cross"></em>
-                                    </button>
-                                </div>
+                                </div><!-- .form-group -->
                             </div>
-                            <div class="d-flex gx-3 mb-3">
-                                <div class="g w-100">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="edit-description">Course Description</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control" placeholder="e.g. Web Development">
+                                        <div class="quill-minimal"></div>
                                     </div>
-                                </div>
-                                <div class="g">
-                                    <button class="btn btn-icon btn-outline-light"><em class="icon ni ni-plus"></em>
-                                    </button>
-                                </div>
+                                </div><!-- .form-group -->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save Informations</button>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="status">Status</label>
+                                    <div class="form-control-wrap">
+                                        <ul class="custom-control-group g-3 align-center flex-wrap">
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" checked name="reg-public" id="edit-course-active">
+                                                    <label class="custom-control-label" for="edit-course-active">Active</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" name="reg-public" id="edit-course-pending">
+                                                    <label class="custom-control-label" for="edit-course-pending">Pending</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input" name="reg-public" id="edit-course-reject">
+                                                    <label class="custom-control-label" for="edit-course-reject">Rejected</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="course-price-edit">Course Price</label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" class="form-control" id="course-price-edit" value="30">
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-label">Deadline</label>
+                                    <div class="form-control-wrap">
+                                        <div class="form-icon form-icon-left"> <em class="icon ni ni-calendar-alt"></em> </div>
+                                        <input type="text" class="form-control date-picker" placeholder="mm/dd/yyyy">
+                                    </div>
+                                </div><!-- .form-group -->
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save Informations</button>
+                                </div><!-- .form-group -->
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -1127,7 +1231,7 @@
                                 <button data-bs-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
                             </li>
                             <li>
-                                <button data-bs-dismiss="modal" class="btn btn-danger btn-dim">Cancel</button>
+                                <button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editEventPopup" class="btn btn-danger btn-dim">Cancel</button>
                             </li>
                         </ul>
                     </div>
@@ -1139,6 +1243,9 @@
     <!-- JavaScript -->
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
+    <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3">
+    <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
+    <script src="./assets/js/editors.js?ver=3.2.3"></script>
 </body>
 
 </html>

@@ -6,44 +6,37 @@ $dbname = "quizex";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
-// Retrieve form data
 $courseName = $_POST['courseName'];
 $category = $_POST['category'];
 
-// Insert course information into the database
-$sql = "INSERT INTO cours (courName, category) VALUES ('$courseName', '$category')";
+$sql = "INSERT INTO cours (courName, category, startTime) VALUES ('$courseName', '$category', NOW())";
 
 if ($conn->query($sql) === TRUE) {
     $courseId = $conn->insert_id;
 
-    // Determine the number of parts based on the length of the heading array
-    $numParts = count($_POST['heading']);
+    if (
+        (isset($_POST['heading']) && is_array($_POST['heading'])) ||
+        (isset($_POST['subtitle']) && is_array($_POST['subtitle'])) ||
+        (isset($_POST['paragraph']) && is_array($_POST['paragraph']))
+    ) {
+        $coursDescription = '';
+        $numParts = count($_POST['heading']);
+        for ($i = 0; $i < $numParts; $i++) {
+            $heading = isset($_POST["heading"][$i]) ? htmlspecialchars($_POST["heading"][$i]) : '';
+            $subtitle = isset($_POST["subtitle"][$i]) ? htmlspecialchars($_POST["subtitle"][$i]) : '';
+            $paragraph = isset($_POST["paragraph"][$i]) ? htmlspecialchars($_POST["paragraph"][$i]) : '';
 
-    // Insert parts information into the database
-    echo "test1";
-    for ($i = 0; $i < $numParts; $i++) {
-        echo "test2";
-        $heading = $_POST["heading"];
-        $subtitle = $_POST["subtitle"];
-        $paragraph = $_POST["paragraph"];
-        $body = $heading.$subtitle.$paragraph;
-        // Insert part information into the database
-        $sql = "INSERT INTO cours (coursDescription) 
-        VALUES ('$body')";
- 
+            $coursDescription .= "<h1>$heading</h1>" . "<h3>$subtitle</h3>" . ' ' . "<p>$paragraph</p>";
+        }
 
-        $conn->query($sql);
+        $sql = "UPDATE cours SET courDescription = '$coursDescription' WHERE courId = '$courseId'";
+
+        if ($conn->query($sql) === TRUE) {
+            header("Location: createcourse.html");
+        } 
     }
-
-    echo "Course added successfully";
-    echo "test1";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+} 
 
 $conn->close();
 ?>
