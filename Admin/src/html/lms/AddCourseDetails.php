@@ -1,3 +1,4 @@
+<?php include "connection.php" ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -40,7 +41,7 @@
               <a href="html/index.html" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
-                  src="./images/logo.svg"
+                  src="./images/logo.png"
                   srcset="./images/logo2x.png 2x"
                   alt="logo"
                 />
@@ -79,50 +80,44 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-dashboard-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Dashboard</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
+                      <a href="html/lms/index.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                          <span class="nk-menu-text">Statistics</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-book-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Courses</span>
-                    </a>
+                      <a href="html/lms/courses.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                          <span class="nk-menu-text">Courses</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                      <a href="html/lms/category.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                          <span class="nk-menu-text">Quizzes</span>
+                      </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-file-docs"></em
-                      ></span>
-                      <span class="nk-menu-text">Quizzes</span>
-                    </a>
-                  </li>
-
+                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                          <span class="nk-menu-text">Instructors</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-account-setting-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Profile</span>
-                    </a>
+                      <a href="html/lms/students.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                          <span class="nk-menu-text">Students</span>
+                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/settings.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-setting-alt-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Settings</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
-                </ul>
+                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                        <span class="nk-menu-icon"
+                          ><em class="icon ni ni-account-setting-fill"></em
+                        ></span>
+                        <span class="nk-menu-text">Profile</span>
+                      </a>
+                    </li>
+              </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -150,7 +145,7 @@
                   <a href="html/index.html" class="logo-link">
                     <img
                       class="logo-light logo-img"
-                      src="./images/logo.svg"
+                      src="./images/logo.png"
                       srcset="./images/logo2x.png 2x"
                       alt="logo"
                     />
@@ -345,356 +340,880 @@
                     <!-- .nk-block-between -->
                   </div>
                   <!-- .nk-block-head -->
+                
                   <div class="nk-block">
                     <div class="card card-stretch">
                       <div class="card-inner-group">
                         <div class="card-inner p-0">
-                          <div class="quiz">
+                          <form class="quiz" method="post" action="html/lms/addquiz.php">
                             <div class="row-table head">
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
-                              <div>Only One answer is Correct</div>
+                              <input type="text" style="display:none" value="1" name="quizId">
                             </div>
+
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">1</div>
-                                What does HTML stand for ?
+                                <div>Question :</div>
+
+                                <label>
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question1"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hyper Text Markup Language</label
-                                >
-                                <label class="answer">
+                              <div class="AllAnswers">
+                                <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hybrid Title More Language</label
-                                >
-                                <label class="answer">
-                                  <input type="radio" name="answer2" id="" />Hex
-                                  Text Markup Language</label
-                                >
-                                <label class="answer">
+                                    name="status-1[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer1-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hello Text Mother Language</label
-                                >
+                                    name="status-1[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer1-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-1[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer1-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-1[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer1-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
+
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">2</div>
-                                What does CSS stand for?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question2"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer" 
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Cascading Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-2[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer2-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Computer Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-2[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer2-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Colorful Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-2[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer2-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Creative Style Sheets</label
-                                >
+                                    name="status-2[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer2-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">3</div>
-                                What is a function in JavaScript?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question3"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  method</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  block of code</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  variable</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />An
-                                  object</label
-                                >
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-3[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer3-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-3[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer3-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-3[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer3-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-3[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer3-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">4</div>
-                                What is the full form of SQL?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question4"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Query Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-4[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer4-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Quick Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-4[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer4-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Queue Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-4[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer4-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Quantum Language</label
-                                >
+                                    name="status-4[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer4-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">5</div>
-                                What does API stand for?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question5"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Programming Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-5[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer5-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Process Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-5[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer5-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Program Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-5[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer5-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Programming Item</label
-                                >
+                                    name="status-5[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer5-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">6</div>
-                                What does HTML stand for?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question6"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyper Text Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-6[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer6-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyperlinks and Text Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-6[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer6-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Home Tool Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-6[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer6-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyper Tool Markup Language</label
-                                >
+                                    name="status-6[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer6-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">7</div>
-                                What is Python?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question7"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  snake</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  programming language</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  software</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  tool</label
-                                >
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-7[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer7-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-7[]"
+                                    value="2
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer7-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-7[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer7-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-7[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer7-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">8</div>
-                                What is the use of comments in programming?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question8"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To make the code more readable</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-8[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer8-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To change the code</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-8[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer8-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To print the code</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-8[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer8-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To delete the code</label
-                                >
+                                    name="status-8[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer8-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
-                            </div>
-                            <div class="row-table">
+                            </div><div class="row-table">
                               <div class="question">
                                 <div class="question-num">9</div>
-                                What is the full form of PHP?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question9"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Personal Home Page</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-9[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Private Home Page</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-9[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Personal Hypertext Preprocessor</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-9[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Hypertext Preprocessor</label
-                                >
+                                    name="status-9[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">10</div>
-                                What does URL stand for?
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question10"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
                               </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Resource Locator</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-10[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Retrieval Locator</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-10[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Resource Link</label
-                                >
-                                <label class="answer"
-                                  ><input
+                                    name="status-10[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
                                     type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Retrieval Link</label
-                                >
+                                    name="status-10[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div class="card-inner">
-                            <div class="nk-block-between-md g-3">
-                              <button class="cancel-it">Cancel</button>
-                              <button class="submit-it">Submit</button>
+                            <div class="card-inner">
+                              <div class="nk-block-between-md g-3">
+                                <input
+                                  type="submit"
+                                  value="Cancel"
+                                  class="cancel-it"
+                                />
+                                <div class="moreInfo">
+                                  <input type="date" name="creation" id="" style="display:none" onload="this.valueAsDate = new Date()">
+                                  Quiz Name :
+                                  <input type="text" class="form-control" name="quizName" required placeholder="Quiz Name">
+                                  Admin Name :
+                                  <input type="text" class="form-control" placeholder="Admin Name" readonly>
+                                  <select name="admin" id="" class="form-control edit-form-control">
+                                    <?php 
+                                      $sql3 = "SELECT * FROM cours";
+                                      $result3 = mysqli_query($conn, $sql3);
+                                      while($row3 = mysqli_fetch_assoc($result3)){
+                                        echo "<option value='".$row3['courName']."'>".$row3['courName']."</option>";
+                                      }
+                                    ?>
+                                  </select>
+                                  </div>
+                                  <input
+                                    type="submit"
+                                    value="Submit"
+                                    class="submit-it"
+                                    name="submit"
+                                />
+                              </div>
                             </div>
-                          </div>
+                          </form>
+
                           <!-- .nk-block-between -->
                         </div>
                         <!-- .card-inner -->
@@ -1445,5 +1964,6 @@
     <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
     <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
     <script src="./assets/js/editors.js?ver=3.2.3"></script>
+    <script src="src/js/added.js"></script>
   </body>
 </html>

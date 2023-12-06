@@ -9,6 +9,8 @@
     box-sizing: border-box;
     flex-wrap: wrap;
     height: fit-content;
+    padding: 15px;
+    box-sizing: border-box;
 }
 .answer {
     display: flex;
@@ -22,14 +24,10 @@
 .answers {
     display: flex;
     gap: 10px;
-<<<<<<< HEAD
     padding-left: 25px;
-=======
-    margin: 5px;
->>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
     box-sizing: border-box;
     flex-grow: 1;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 .question {
     flex-grow: 1;
@@ -38,6 +36,7 @@
     align-items: center;
     width: 100%;
     font-size: 17px;
+    gap: 15px;
 }
 .question-num {
     margin-left: 15px;
@@ -100,7 +99,6 @@ input[type=radio] {
     justify-content: flex-end;
     padding-right: 70px;
     box-sizing: border-box;
-<<<<<<< HEAD
     gap: 20px;
 }
 .add-head {
@@ -157,6 +155,32 @@ input[type=radio] {
 }
 .course-form label{
     width: 50%;
-=======
->>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
+}
+.AllAnswers{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.form-control {
+    flex-grow: 1 !important;
+    width: 100% !important;
+}
+.AllAnswers label {
+    flex-grow: 1;
+}
+.form-control {
+    background-color: transparent;
+    flex-grow: 1;
+    height: 35px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 240px;
+    margin: 5px 0 0 5px;
+}
+.moreInfo {
+    display: flex;
+    flex-grow: 1;
+}
+.edit-form-control {
+    max-width: 70px;
 }
