@@ -1,3 +1,4 @@
+<?php include "connection.php" ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -345,46 +346,47 @@
                     <!-- .nk-block-between -->
                   </div>
                   <!-- .nk-block-head -->
+                
                   <div class="nk-block">
                     <div class="card card-stretch">
                       <div class="card-inner-group">
                         <div class="card-inner p-0">
-                          <form class="quiz">
+                          <form class="quiz" method="post" action="html/lms/addquiz.php">
                             <div class="row-table head">
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
-                              
+                              <input type="text" style="display:none" value="1" name="quizId">
                             </div>
-                            
+
                             <div class="row-table">
                               <div class="question">
                                 <div class="question-num">1</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div>Question :</div>
 
-                                <label for="customInput2">
+                                <label>
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question1"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-1[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer1-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -392,80 +394,83 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-1[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer1-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-1[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer1-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-1[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer1-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                               </div>
                             </div>
-                            
+
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >2</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">2</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question2"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-2[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer2-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -473,125 +478,48 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-2[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer2-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-2[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer2-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-2[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer2-4"
                                       placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num" >3</div>
-                                <div   >Question : &nbsp&nbsp </div>
-
-                                <label for="customInput2">
-                                  <input
-                                    class="form-control"
-                                    type="text"
-                                    name="customAnswer2"
-                                    placeholder="Add Question"
-                                  />
-                                </label>
-                                
-                              </div>
-                              <div class="AllAnswers">
-                                
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
-                                    />
-                                  </label>
-                                </div>
-                                <div class="answers">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
-                                  <label for="customInput2">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      name="customAnswer2"
-                                      placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -599,33 +527,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >4</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">3</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question3"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-3[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer3-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -633,45 +561,48 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-3[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer3-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-3[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer3-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-3[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer3-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -679,33 +610,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >5</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">4</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question4"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-4[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer4-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -713,45 +644,48 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-4[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer4-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-4[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer4-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-4[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer4-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -759,33 +693,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >7</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">5</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question5"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-5[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer5-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -793,45 +727,48 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-5[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer5-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-5[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer5-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-5[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer5-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -839,33 +776,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >8</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">6</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question6"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-6[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer6-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -873,45 +810,48 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-6[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer6-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-6[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer6-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-6[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer6-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -919,33 +859,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >9</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">7</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question7"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-7[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer7-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -953,45 +893,47 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
-                                  />
+                                    name="status-7[]"
+                                    value="2
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer7-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-7[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer7-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-7[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer7-4"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -999,33 +941,33 @@
                             </div>
                             <div class="row-table">
                               <div class="question">
-                                <div class="question-num" >10</div>
-                                <div   >Question : &nbsp&nbsp </div>
+                                <div class="question-num">8</div>
+                                <div>Question :</div>
 
                                 <label for="customInput2">
                                   <input
                                     class="form-control"
                                     type="text"
-                                    name="customAnswer2"
+                                    name="question8"
                                     placeholder="Add Question"
+                                    required
                                   />
                                 </label>
-                                
                               </div>
                               <div class="AllAnswers">
-                                
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-8[]"
+                                    value="1"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer8-1"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
@@ -1033,60 +975,251 @@
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-8[]"
+                                    value="2"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer8-2"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-8[]"
+                                    value="3"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer8-3"
                                       placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                                 <div class="answers">
                                   <input
                                     type="radio"
-                                    name="answer2"
-                                    id="customInput2"
+                                    name="status-8[]"
+                                    value="4"
                                   />
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
                                       type="text"
-                                      name="customAnswer2"
+                                      name="answer8-4"
                                       placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div><div class="row-table">
+                              <div class="question">
+                                <div class="question-num">9</div>
+                                <div>Question :</div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question9"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
+                              </div>
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-9[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-9[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-9[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-9[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer9-4"
+                                      placeholder="Your custom answer"
+                                      required
                                     />
                                   </label>
                                 </div>
                               </div>
                             </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num">10</div>
+                                <div>Question :</div>
 
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="question10"
+                                    placeholder="Add Question"
+                                    required
+                                  />
+                                </label>
+                              </div>
+                              <div class="AllAnswers">
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-10[]"
+                                    value="1"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-1"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-10[]"
+                                    value="2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-2"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-10[]"
+                                    value="3"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-3"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="status-10[]"
+                                    value="4"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="answer10-4"
+                                      placeholder="Your custom answer"
+                                      required
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
                             <div class="card-inner">
                               <div class="nk-block-between-md g-3">
-                                <input type="submit" value="Cancel" class="cancel-it">
-                                <input type="submit" value="Submit" class="submit-it">
+                                <input
+                                  type="submit"
+                                  value="Cancel"
+                                  class="cancel-it"
+                                />
+                                <div class="moreInfo">
+                                  <input type="date" name="creation" id="" style="display:none" onload="this.valueAsDate = new Date()">
+                                  Quiz Name :
+                                  <input type="text" class="form-control" name="quizName" required placeholder="Quiz Name">
+                                  Admin Name :
+                                  <input type="text" class="form-control" placeholder="Admin Name" readonly>
+                                  <select name="admin" id="" class="form-control edit-form-control">
+                                    <?php 
+                                      $sql3 = "SELECT * FROM cours";
+                                      $result3 = mysqli_query($conn, $sql3);
+                                      while($row3 = mysqli_fetch_assoc($result3)){
+                                        echo "<option value='".$row3['courName']."'>".$row3['courName']."</option>";
+                                      }
+                                    ?>
+                                  </select>
+                                  </div>
+                                  <input
+                                    type="submit"
+                                    value="Submit"
+                                    class="submit-it"
+                                    name="submit"
+                                />
                               </div>
                             </div>
-
                           </form>
-                          
+
                           <!-- .nk-block-between -->
                         </div>
                         <!-- .card-inner -->
@@ -1837,5 +1970,6 @@
     <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
     <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
     <script src="./assets/js/editors.js?ver=3.2.3"></script>
+    <script src="src/js/added.js"></script>
   </body>
 </html>

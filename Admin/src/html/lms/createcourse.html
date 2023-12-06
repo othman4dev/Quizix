@@ -40,19 +40,19 @@
               <a href="html/index.html" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
-                  src="./images/logo.svg"
+                  src="./images/logo-dark.svg"
                   srcset="./images/logo2x.png 2x"
                   alt="logo"
                 />
                 <img
                   class="logo-dark logo-img"
-                  src="./images/logo-dark.png"
+                  src="./images/logo.svg"
                   srcset="./images/logo-dark2x.png 2x"
                   alt="logo-dark"
                 />
                 <img
                   class="logo-small logo-img logo-img-small"
-                  src="./images/logo-small.png"
+                  src="./images/logo-small.svg"
                   srcset="./images/logo-small2x.png 2x"
                   alt="logo-small"
                 />
@@ -79,50 +79,44 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-dashboard-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Dashboard</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
+                      <a href="html/lms/index.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                          <span class="nk-menu-text">Statistics</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-book-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Courses</span>
-                    </a>
+                      <a href="html/lms/courses.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                          <span class="nk-menu-text">Courses</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                      <a href="html/lms/category.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                          <span class="nk-menu-text">Quizzes</span>
+                      </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-file-docs"></em
-                      ></span>
-                      <span class="nk-menu-text">Quizzes</span>
-                    </a>
-                  </li>
-
+                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                          <span class="nk-menu-text">Instructors</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-account-setting-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Profile</span>
-                    </a>
+                      <a href="html/lms/students.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                          <span class="nk-menu-text">Students</span>
+                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/settings.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-setting-alt-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Settings</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
-                </ul>
+                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                        <span class="nk-menu-icon"
+                          ><em class="icon ni ni-account-setting-fill"></em
+                        ></span>
+                        <span class="nk-menu-text">Profile</span>
+                      </a>
+                    </li>
+              </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -633,10 +627,13 @@
                   <div class="content-page wide-md m-auto">
                     <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
                       <div class="nk-block-head-content text-center">
-                        <h2 class="nk-block-title fw-normal">Add A New Course</h2>
+                        <h2 class="nk-block-title fw-normal">
+                          Add A New Course
+                        </h2>
                         <div class="nk-block-des">
                           <p class="lead">
-                            Welcome Admin to the course creation page. Here you can create a new course and add content to it.
+                            Welcome Admin to the course creation page. Here you
+                            can create a new course and add content to it.
                           </p>
                         </div>
                       </div>
@@ -644,23 +641,81 @@
                     <!-- .nk-block-head -->
                     <div class="nk-block">
                       <div class="card">
-                        <form action="" method="post" id="form-add-course" class="course-form">
-                            <label>Course name :<input type="text" class="paragraph" name="courseName"></label>
-                            <label>Course category : <input type="text" name="category" id="" class="paragraph"></label>
-                            <span>Part 1</span>
-                            <input type="text" name="heading" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
-                            <input type="text" name="subtitle" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
-                            <textarea name="paragraph" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
-                            <div class="quiz-pass" id="bottom">
-                              <input class="submit-it" type="submit" value="Submit">
-                            </div>
+                        <form
+                          action=""
+                          method="post"
+                          id="form-add-course"
+                          class="course-form"
+                        >
+                          <label
+                            >Course name :<input
+                              type="text"
+                              class="paragraph"
+                              name="courseName"
+                          /></label>
+                          <label
+                            >Course category :
+                            <input
+                              type="text"
+                              name="category"
+                              id=""
+                              class="paragraph"
+                          /></label>
+                          <span>Part 1</span>
+                          <input
+                            type="text"
+                            name="heading"
+                            class="heading"
+                            placeholder="Add Heading"
+                            autocomplete="off"
+                            spellcheck="false"
+                          />
+                          <input
+                            type="text"
+                            name="subtitle"
+                            id=""
+                            class="sub-title"
+                            placeholder="Subtitle"
+                            autocomplete="off"
+                            spellcheck="false"
+                          />
+                          <textarea
+                            name="paragraph"
+                            class="paragraph"
+                            rows="7"
+                            placeholder="Add a paragraph"
+                            autocomplete="off"
+                            spellcheck="false"
+                          ></textarea>
+                          <div class="quiz-pass" id="bottom">
+                            <input
+                              class="submit-it"
+                              type="submit"
+                              value="Submit"
+                            />
+                          </div>
                         </form>
                         <div class="quiz-pass">
-                            <button class="add-head" onclick="addHeading()">Add heading<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addSubtitle()">Add Subtitle<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addParagraph()">Add Paragraph <img src="/user-interface/src/images/ex.svg" alt=""></button>
+                          <button class="add-head" onclick="addHeading()">
+                            Add heading<img
+                              src="/user-interface/src/images/ex.svg"
+                              alt=""
+                            />
+                          </button>
+                          <button class="add-head" onclick="addSubtitle()">
+                            Add Subtitle<img
+                              src="/user-interface/src/images/ex.svg"
+                              alt=""
+                            />
+                          </button>
+                          <button class="add-head" onclick="addParagraph()">
+                            Add Paragraph
+                            <img
+                              src="/user-interface/src/images/ex.svg"
+                              alt=""
+                            />
+                          </button>
                         </div>
-                        
                       </div>
                     </div>
                     <!-- .nk-block -->
@@ -939,6 +994,6 @@
     <!-- JavaScript -->
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
-    <script src="/Admin/src/js/added.js"></script>
+    <script src="/src/js/added.js"></script>
   </body>
 </html>
