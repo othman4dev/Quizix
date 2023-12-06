@@ -80,50 +80,44 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-dashboard-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Dashboard</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
+                      <a href="html/lms/index.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                          <span class="nk-menu-text">Statistics</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-book-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Courses</span>
-                    </a>
+                      <a href="html/lms/courses.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                          <span class="nk-menu-text">Courses</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                      <a href="html/lms/category.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                          <span class="nk-menu-text">Quizzes</span>
+                      </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-file-docs"></em
-                      ></span>
-                      <span class="nk-menu-text">Quizzes</span>
-                    </a>
-                  </li>
-
+                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                          <span class="nk-menu-text">Instructors</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-account-setting-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Profile</span>
-                    </a>
+                      <a href="html/lms/students.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                          <span class="nk-menu-text">Students</span>
+                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/settings.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-setting-alt-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Settings</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
-                </ul>
+                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                        <span class="nk-menu-icon"
+                          ><em class="icon ni ni-account-setting-fill"></em
+                        ></span>
+                        <span class="nk-menu-text">Profile</span>
+                      </a>
+                    </li>
+              </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->

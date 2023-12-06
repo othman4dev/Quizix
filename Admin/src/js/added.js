@@ -1,3 +1,5 @@
+console.log("script exectue");
+
 let parts = 1;
 function addHeading() {
     parts++;
