@@ -14,7 +14,8 @@ CREATE TABLE utilisateur (
   password varchar(255),
   dateOfBirth DATE,
   phoneNumber varchar(250),
-  nationality varchar(255)
+  nationality varchar(255),
+  role VARCHAR(255) NOT NULL;
 );
 CREATE TABLE cours(
   courId int  PRIMARY KEY NOT NULL AUTO_INCREMENT, 
@@ -69,3 +70,4 @@ CREATE TABLE passedquiz(
   userId int,
   FOREIGN KEY ( userId )REFERENCES utilisateur( userId )
 );
+

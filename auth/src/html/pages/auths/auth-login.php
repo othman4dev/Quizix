@@ -1,19 +1,30 @@
 <?php
 include("connect.php");
 session_start();
+
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM utilisateur WHERE userName='$username' && password_user='$password'";
+    // Hash the password before storing it
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "SELECT * FROM utilisateur WHERE userName='$username'";
     $result = mysqli_query($con, $query);
 
     if ($result && $row = mysqli_fetch_assoc($result)) {
-     
-        header('location: auth-register.php');
-        die();
+        // Verify the hashed password
+        if (password_verify($password, $row['password_user'])) {
+            if ($row['role_user'] == 'admin') {
+                header('location: ../../../../../Admin/src/html/lms/students.php');
+            } else {
+                header('location: auth-login.php');
+            }
+        } else {
+            echo "Incorrect password";
+        }
     } else {
-        echo "Incorrect password";
+        echo "Username not found";
     }
 }
 ?>
@@ -93,7 +104,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                                     </div>
                                 </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> New on our platform? <a href="html/pages/auths/auth-register.html">Create an account</a>
+                                <div class="form-note-s2 pt-4"> New on our platform? <a href="html/pages/auths/auth-register.php">Create an account</a>
                                 </div>
                             </div><!-- .nk-block -->
                             <div class="nk-block nk-auth-footer">
