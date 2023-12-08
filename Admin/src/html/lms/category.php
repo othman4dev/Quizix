@@ -141,7 +141,7 @@
                                                     <li><a href="html/lms/admin-profile.html"><em
                                                                 class="icon ni ni-user-alt"></em><span>View
                                                                 Profile</span></a></li>
-                                                    <li><a href="html/lms/admin-profile-setting.html"><em
+                                                    <li><a href="html/lms/admin-profile.html"><em
                                                                 class="icon ni ni-setting-alt"></em><span>Account
                                                                 Setting</span></a>
                                                     </li>

@@ -7,10 +7,10 @@ $dbname = "quizex";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 
-$courseName = $_POST['courseName'];
+$courName = $_POST['courName'];
 $category = $_POST['category'];
 
-$sql = "INSERT INTO cours (courName, category, startTime) VALUES ('$courseName', '$category', NOW())";
+$sql = "INSERT INTO cours (courName, category, startTime) VALUES ('$courName', '$category', NOW())";
 
 if ($conn->query($sql) === TRUE) {
     $courseId = $conn->insert_id;
