@@ -22,11 +22,8 @@
 .answers {
     display: flex;
     gap: 10px;
-<<<<<<< HEAD
     padding-left: 25px;
-=======
     margin: 5px;
->>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
     box-sizing: border-box;
     flex-grow: 1;
     flex-wrap: wrap;
@@ -90,8 +87,8 @@ input[type=radio] {
     flex-direction: row;
     align-items: center;
 }
-.head .question {
-    width: auto;
+.head > .question {
+    width: fit-content;
 }
 .quiz-pass {
     width: 100%;
@@ -100,7 +97,6 @@ input[type=radio] {
     justify-content: flex-end;
     padding-right: 70px;
     box-sizing: border-box;
-<<<<<<< HEAD
     gap: 20px;
 }
 .add-head {
@@ -157,6 +153,72 @@ input[type=radio] {
 }
 .course-form label{
     width: 50%;
-=======
->>>>>>> 93a75082abd95fede4e2ff02e2e1f59821ac9e94
+}
+.AllAnswers{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.form-control {
+    flex-grow: 1 !important;
+    width: 100% !important;
+}
+.AllAnswers label {
+    flex-grow: 1;
+}
+.form-control {
+    background-color: transparent;
+    flex-grow: 1;
+    height: 35px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 240px;
+    margin: 5px 0 0 5px;
+}
+.moreInfo {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.edit-form-control {
+    max-width: 70px;
+}
+.question {
+    flex-grow: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
+    gap: 15px;
+}
+.dialog-r {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+}
+.result-wrap {
+    display: flex;
+}
+#score {
+    color: greenyellow;
+}
+.overlay {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    opacity: 0.2;
+    z-index: 1;
 }

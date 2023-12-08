@@ -38,7 +38,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.html" class="logo-link nk-sidebar-logo">
+              <a href="html/dashboard-u.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.svg"
@@ -80,7 +80,7 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
+                    <a href="html/lms/dashboard-u.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-dashboard-fill"></em
                       ></span>
@@ -89,7 +89,7 @@
                   </li>
                   <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
+                    <a href="html/lms/category.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-book-fill"></em
                       ></span>
@@ -97,7 +97,7 @@
                     </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                    <a href="html/lms/quizzes.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-file-docs"></em
                       ></span>
@@ -148,7 +148,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.html" class="logo-link">
+                  <a href="html/dashboard-u.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.svg"
@@ -320,9 +320,33 @@
                   <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                       <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Quiz Name</h3>
+                        <h3 class="nk-block-title page-title"><?php 
+                          $quizId = $_GET["quizId"];
+                          $sql8 = "SELECT quizName FROM quiz WHERE quizId = ?";
+                          $stmt = $conn->prepare($sql8);
+                          $stmt->bind_param("i", $quizId);
+                          $stmt->execute();
+                          $result8 = $stmt->get_result();
+                          while($row = $result8->fetch_assoc()) {
+                            echo $row["quizName"];
+                          }
+                        ?></h3>
                         <div class="nk-block-des text-soft">
-                          <p>Cours name | Category name | Instructor</p>
+                          <p>
+                          <?php 
+                          $quizId = $_GET["quizId"];
+                          $sql8 = "SELECT * FROM quiz JOIN cours ON cours.courId = quiz.courId JOIN administrateur ON cours.adminId = administrateur.adminId WHERE quizId = ? ";
+                          $stmt = $conn->prepare($sql8);
+                          $stmt->bind_param("i", $quizId);
+                          $stmt->execute();
+                          $result8 = $stmt->get_result();
+                          while($row = $result8->fetch_assoc()) {
+                            echo "Course Name : ".$row["courName"] ." | ";
+                            echo "Category : ".$row["category"] ." | ";
+                            echo "Instructor : ".$row["adminName"];
+                          }
+                        ?>
+                          </p>
                         </div>
                       </div>
                       <!-- .nk-block-head-content -->
@@ -355,14 +379,15 @@
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
                               <div>Only One answer is Correct</div>
+                            </div>
                             <?php
-                                $quizId = $_POST["quizId"];
-                                $sql1 = "SELECT questionContent , questionsId FROM questions WHERE quizId = $quizId LIMIT 10;";
-                                
-                                $result1 = $conn->query($sql1);
+                                $sql1 = "SELECT * FROM questions WHERE quizId = ?";
+                                $stmt = $conn->prepare($sql1);
+                                $stmt->bind_param("i", $quizId);
+                                $stmt->execute();
+                                $result1 = $stmt->get_result();
                                 $num = 0;
                                 if ($result1->num_rows > 0) {
-                                  
                                   // output data of each row
                                   while($row = $result1->fetch_assoc()) {
                                     $num++;
@@ -374,7 +399,7 @@
                                       </div>";
                                     ;
                                     echo "<div class='answers'>";
-                                    $sql2 = "SELECT * FROM reponses WHERE questionsId = $num";
+                                    $sql2 = "SELECT * FROM reponses WHERE quizId = $quizId AND questionsId = $questionsId";
                                     $result2 = $conn->query($sql2);
                                     if ($result2->num_rows > 0) {
                                       while($row2 = $result2->fetch_assoc()) {
@@ -390,18 +415,31 @@
                                   echo "0 results";
                                 }
                             ?>
-                            
                           </div>
                           <div class="card-inner">
                             <div class="nk-block-between-md g-3">
                               <button class="cancel-it">Cancel</button>
-                              <form action="saveResult.php" method="post">
-                                <input type="text" name="quizId" value="<?php echo $quizId ?>">
-                                <input type="text" name="result" id="result" value="">
-                                <button class="submit-it" type="submit">Submit</button>
+                              <form action="html/lms/saveResult.php" method="post">
+                                <input type="text" name="quizId" value="<?php echo $quizId ?>" style="display: none;">
+                                <input type="text" name="result" id="result" style="display: none;">
+                                <input class="submit-it" type="submit" value="Submit">
                               </form>
                             </div>
                           </div>
+                          <?php 
+                              if (isset($_GET["result"])) {
+                                echo "
+                                <div class='overlay' style='width: 100%; position: fixed; height: 100%; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; opacity: 0.2; z-index: 1;'></div>
+                                <div class'dialog-r' style='position:fixed;background-color: #fff; display: flex; flex-direction: column; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 5;padding:50px;border:solid 2px #9d72ff;'>
+                                  <h2>Your score is</h2>
+                                  <div class='results-wrap' style='display:flex;justify-content:center;gap:15px'>
+                                    <h1 id='score' style='color:yellowgreen'> ".$_GET["result"]."</h1>
+                                    <h1> / 10 </h1>
+                                  </div>
+                                  <a href='html/lms/quizzes.php'><button class='submit-it' style='width:100%;margin-top:25px'>Go To Quiz List</button></a>
+                                </div>";
+                              }
+                            ?>
                           <!-- .nk-block-between -->
                         </div>
                         <!-- .card-inner -->
@@ -1151,7 +1189,7 @@
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
     <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
     <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
-    <script src="./assets/js/editors.js?ver=3.2.3"></script>\
+    <script src="./assets/js/editors.js?ver=3.2.3"></script>
     <script src="./js/added.js"></script>
   </body>
 </html>
