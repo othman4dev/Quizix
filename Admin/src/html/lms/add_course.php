@@ -27,7 +27,7 @@ if ($conn->query($sql) === TRUE) {
             $subtitle = isset($_POST["subtitle"][$i]) ? htmlspecialchars($_POST["subtitle"][$i]) : '';
             $paragraph = isset($_POST["paragraph"][$i]) ? htmlspecialchars($_POST["paragraph"][$i]) : '';
 
-            $coursDescription .= "<h1>$heading</h1>" . "<h3>$subtitle</h3>" . ' ' . "<p>$paragraph</p>";
+            $coursDescription .= "<h1>$heading</h1>" . "<h3>$subtitle</h3>" . "<p>$paragraph</p>";
         }
 
         $sql = "UPDATE cours SET courDescription = '$coursDescription' WHERE courId = '$courseId'";
@@ -36,7 +36,33 @@ if ($conn->query($sql) === TRUE) {
             header("Location: createcourse.html");
         } 
     }
-} 
+}
+
+    if(isset($_GET['id'])){
+    if(isset($_POST['submitupdate'])) {
+        $courseIdToUpdate = $_GET['id']; // Assuming the course ID is passed in the URL
+    
+        // Your update logic here
+        $updatedCourName = $_POST['courName'];
+        $updatedCategory = $_POST['category'];
+        $updatedStartTime = date("Y-m-d H:i:s"); // Update start time to current time
+
+        $heading = $_POST["heading"] ;
+                    $subtitle = $_POST["subtitle"] ;
+                    $paragraph =$_POST["paragraph"] ;
+    
+                    $coursDescription .= "<h1>$heading</h1>" . "<h3>$subtitle</h3>" . "<p>$paragraph</p>";
+               
+
+
+        $sqlUpdate = "UPDATE cours SET courName = '$updatedCourName', category = '$updatedCategory', startTime = '$updatedStartTime', courDescription = '$coursDescription' WHERE courId = '$courseIdToUpdate'";
+        
+        $conn->query($sqlUpdate)
+       
+    }
+    }
+
+
 
 $conn->close();
 ?>

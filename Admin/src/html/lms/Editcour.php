@@ -1,4 +1,3 @@
-<?php include "connection.php" ;?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -25,6 +24,7 @@
       rel="stylesheet"
       href="./assets/css/theme.css?ver=3.2.3"
     />
+    
   </head>
 
   <body class="nk-body bg-lighter npc-default has-sidebar">
@@ -38,7 +38,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/dashboard-u.php" class="logo-link nk-sidebar-logo">
+              <a href="html/index.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.svg"
@@ -80,50 +80,44 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/dashboard-u.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-dashboard-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Dashboard</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
+                      <a href="html/lms/index.php" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                          <span class="nk-menu-text">Statistics</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-book-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Courses</span>
-                    </a>
+                      <a href="html/lms/courses.php" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                          <span class="nk-menu-text">Courses</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                      <a href="html/lms/category.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                          <span class="nk-menu-text">Quizzes</span>
+                      </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-file-docs"></em
-                      ></span>
-                      <span class="nk-menu-text">Quizzes</span>
-                    </a>
-                  </li>
-
+                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                          <span class="nk-menu-text">Instructors</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-account-setting-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Profile</span>
-                    </a>
+                      <a href="html/lms/students.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                          <span class="nk-menu-text">Students</span>
+                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/settings.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-setting-alt-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Settings</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
-                </ul>
+                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                        <span class="nk-menu-icon"
+                          ><em class="icon ni ni-account-setting-fill"></em
+                        ></span>
+                        <span class="nk-menu-text">Profile</span>
+                      </a>
+                    </li>
+              </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -148,7 +142,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/dashboard-u.php" class="logo-link">
+                  <a href="html/index.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.svg"
@@ -628,57 +622,77 @@
           <!-- main header @e -->
           <!-- content @s -->
           <div class="nk-content">
-    <div class="container-fluid">
-        <div class="nk-content-inner">
-            <div class="nk-content-body">
-                <div class="content-page wide-md m-auto">
+            <div class="container-fluid">
+              <div class="nk-content-inner">
+                <div class="nk-content-body">
+                  <div class="content-page wide-md m-auto">
                     <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
                       <div class="nk-block-head-content text-center">
-                        <h2 class="nk-block-title fw-normal"><?php 
-                        $id = $_GET["courId"];
-                        
-                        $sql = "SELECT * FROM cours 
-                        JOIN administrateur ON cours.adminId = administrateur.adminId
-                        WHERE courId = ?";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("i", $id);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        $row = $result->fetch_assoc();
-                        if ($row) {
-                            echo $row['courName'];
-                        } else {
-                            echo "No course found with ID : $id";
-                        }
-                        ?></h2>
+                        <h2 class="nk-block-title fw-normal">Add A New Course</h2>
                         <div class="nk-block-des">
                           <p class="lead">
-                            Category : <?php echo $row['category']; ?> , By <?php echo $row['adminName'] ?>
+                            Welcome Admin to the course creation page. Here you can create a new course and add content to it.
                           </p>
-                        </div>
-                    </div>
-                    <!-- .nk-block-head -->
-                    <div class="nk-block">
-                      <div class="card">
-                        <div class="card-inner card-inner-xl">
-                          <article class="entry">
-                          <?php echo $row['courDescription']; ?>
-                          </article>
-                        </div>
-                        <div class="quiz-pass">
-                          <a href="html/lms/passquiz.php?quizId=<?php echo $id; ?>"
-                            ><button class="submit-it">Pass Quiz</button></a
-                          >
                         </div>
                       </div>
                     </div>
+                    <!-- .nk-block-head -->
+<?php
+
+    include('../../simplehtmldom_1_9_1/simple_html_dom.php');
+    $conn = new mysqli("localhost","root","","quizex");
+    if(isset($_GET['id'])){
+      $id=$_GET['id'];
+      $sql="SELECT * FROM cours WHERE courId='$id'";
+      $query=mysqli_query($conn,$sql);
+      $row=mysqli_fetch_assoc($query);
+      $courName = $row['courName'];
+      $category = $row['category'];
+      $description = $row['courDescription'];
+      $dom = new simple_html_dom();
+      $dom->load($description);
+        $heading = $dom->find('h1', 0)->innertext;
+        $subtitle = $dom->find('h3', 0)->innertext;
+        $paragraph= $dom->find('p', 0)->innertext;
+
+        // Clean up resources
+        $dom->clear();
+    }
+  ?>
+                    <div class="nk-block">
+                      <div class="card">
+                        <form action="html/lms/add_course.php?id=<?php echo $id?>" method="post" id="form-add-course" class="course-form">
+                            <label>Course name :<input type="text" class="paragraph" name="courName" value="<?php if(isset($_GET['id'])){
+                        echo $courName;
+                      } ?>" required  ></label>
+                            <label>Course category : <input type="text" name="category" id="" class="paragraph" value="<?php if(isset($_GET['id'])){
+                        echo $category;
+                      } ?>" required ></label>
+                            <span>Part 1</span>
+                            <input type="text" name="courDescription" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false" value="<?php if(isset($_GET['id'])){
+                        echo $heading;
+                      } ?>" required >
+                            <input type="text" name="courDescription" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false" value="<?php if(isset($_GET['id'])){
+                        echo $subtitle;
+                      } ?>" required >
+                            <textarea name="courDescription" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"><?php if(isset($_GET['id'])){
+                        echo $paragraph;
+                      } ?></textarea>
+                            
+                            <div class="quiz-pass" id="bottom">
+                              <input class="submit-it" type="submit" value="Submit" name="submitupdate">
+                            </div>
+                        </form>
+                        
+                      </div>
+                    </div>
                     <!-- .nk-block -->
+                  </div>
+                  <!-- .content-page -->
                 </div>
-                <!-- .content-page -->
+              </div>
             </div>
-        </div>
-    </div>
-</div>
+          </div>
           <!-- content @e -->
           <!-- footer @s -->
           <div class="nk-footer">
@@ -687,51 +701,6 @@
                 <div class="nk-footer-copyright">
                   &copy; 2023 DashLite. Template by
                   <a href="https://softnio.com" target="_blank">Softnio</a>
-                </div>
-                <div class="nk-footer-links">
-                  <ul class="nav nav-sm">
-                    <li class="nav-item dropup">
-                      <a
-                        href="#"
-                        class="dropdown-toggle dropdown-indicator has-indicator nav-link text-base"
-                        data-bs-toggle="dropdown"
-                        data-offset="0,10"
-                        ><span>English</span></a
-                      >
-                      <div
-                        class="dropdown-menu dropdown-menu-sm dropdown-menu-end"
-                      >
-                        <ul class="language-list">
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">English</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Español</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Français</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Türkçe</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li class="nav-item">
-                      <a data-bs-toggle="modal" href="#region" class="nav-link"
-                        ><em class="icon ni ni-globe"></em
-                        ><span class="ms-1">Select Region</span></a
-                      >
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -742,210 +711,9 @@
       </div>
       <!-- main @e -->
     </div>
-    <!-- app-root @e -->
-    <!-- select region modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="region">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <a href="#" class="close" data-bs-dismiss="modal"
-            ><em class="icon ni ni-cross-sm"></em
-          ></a>
-          <div class="modal-body modal-body-md">
-            <h5 class="title mb-4">Select Your Country</h5>
-            <div class="nk-country-region">
-              <ul class="country-list text-center gy-2">
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/arg.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Argentina</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/aus.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Australia</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/bangladesh.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Bangladesh</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/canada.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name"
-                      >Canada <small>(English)</small></span
-                    >
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/china.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Centrafricaine</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/china.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">China</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/french.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">France</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/germany.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Germany</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/iran.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Iran</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/italy.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Italy</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/mexico.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">México</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/philipine.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Philippines</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/portugal.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Portugal</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/s-africa.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">South Africa</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/spanish.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Spain</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/switzerland.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Switzerland</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/uk.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">United Kingdom</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/english.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">United State</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- .modal-content -->
-      </div>
-      <!-- .modla-dialog -->
-    </div>
-    <!-- .modal -->
     <!-- JavaScript -->
+    <script src="./js/added.js"></script>
+
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
   </body>
