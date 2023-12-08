@@ -1,3 +1,4 @@
+<?php include "connection.php"; ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -354,345 +355,51 @@
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
                               <div>Only One answer is Correct</div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">1</div>
-                                What does HTML stand for ?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hyper Text Markup Language</label
-                                >
-                                <label class="answer">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hybrid Title More Language</label
-                                >
-                                <label class="answer">
-                                  <input type="radio" name="answer2" id="" />Hex
-                                  Text Markup Language</label
-                                >
-                                <label class="answer">
-                                  <input
-                                    type="radio"
-                                    name="answer2"
-                                    id=""
-                                  />Hello Text Mother Language</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">2</div>
-                                What does CSS stand for?
-                              </div>
-                              <div class="answers">
-                                <label class="answer" 
-                                  ><input
-                                    type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Cascading Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Computer Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Colorful Style Sheets</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer4"
-                                    id=""
-                                  />Creative Style Sheets</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">3</div>
-                                What is a function in JavaScript?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  method</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  block of code</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />A
-                                  variable</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer5" id="" />An
-                                  object</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">4</div>
-                                What is the full form of SQL?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Query Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Quick Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Queue Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer6"
-                                    id=""
-                                  />Structured Quantum Language</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">5</div>
-                                What does API stand for?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Programming Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Process Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Program Interface</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer7"
-                                    id=""
-                                  />Application Programming Item</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">6</div>
-                                What does HTML stand for?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyper Text Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyperlinks and Text Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Home Tool Markup Language</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer8"
-                                    id=""
-                                  />Hyper Tool Markup Language</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">7</div>
-                                What is Python?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  snake</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  programming language</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  software</label
-                                >
-                                <label class="answer"
-                                  ><input type="radio" name="answer9" id="" />A
-                                  tool</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">8</div>
-                                What is the use of comments in programming?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To make the code more readable</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To change the code</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To print the code</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer10"
-                                    id=""
-                                  />To delete the code</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">9</div>
-                                What is the full form of PHP?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Personal Home Page</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Private Home Page</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Personal Hypertext Preprocessor</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer11"
-                                    id=""
-                                  />Hypertext Preprocessor</label
-                                >
-                              </div>
-                            </div>
-                            <div class="row-table">
-                              <div class="question">
-                                <div class="question-num">10</div>
-                                What does URL stand for?
-                              </div>
-                              <div class="answers">
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Resource Locator</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Retrieval Locator</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Resource Link</label
-                                >
-                                <label class="answer"
-                                  ><input
-                                    type="radio"
-                                    name="answer12"
-                                    id=""
-                                  />Uniform Retrieval Link</label
-                                >
-                              </div>
-                            </div>
+                            <?php
+                                $quizId = $_POST["quizId"];
+                                $sql1 = "SELECT questionContent , questionsId FROM questions WHERE quizId = $quizId LIMIT 10;";
+                                
+                                $result1 = $conn->query($sql1);
+                                $num = 0;
+                                if ($result1->num_rows > 0) {
+                                  
+                                  // output data of each row
+                                  while($row = $result1->fetch_assoc()) {
+                                    $num++;
+                                    echo "<div class='row-table'>";
+                                    $questionsId = $row["questionsId"];
+                                    echo "<div class='question'>
+                                      <div class='question-num'>" . $num . "</div>
+                                      " . $row["questionContent"] . "
+                                      </div>";
+                                    ;
+                                    echo "<div class='answers'>";
+                                    $sql2 = "SELECT * FROM reponses WHERE questionsId = $num";
+                                    $result2 = $conn->query($sql2);
+                                    if ($result2->num_rows > 0) {
+                                      while($row2 = $result2->fetch_assoc()) {
+                                        echo "
+                                        <label class='answer'><input type='radio' name='answer" .$num. "' id='' value=' " .$row2["reponseStatus"]. " ' onchange='calculate()'/>" . $row2["reponseContent"] . "</label>";
+                                      }
+                                      echo "</div>";
+                                      echo "</div>";
+                                    }
+                                  }
+                                  
+                                } else {
+                                  echo "0 results";
+                                }
+                            ?>
+                            
                           </div>
                           <div class="card-inner">
                             <div class="nk-block-between-md g-3">
                               <button class="cancel-it">Cancel</button>
-                              <button class="submit-it">Submit</button>
+                              <form action="saveResult.php" method="post">
+                                <input type="text" name="quizId" value="<?php echo $quizId ?>">
+                                <input type="text" name="result" id="result" value="">
+                                <button class="submit-it" type="submit">Submit</button>
+                              </form>
                             </div>
                           </div>
                           <!-- .nk-block-between -->
@@ -1444,6 +1151,7 @@
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
     <link rel="stylesheet" href="./assets/css/editors/quill.css?ver=3.2.3" />
     <script src="./assets/js/libs/editors/quill.js?ver=3.2.3"></script>
-    <script src="./assets/js/editors.js?ver=3.2.3"></script>
+    <script src="./assets/js/editors.js?ver=3.2.3"></script>\
+    <script src="./js/added.js"></script>
   </body>
 </html>

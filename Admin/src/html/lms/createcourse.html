@@ -639,13 +639,14 @@
                     <!-- .nk-block-head -->
                     <div class="nk-block">
                       <div class="card">
-                        <form action="" method="post" id="form-add-course" class="course-form">
+                        <form action="html/lms/add_course.php" method="post" id="form-add-course" class="course-form">
                             <label>Course name :<input type="text" class="paragraph" name="courseName"></label>
                             <label>Course category : <input type="text" name="category" id="" class="paragraph"></label>
                             <span>Part 1</span>
-                            <input type="text" name="heading" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
-                            <input type="text" name="subtitle" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
-                            <textarea name="paragraph" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
+                            <input type="text" name="heading[]" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
+                            <input type="text" name="subtitle[]" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
+                            <textarea name="paragraph[]" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
+                            
                             <div class="quiz-pass" id="bottom">
                               <input class="submit-it" type="submit" value="Submit">
                             </div>
