@@ -323,7 +323,7 @@
                                                                     <a href='#' class='dropdown-toggle btn btn-sm btn-icon btn-trigger' data-bs-toggle='dropdown'><em class='icon ni ni-more-h'></em></a>
                                                                     <div class='dropdown-menu dropdown-menu-end'>
                                                                         <ul class='link-list-opt no-bdr'>
-                                                                            <li><a data-bs-toggle='modal' href='#modalEdit'  onclick='transferId(" . $row["quizId"] . ")><em class='icon ni ni-edit'></em><span>Edit Quiz</span></a></li>
+                                                                            <li><a data-bs-toggle='modal' href='#modalEdit'  onclick='transferId(" . $row["quizId"] . ")'><em class='icon ni ni-edit'></em><span>Edit Quiz</span></a></li>
                                                                             <li><a data-bs-toggle='modal' href='#modalDelete' onclick='transferId(" . $row["quizId"] . ")'><em class='icon ni ni-delete'></em><span>Delete Quiz</span></a></li>
                                                                         </ul>
                                                                     </div>
