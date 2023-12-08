@@ -251,7 +251,7 @@ while ($row = $result->fetch_assoc()) {
                     <label class="custom-control-label" for="pid-all"></label>
                 </div>
             </td>
-            <td class="nk-tb-col"><a href="http://localhost/Quizix/user-interface/src/html/lms/passcour.php?course_id=' . $row['courId'] . '"><span class="sub-text">' . $row['courName'] . '</span></a></td>
+            <td class="nk-tb-col"><a href="http://localhost/Quizix/user-interface/src/html/lms/passcour.php?courId=' . $row['courId'] . '"><span class="sub-text">' . $row['courName'] . '</span></a></td>
             <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['category'] . '</span></td>
             <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['adminName'] . '</span></td>
             <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['courName'] . "quiz" . '</span></td>

@@ -636,6 +636,7 @@
                       <div class="nk-block-head-content text-center">
                         <h2 class="nk-block-title fw-normal"><?php 
                         $id = $_GET["courId"];
+                        
                         $sql = "SELECT * FROM cours 
                         JOIN administrateur ON cours.adminId = administrateur.adminId
                         WHERE courId = ?";
@@ -647,7 +648,7 @@
                         if ($row) {
                             echo $row['courName'];
                         } else {
-                            echo "No course found with ID $id";
+                            echo "No course found with ID : $id";
                         }
                         ?></h2>
                         <div class="nk-block-des">
