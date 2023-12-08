@@ -109,7 +109,7 @@
                         >
                       </li>
                       <li class="nk-menu-item">
-                        <a href="html/lms/courses.html" class="nk-menu-link"
+                        <a href="html/lms/courses.php" class="nk-menu-link"
                           ><span class="nk-menu-text">Course List</span></a
                         >
                       </li>
@@ -130,7 +130,7 @@
                         >
                       </li>
                       <li class="nk-menu-item">
-                        <a href="html/lms/courses.html" class="nk-menu-link"
+                        <a href="html/lms/courses.php" class="nk-menu-link"
                           ><span class="nk-menu-text">Quizzes List</span></a
                         >
                       </li>
@@ -150,7 +150,7 @@
                     </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/students.html" class="nk-menu-link">
+                    <a href="html/lms/students.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-users-fill"></em
                       ></span>
@@ -638,7 +638,7 @@
                               >
                             </li>
                             <li>
-                              <a href="html/lms/admin-profile-setting.html"
+                              <a href="html/lms/admin-profile.html"
                                 ><em class="icon ni ni-setting-alt"></em
                                 ><span>Account Setting</span></a
                               >
