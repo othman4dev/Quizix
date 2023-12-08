@@ -43,31 +43,31 @@ session_start();
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item active current-page">
-                                    <a href="html/lms/index.html" class="nk-menu-link">
+                                    <a href="html/lms/index.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Statistics</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/courses.html" class="nk-menu-link">
+                                    <a href="html/lms/courses.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
                                         <span class="nk-menu-text">Courses</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/category.html" class="nk-menu-link">
+                                    <a href="html/lms/category.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                                         <span class="nk-menu-text">Quizzes</span>
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                                    <a href="html/lms/instructor-list.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/students.html" class="nk-menu-link">
+                                    <a href="html/lms/students.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Students</span>
                                     </a>
@@ -188,11 +188,11 @@ session_start();
                                                         <div class="nk-tb-col"><span class="sub-text">UserId</span></div>
                                                         <div class="nk-tb-col"><span class="sub-text">UserName</span></div>
                                                         <div class="nk-tb-col tb-col-mb"><span class="sub-text d-lg-flex d-none">Email</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">PhoneNumber</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">DateOfBirth</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Gender</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Phone Number</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Date Of Birth</span></div>
                                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Nationality</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">RoleUser</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Actions</span></div>
                                                     </div> 
                                                 <?php
                                                 $servername = "localhost";
@@ -220,10 +220,10 @@ session_start();
                               <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userId"] ?></span></div>
                               <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userName"] ?></span></div>
                               <div class='nk-tb-col tb-col-mb'><span class='sub-text d-lg-flex d-none'><?php echo $row["email"] ?></span></div>
-                              <div class='nk-tb-col tb-col-lg'><span class='sub-text'><?php echo $row["phoneNumber"] ?></span></div>
+                              <div class='nk-tb-col tb-col-lg'><span class='sub-text'><?php echo $row["gender"] ?></span></div>
+                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["phoneNumber"] ?></span></div>
                               <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["dateOfBirth"] ?></span></div>
                               <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["nationality"] ?></span></div>
-                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["role_user"] ?></span></div>
                               <div>
 
                               <a class='btn btn-primary' href='/Quizix/Admin/src/html/lms/edit.php?id=<?php echo $row["userId"] ?>'>Edit</a>
