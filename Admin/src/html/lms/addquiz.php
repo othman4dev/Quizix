@@ -1,15 +1,27 @@
 <?php 
+    //Include connection to database
     include 'connection.php';
-    if (isset($_POST['submit'])) {
-        $checksql = "SELECT COUNT(questionsId) FROM questions";
+    if (isset($_POST['submit']) && isset($_POST["question1"])) {
+        //counts the number of questions ? and excute them
+        $checksql = "SELECT COUNT(*) FROM questions";
+
         $checkstmt = $conn->prepare($checksql);
         $checkstmt->execute();
-        $index_start = $checkstmt->get_result()->fetch_assoc()['COUNT(questionsId)'];
+        //stored in a variable
+        $index_start = $checkstmt->get_result()->fetch_assoc()['COUNT(*)'];
         echo $index_start;
-        $checksql2 = "SELECT COUNT(quizId) FROM quiz";
-        $checkstmt2 = $conn->prepare($checksql2);
-        $checkstmt2->execute();
-        $index_start2 = $checkstmt2->get_result()->fetch_assoc()['COUNT(quizId)'];
+        //create a new quiz with the given params
+        $sql5 = "INSERT INTO quiz (courId,quizName, adminId, creation) VALUES (?, ?, ?, ?)";
+        $thisDay = date("Y-m-d");
+        $stmt5 = $conn->prepare($sql5);
+        $stmt5->bind_param("isis", $_POST['cour'], $_POST['quizName'], $_POST['adminId'], $thisDay);
+        $stmt5->execute();
+        //Select the inserted quiz to get it's ID
+        $sql6 = "SELECT quizId FROM quiz ORDER BY quizId DESC LIMIT 1;";
+        $stmt6 = $conn->prepare($sql6);
+        $stmt6->execute();
+        //stores the id in this variable
+        $quizId = $stmt6->get_result()->fetch_assoc()['quizId'];
         $questions = array(
             $_POST['question1'],
             $_POST['question2'],
@@ -86,14 +98,14 @@
         foreach ($questions as $key => $value) {
             $sql = "INSERT INTO questions (questionContent, quizId) VALUES (?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("si", $value, $index_start2);
+            $stmt->bind_param("si", $value, $quizId);
             if ($stmt->execute()) {
                 echo "Question inserted successfully";
             } else {
                 echo "Error inserting question: " . $stmt->error;
             }
         }   
-        for ($i=1; $i <= 10; $i++) { 
+        for ($i=1; $i <= 10; $i++) {
             for ($j = 1 ; $j <= 4 ; $j++) {
                 $thisql = "INSERT INTO reponses (reponseContent, reponseStatus , quizId , questionsId ) VALUES (?, ?, ?, ?)";
                 $stmt = $conn->prepare($thisql);
@@ -101,7 +113,7 @@
                 $status = $_POST["status-".$i];
                 if ($status[0] == $j) {
                     $true = true;
-                    $stmt->bind_param("ssii", $allAnswers[$i-1][$j-1], $true , $index_start2, $index);
+                    $stmt->bind_param("ssii", $allAnswers[$i-1][$j-1], $true , $quizId, $index);
                     if ($stmt->execute()) {
                         echo "Answer inserted successfully";
                     } else {
@@ -109,7 +121,7 @@
                     }
                 } else {
                     $false = false;
-                    $stmt->bind_param("ssii", $allAnswers[$i-1][$j-1], $false , $index_start2, $index);
+                    $stmt->bind_param("ssii", $allAnswers[$i-1][$j-1], $false , $quizId, $index);
                     if ($stmt->execute()) {
                         echo "Answer inserted successfully";
                     } else {
