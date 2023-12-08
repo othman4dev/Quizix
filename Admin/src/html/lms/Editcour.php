@@ -637,25 +637,52 @@
                       </div>
                     </div>
                     <!-- .nk-block-head -->
+<?php
+
+    include('../../simplehtmldom_1_9_1/simple_html_dom.php');
+    $conn = new mysqli("localhost","root","","quizex");
+    if(isset($_GET['id'])){
+      $id=$_GET['id'];
+      $sql="SELECT * FROM cours WHERE courId='$id'";
+      $query=mysqli_query($conn,$sql);
+      $row=mysqli_fetch_assoc($query);
+      $courName = $row['courName'];
+      $category = $row['category'];
+      $description = $row['courDescription'];
+      $dom = new simple_html_dom();
+      $dom->load($description);
+        $heading = $dom->find('h1', 0)->innertext;
+        $subtitle = $dom->find('h3', 0)->innertext;
+        $paragraph= $dom->find('p', 0)->innertext;
+
+        // Clean up resources
+        $dom->clear();
+    }
+  ?>
                     <div class="nk-block">
                       <div class="card">
-                        <form action="html/lms/add_course.php" method="post" id="form-add-course" class="course-form">
-                            <label>Course name :<input type="text" class="paragraph" name="courName"></label>
-                            <label>Course category : <input type="text" name="category" id="" class="paragraph"></label>
+                        <form action="html/lms/add_course.php?id=<?php echo $id?>" method="post" id="form-add-course" class="course-form">
+                            <label>Course name :<input type="text" class="paragraph" name="courName" value="<?php if(isset($_GET['id'])){
+                        echo $courName;
+                      } ?>" required  ></label>
+                            <label>Course category : <input type="text" name="category" id="" class="paragraph" value="<?php if(isset($_GET['id'])){
+                        echo $category;
+                      } ?>" required ></label>
                             <span>Part 1</span>
-                            <input type="text" name="heading[]" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
-                            <input type="text" name="subtitle[]" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
-                            <textarea name="paragraph[]" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
+                            <input type="text" name="courDescription" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false" value="<?php if(isset($_GET['id'])){
+                        echo $heading;
+                      } ?>" required >
+                            <input type="text" name="courDescription" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false" value="<?php if(isset($_GET['id'])){
+                        echo $subtitle;
+                      } ?>" required >
+                            <textarea name="courDescription" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"><?php if(isset($_GET['id'])){
+                        echo $paragraph;
+                      } ?></textarea>
                             
                             <div class="quiz-pass" id="bottom">
-                              <input class="submit-it" type="submit" value="Submit">
+                              <input class="submit-it" type="submit" value="Submit" name="submitupdate">
                             </div>
                         </form>
-                        <div class="quiz-pass">
-                            <button class="add-head" onclick="addHeading()">Add heading<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addSubtitle()">Add Subtitle<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addParagraph()">Add Paragraph <img src="/user-interface/src/images/ex.svg" alt=""></button>
-                        </div>
                         
                       </div>
                     </div>
@@ -675,51 +702,6 @@
                   &copy; 2023 DashLite. Template by
                   <a href="https://softnio.com" target="_blank">Softnio</a>
                 </div>
-                <div class="nk-footer-links">
-                  <ul class="nav nav-sm">
-                    <li class="nav-item dropup">
-                      <a
-                        href="#"
-                        class="dropdown-toggle dropdown-indicator has-indicator nav-link text-base"
-                        data-bs-toggle="dropdown"
-                        data-offset="0,10"
-                        ><span>English</span></a
-                      >
-                      <div
-                        class="dropdown-menu dropdown-menu-sm dropdown-menu-end"
-                      >
-                        <ul class="language-list">
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">English</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Español</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Français</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="language-item">
-                              <span class="language-name">Türkçe</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li class="nav-item">
-                      <a data-bs-toggle="modal" href="#region" class="nav-link"
-                        ><em class="icon ni ni-globe"></em
-                        ><span class="ms-1">Select Region</span></a
-                      >
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -729,209 +711,6 @@
       </div>
       <!-- main @e -->
     </div>
-    <!-- app-root @e -->
-    <!-- select region modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="region">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <a href="#" class="close" data-bs-dismiss="modal"
-            ><em class="icon ni ni-cross-sm"></em
-          ></a>
-          <div class="modal-body modal-body-md">
-            <h5 class="title mb-4">Select Your Country</h5>
-            <div class="nk-country-region">
-              <ul class="country-list text-center gy-2">
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/arg.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Argentina</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/aus.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Australia</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/bangladesh.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Bangladesh</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/canada.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name"
-                      >Canada <small>(English)</small></span
-                    >
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/china.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Centrafricaine</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/china.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">China</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/french.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">France</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/germany.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Germany</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/iran.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Iran</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/italy.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Italy</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/mexico.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">México</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/philipine.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Philippines</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/portugal.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Portugal</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/s-africa.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">South Africa</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/spanish.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Spain</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/switzerland.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">Switzerland</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/uk.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">United Kingdom</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="country-item">
-                    <img
-                      src="./images/flags/english.png"
-                      alt=""
-                      class="country-flag"
-                    />
-                    <span class="country-name">United State</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- .modal-content -->
-      </div>
-      <!-- .modla-dialog -->
-    </div>
-    <!-- .modal -->
     <!-- JavaScript -->
     <script src="./js/added.js"></script>
 
