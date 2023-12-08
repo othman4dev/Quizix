@@ -1,3 +1,4 @@
+<?php include "connection.php" ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -36,7 +37,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.html" class="logo-link nk-sidebar-logo">
+              <a href="html/dashboard-u.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.svg"
@@ -78,7 +79,7 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
+                    <a href="html/lms/dashboard-u.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-dashboard-fill"></em
                       ></span>
@@ -87,7 +88,7 @@
                   </li>
                   <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
+                    <a href="html/lms/category.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-book-fill"></em
                       ></span>
@@ -95,7 +96,7 @@
                     </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                    <a href="html/lms/quizzes.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-file-docs"></em
                       ></span>
@@ -146,7 +147,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.html" class="logo-link">
+                  <a href="html/dashboard-u.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.svg"
@@ -327,7 +328,15 @@
                       <div class="nk-block-head-content">
                         <h3 class="nk-block-title page-title">Courses</h3>
                         <div class="nk-block-des text-soft">
-                          <p>You have total 8 Courses</p>
+                          <p>You have total 
+                            <?php 
+                              $sql = "SELECT * FROM cours";
+                              $result = mysqli_query($conn, $sql);
+                              $result = $conn->query($sql);
+                              $rowcount=mysqli_num_rows($result);
+                              echo $rowcount;
+                            ?>
+                          Courses</p>
                         </div>
                       </div>
                       <!-- .nk-block-head-content -->
@@ -353,420 +362,74 @@
                   <!-- .nk-block-head -->
                   <div class="nk-block">
                     <div class="row g-gs">
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-purple">
-                                  <span>GD</span>
+                      <?php 
+                        include "../../simplehtmldom_1_9_1/simple_html_dom.php";
+                        
+                        $sql = "SELECT * FROM cours";
+                        $result = mysqli_query($conn, $sql);
+                        $result = $conn->query($sql);
+                        while ($row = $result->fetch_assoc()) {
+                          $description = $row['courDescription'];
+                          $dom = new simple_html_dom();
+                          $dom->load($description);
+                          $heading = $dom->find('h1', 0)->innertext;
+                          $dom->clear();
+                            echo "
+                            <div class='col-sm-6 col-lg-4 col-xxl-3'>
+                            <div class='card h-100'>
+                              <div class='card-inner'>
+                                <div
+                                  class='d-flex justify-content-between align-items-start mb-3'
+                                >
+                                  <a
+                                    href='html/lms/passcour.php?courId=".$row["courId"]."'
+                                    class='d-flex align-items-center'
+                                  >
+                                    <div class='user-avatar sq bg-purple'>
+                                      <span>" .substr($row["courName"], 0, 2). "</span>
+                                    </div>
+                                    <div class='ms-3'>
+                                      <h6 class='title mb-1'>".$row["courName"]."</h6>
+                                      <span class='sub-text'>4 SubCategories</span>
+                                    </div>
+                                  </a>
                                 </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Graphics Design</h6>
-                                  <span class="sub-text">4 SubCategories</span>
-                                </div>
-                              </a>
+                                <p>
+                                  ".$heading."
+                                </p>
+                                <ul class='d-flex flex-wrap g-1'>
+                                  <li>
+                                    <span class='badge badge-dim bg-primary'
+                                      >".$row["category"]."</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <span class='badge badge-dim bg-danger'
+                                      >".$row["category"]."</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <span class='badge badge-dim bg-info'
+                                      >".$row["category"]."</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <span class='badge badge-dim bg-warning'
+                                      >".$row["category"]."</span
+                                    >
+                                  </li>
+                                  <li>
+                                    <span class='badge badge-dim bg-secondary'
+                                      >".$row["category"]."</span
+                                    >
+                                  </li>
+                                </ul>
+                              </div>
                             </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Photoshop</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Adobe Illustrator</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Logo Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Drawing</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >Figma</span
-                                >
-                              </li>
-                            </ul>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-warning">
-                                  <span>WD</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Web Development</h6>
-                                  <span class="sub-text">5 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Responsive Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Wordpress Customization</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Theme Development</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Bootstrap</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >HTML & CSS Grid</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-info">
-                                  <span>MA</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Mobile Application</h6>
-                                  <span class="sub-text">4 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Mobile App Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >User Interface</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Design Thinking</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Prototyping</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-purple">
-                                  <span>GD</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Graphics Design</h6>
-                                  <span class="sub-text">4 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Photoshop</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Adobe Illustrator</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Logo Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Drawing</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >Figma</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-warning">
-                                  <span>WD</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Web Development</h6>
-                                  <span class="sub-text">5 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Responsive Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Wordpress Customization</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Theme Development</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Bootstrap</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >HTML & CSS Grid</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-info">
-                                  <span>MA</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Mobile Application</h6>
-                                  <span class="sub-text">4 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Mobile App Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >User Interface</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Design Thinking</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Prototyping</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-purple">
-                                  <span>GD</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Graphics Design</h6>
-                                  <span class="sub-text">4 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Photoshop</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Adobe Illustrator</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Logo Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Drawing</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >Figma</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6 col-lg-4 col-xxl-3">
-                        <div class="card h-100">
-                          <div class="card-inner">
-                            <div
-                              class="d-flex justify-content-between align-items-start mb-3"
-                            >
-                              <a
-                                href="html/lms/passcour.html"
-                                class="d-flex align-items-center"
-                              >
-                                <div class="user-avatar sq bg-warning">
-                                  <span>WD</span>
-                                </div>
-                                <div class="ms-3">
-                                  <h6 class="title mb-1">Web Development</h6>
-                                  <span class="sub-text">5 SubCategories</span>
-                                </div>
-                              </a>
-                            </div>
-                            <p>
-                              Website Design & Develop the website with web
-                              applications
-                            </p>
-                            <ul class="d-flex flex-wrap g-1">
-                              <li>
-                                <span class="badge badge-dim bg-primary"
-                                  >Responsive Design</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-danger"
-                                  >Wordpress Customization</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-info"
-                                  >Theme Development</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-warning"
-                                  >Bootstrap</span
-                                >
-                              </li>
-                              <li>
-                                <span class="badge badge-dim bg-secondary"
-                                  >HTML & CSS Grid</span
-                                >
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                            ";
+                        }
+                      ?>
                     </div>
                   </div>
                   <!-- .nk-block -->

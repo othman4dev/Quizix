@@ -1,40 +1,4 @@
-<?php
-  $conn = new mysqli("localhost","root","","quizex");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-
-// Get the course_id from the URL
-$course_id = isset($_GET['course_id']) ? $_GET['course_id'] : null;
-
-// Check if course_id is provided
-if ($course_id) {
-    // Fetch course content from the database based on course_id
-    $query = "SELECT * FROM cours WHERE courId = $course_id";
-    $result = mysqli_query($conn,$query);
-
-    // Check for query errors
-    if (!$result) {
-        die("Query failed: " . $conn->error);
-    }
-
-    // Fetch the course details
-    $course = $result->fetch_assoc();
-
-    // Close the result set
-    $result->free();
-} else {
-    // Redirect to an error page or handle the situation when course_id is not provided
-    header("Location: error_page.php");
-    exit();
-}
-
-// Close the database connection
-$conn->close();
-?>
-
-
+<?php include "connection.php" ;?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -74,7 +38,7 @@ $conn->close();
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.html" class="logo-link nk-sidebar-logo">
+              <a href="html/dashboard-u.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.svg"
@@ -116,7 +80,7 @@ $conn->close();
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
+                    <a href="html/lms/dashboard-u.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-dashboard-fill"></em
                       ></span>
@@ -125,7 +89,7 @@ $conn->close();
                   </li>
                   <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
+                    <a href="html/lms/category.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-book-fill"></em
                       ></span>
@@ -133,7 +97,7 @@ $conn->close();
                     </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                    <a href="html/lms/quizzes.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-file-docs"></em
                       ></span>
@@ -184,7 +148,7 @@ $conn->close();
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.html" class="logo-link">
+                  <a href="html/dashboard-u.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.svg"
@@ -669,23 +633,39 @@ $conn->close();
             <div class="nk-content-body">
                 <div class="content-page wide-md m-auto">
                     <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
-                        <div class="nk-block-head-content text-center">
-                            <h2 class="nk-block-title fw-normal"><?php echo $course['courName']; ?></h2>
+                      <div class="nk-block-head-content text-center">
+                        <h2 class="nk-block-title fw-normal"><?php 
+                        $id = $_GET["courId"];
+                        $sql = "SELECT * FROM cours 
+                        JOIN administrateur ON cours.adminId = administrateur.adminId
+                        WHERE courId = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $row = $result->fetch_assoc();
+                        if ($row) {
+                            echo $row['courName'];
+                        } else {
+                            echo "No course found with ID $id";
+                        }
+                        ?></h2>
+                        <div class="nk-block-des">
+                          <p class="lead">
+                            Category : <?php echo $row['category']; ?> , By <?php echo $row['adminName'] ?>
+                          </p>
                         </div>
                     </div>
                     <!-- .nk-block-head -->
                     <div class="nk-block">
-                        <div class="card">
-                            <div class="card-inner card-inner-xl">
-                                <article class="entry">
-                                        <?php echo $course['courDescription']; ?>
-                                    <!-- Add more dynamic content based on your database fields -->
-
-                                    <!-- Continue adding dynamic content based on your database fields -->
-                                </article>
-                            </div>
+                      <div class="card">
+                        <div class="card-inner card-inner-xl">
+                          <article class="entry">
+                          <?php echo $row['courDescription']; ?>
+                          </article>
+                        </div>
                         <div class="quiz-pass">
-                          <a href="html/lms/passquiz.php"
+                          <a href="html/lms/passquiz.php?quizId=<?php echo $id; ?>"
                             ><button class="submit-it">Pass Quiz</button></a
                           >
                         </div>

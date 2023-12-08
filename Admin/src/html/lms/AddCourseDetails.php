@@ -38,7 +38,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.html" class="logo-link nk-sidebar-logo">
+              <a href="html/index.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.png"
@@ -80,7 +80,7 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                      <a href="html/lms/index.html" class="nk-menu-link">
+                      <a href="html/lms/index.php" class="nk-menu-link">
                           <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                           <span class="nk-menu-text">Statistics</span>
                       </a>
@@ -92,7 +92,7 @@
                       </a>
                   </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                      <a href="html/lms/category.html" class="nk-menu-link">
+                      <a href="html/lms/category.php" class="nk-menu-link">
                           <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                           <span class="nk-menu-text">Quizzes</span>
                       </a>
@@ -142,7 +142,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.html" class="logo-link">
+                  <a href="html/index.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.png"
@@ -422,6 +422,7 @@
                                     type="radio"
                                     name="status-1[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -447,7 +448,6 @@
                                     type="text"
                                     name="question2"
                                     placeholder="Add Question"
-                                    required
                                   />
                                 </label>
                               </div>
@@ -457,6 +457,7 @@
                                     type="radio"
                                     name="status-2[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -506,6 +507,7 @@
                                     type="radio"
                                     name="status-2[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -589,6 +591,7 @@
                                     type="radio"
                                     name="status-3[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -672,6 +675,7 @@
                                     type="radio"
                                     name="status-4[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -755,6 +759,7 @@
                                     type="radio"
                                     name="status-5[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -789,6 +794,7 @@
                                     type="radio"
                                     name="status-6[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -806,6 +812,7 @@
                                     type="radio"
                                     name="status-6[]"
                                     value="2"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -822,6 +829,7 @@
                                     type="radio"
                                     name="status-6[]"
                                     value="3"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -838,6 +846,7 @@
                                     type="radio"
                                     name="status-6[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -872,6 +881,7 @@
                                     type="radio"
                                     name="status-7[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -888,7 +898,8 @@
                                   <input
                                     type="radio"
                                     name="status-7[]"
-                                    value="2
+                                    value="2"
+                                    required
                                   <label for="customInput2">
                                     <input
                                       class="form-control"
@@ -904,6 +915,7 @@
                                     type="radio"
                                     name="status-7[]"
                                     value="3"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -920,6 +932,7 @@
                                     type="radio"
                                     name="status-7[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -954,6 +967,7 @@
                                     type="radio"
                                     name="status-8[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -971,6 +985,7 @@
                                     type="radio"
                                     name="status-8[]"
                                     value="2"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -987,6 +1002,7 @@
                                     type="radio"
                                     name="status-8[]"
                                     value="3"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1003,6 +1019,7 @@
                                     type="radio"
                                     name="status-8[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1036,6 +1053,7 @@
                                     type="radio"
                                     name="status-9[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1053,6 +1071,7 @@
                                     type="radio"
                                     name="status-9[]"
                                     value="2"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1069,6 +1088,7 @@
                                     type="radio"
                                     name="status-9[]"
                                     value="3"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1085,6 +1105,7 @@
                                     type="radio"
                                     name="status-9[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1119,6 +1140,7 @@
                                     type="radio"
                                     name="status-10[]"
                                     value="1"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1136,6 +1158,7 @@
                                     type="radio"
                                     name="status-10[]"
                                     value="2"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1152,6 +1175,7 @@
                                     type="radio"
                                     name="status-10[]"
                                     value="3"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1168,6 +1192,7 @@
                                     type="radio"
                                     name="status-10[]"
                                     value="4"
+                                    required
                                   />
                                   <label for="customInput2">
                                     <input
@@ -1182,28 +1207,31 @@
                               </div>
                             </div>
                             <div class="card-inner">
+                            <div class="moreInfo">
+                                  <input type="date" name="creation" id="creation" value="<?php echo date('Y-m-d'); ?>" style="display:none">
+                                  Quiz Name * :
+                                  <input type="text" class="form-control" name="quizName" required placeholder="Quiz Name">
+                                  <input type="text" class="form-control" placeholder="Admin Name" value="1" style="display:none">
+                                  Cours Name *:
+                                  <select name="cour" id="" class="form-control">
+                                    <?php
+                                    $sql3 = "SELECT * FROM cours";
+                                    $result3 = mysqli_query($conn, $sql3);
+                                    while ($row3 = mysqli_fetch_assoc($result3)) {
+                                      echo "<option value='" . $row3['courId'] . "'>" . $row3['courName'] . "</option>";
+                                    }
+                                    ?>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="card-inner">
                               <div class="nk-block-between-md g-3">
                                 <input
                                   type="submit"
                                   value="Cancel"
                                   class="cancel-it"
                                 />
-                                <div class="moreInfo">
-                                  <input type="date" name="creation" id="" style="display:none" onload="this.valueAsDate = new Date()">
-                                  Quiz Name :
-                                  <input type="text" class="form-control" name="quizName" required placeholder="Quiz Name">
-                                  Admin Name :
-                                  <input type="text" class="form-control" placeholder="Admin Name" readonly>
-                                  <select name="admin" id="" class="form-control edit-form-control">
-                                    <?php 
-                                      $sql3 = "SELECT * FROM cours";
-                                      $result3 = mysqli_query($conn, $sql3);
-                                      while($row3 = mysqli_fetch_assoc($result3)){
-                                        echo "<option value='".$row3['courName']."'>".$row3['courName']."</option>";
-                                      }
-                                    ?>
-                                  </select>
-                                  </div>
+                                
                                   <input
                                     type="submit"
                                     value="Submit"

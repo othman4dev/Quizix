@@ -1,19 +1,30 @@
 <?php
 include("connect.php");
 session_start();
+
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM utilisateur WHERE userName='$username' && password_user='$password'";
+    // Hash the password before storing it
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "SELECT * FROM utilisateur WHERE userName='$username'";
     $result = mysqli_query($con, $query);
 
     if ($result && $row = mysqli_fetch_assoc($result)) {
-     
-        header('location: auth-register.php');
-        die();
+        // Verify the hashed password
+        if (password_verify($password, $row['password_user'])) {
+            if ($row['role_user'] == 'admin') {
+                header('location: ../../../../../Admin/src/html/lms/students.php');
+            } else {
+                header('location: auth-login.php');
+            }
+        } else {
+            echo "Incorrect password";
+        }
     } else {
-        echo "Incorrect password";
+        echo "Username not found";
     }
 }
 ?>
@@ -50,7 +61,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                             </div>
                             <div class="nk-block nk-block-middle nk-auth-body">
                                 <div class="brand-logo pb-5">
-                                    <a href="html/index.html" class="logo-link">
+                                    <a href="html/dashboard-u.php" class="logo-link">
                                         <svg width="442" height="216" viewBox="0 0 442 216" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M187.28 162.2C172.16 162.2 164.6 151.92 164.6 131.36C164.6 125.84 165.52 116.76 167.36 104.12H190.64V130.04C190.64 139.32 193.24 143.96 198.44 143.96C203 143.96 205.28 139.8 205.28 131.48C205.28 130.84 205.28 130.16 205.28 129.44L204.2 104.12H231.2L228.68 161H208.4L207.08 149.96C206.92 150.28 206.72 150.72 206.48 151.28C206.24 151.84 205.56 152.84 204.44 154.28C203.4 155.64 202.2 156.88 200.84 158C199.48 159.04 197.6 160 195.2 160.88C192.8 161.76 190.16 162.2 187.28 162.2ZM266.988 105.8L269.028 105.08L264.948 161H242.268L238.428 105.08C242.988 106.92 247.828 107.84 252.948 107.84C258.148 107.84 262.828 107.16 266.988 105.8ZM253.668 102.56C249.668 102.56 246.308 101.36 243.588 98.96C240.868 96.56 239.508 93.44 239.508 89.6C239.508 85.68 240.828 82.56 243.468 80.24C246.188 77.84 249.548 76.64 253.548 76.64C257.628 76.64 261.028 77.84 263.748 80.24C266.468 82.64 267.828 85.76 267.828 89.6C267.828 93.44 266.468 96.56 263.748 98.96C261.028 101.36 257.668 102.56 253.668 102.56ZM276.76 161V150.92L298.96 119.96L276.28 124.64L279.28 104.12H331V114.8L310.12 147.08L330.64 140.84V161H276.76ZM366.715 105.8L368.755 105.08L364.675 161H341.995L338.155 105.08C342.715 106.92 347.555 107.84 352.675 107.84C357.875 107.84 362.555 107.16 366.715 105.8ZM353.395 102.56C349.395 102.56 346.035 101.36 343.315 98.96C340.595 96.56 339.235 93.44 339.235 89.6C339.235 85.68 340.555 82.56 343.195 80.24C345.915 77.84 349.275 76.64 353.275 76.64C357.355 76.64 360.755 77.84 363.475 80.24C366.195 82.64 367.555 85.76 367.555 89.6C367.555 93.44 366.195 96.56 363.475 98.96C360.755 101.36 357.395 102.56 353.395 102.56Z" fill="black"/>
                                             <path d="M398.326 146.12C394.406 150.84 392.446 155.8 392.446 161H374.806C374.806 150.2 379.966 140.16 390.286 130.88L376.246 104.12H406.126L412.846 116.96C413.806 116.24 414.726 114.64 415.606 112.16C416.486 109.6 416.926 106.92 416.926 104.12H434.566C434.566 115.72 430.166 125.4 421.366 133.16L436.006 161H406.246L398.326 146.12Z" fill="#9B55F6"/>
@@ -93,7 +104,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                                     </div>
                                 </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> New on our platform? <a href="html/pages/auths/auth-register.html">Create an account</a>
+                                <div class="form-note-s2 pt-4"> New on our platform? <a href="html/pages/auths/auth-register.php">Create an account</a>
                                 </div>
                             </div><!-- .nk-block -->
                             <div class="nk-block nk-auth-footer">

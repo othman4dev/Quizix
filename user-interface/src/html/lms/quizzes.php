@@ -36,7 +36,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.html" class="logo-link nk-sidebar-logo">
+              <a href="html/dashboard-u.php" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.svg"
@@ -78,7 +78,7 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.html" class="nk-menu-link">
+                    <a href="html/lms/dashboard-u.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-dashboard-fill"></em
                       ></span>
@@ -87,7 +87,7 @@
                   </li>
                   <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.html" class="nk-menu-link">
+                    <a href="html/lms/category.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-book-fill"></em
                       ></span>
@@ -95,7 +95,7 @@
                     </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.html" class="nk-menu-link">
+                    <a href="html/lms/quizzes.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-file-docs"></em
                       ></span>
@@ -146,7 +146,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.html" class="logo-link">
+                  <a href="html/dashboard-u.php" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.svg"
@@ -373,7 +373,7 @@
                                   <span class="sub-text">Status</span>
                                 </th>
                                 <th class="nk-tb-col tb-col-lg">
-                                  <span class="sub-text">Progress</span>
+                                  <span class="sub-text">Result</span>
                                 </th>
                                 <th class="nk-tb-col tb-col-lg">
                                   <span class="sub-text">Date</span>
@@ -387,21 +387,31 @@
                             <tbody>
                               <?php include "connection.php"; ?>
                               <?php 
-                                $sql = "SELECT * FROM quiz 
-                                RIGHT JOIN cours ON quiz.courId = cours.courId 
-                                RIGHT JOIN administrateur ON cours.adminId = administrateur.adminId;";
+                                $sql = "SELECT quiz.*, cours.*, administrateur.*, MAX(resultat.quizResult) as maxQuizResult
+                                FROM quiz 
+                                LEFT JOIN cours ON quiz.courId = cours.courId 
+                                LEFT JOIN administrateur ON cours.adminId = administrateur.adminId
+                                LEFT JOIN resultat ON quiz.quizId = resultat.quizId
+                                GROUP BY quiz.quizId
+                                ORDER BY quiz.quizId ASC;";
                                 $stmt = $conn->prepare($sql);
                                 $stmt->execute();
                                 $num = 0;
                                 $result = $stmt->get_result();
                                 while ($row = $result->fetch_assoc()) {
+                                  $results = $row["maxQuizResult"];
+                                  if($row["maxQuizResult"] !== null) { 
+                                    $resluts =  $row["maxQuizResult"];
+                                  } else {
+                                    $results =  "Not Yet taken" ;
+                                  };
                                   $num++;
                                   echo "
                                   <tr class='nk-tb-item'>
-                                  <td class='nk-tb-col'>" .$num. "</td>
+                                  <td class='nk-tb-col'>" .$row["quizId"]. "</td>
                                   <td class='nk-tb-col'>
                                     <a
-                                      href='html/lms/passquiz.php'
+                                      href='html/lms/passquiz.php?quizId=".$row["quizId"]."'
                                       class='project-title'
                                     >
                                       <div class='user-avatar sq bg-purple'>
@@ -423,11 +433,11 @@
                                   </td>
                                   <td class='nk-tb-col tb-col-md'>
                                     <span class='badge badge-dim bg-success'
-                                      >" .$row["status"]. "</span
+                                      >Ready</span
                                     >
                                   </td>
                                   <td class='nk-tb-col tb-col-mb'>
-                                    <span>" .$row["resultat"]. "</span>
+                                    <span>". $results ."</span>
                                   </td>
                                   <td class='nk-tb-col tb-col-mb'>
                                     <span>" .$row["creation"]. "</span>
