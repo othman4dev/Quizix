@@ -4,11 +4,8 @@ $username = "root";
 $password = "";
 $database = "quizex";
 
-// Create connection entre php et la base de données en utilison la fonction mysqli_connect
 $connection = mysqli_connect($servername, $username, $password, $database);
-// $connection = new mysqli($servername, $username, $password, $database);
 
-// isset il fait la véréfication en php
 if (isset($_POST['submit'])) {
     $UserName = $_POST["username"];
     $email = $_POST["email"];
@@ -65,6 +62,6 @@ if (isset($_POST['submit'])) {
         </div>
         ";
      }
-     ?> -->
+?> -->
 
 
