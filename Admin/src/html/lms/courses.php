@@ -1,12 +1,5 @@
 <?php
-  $conn = new mysqli("localhost","root","","quizex");
-//    $query = "SELECT * FROM cours";
-   $query = "SELECT cours.*, administrateur.adminName FROM cours LEFT JOIN administrateur ON cours.adminId = administrateur.adminId";
-   $result = mysqli_query($conn, $query);
-
-   if (!$result) {
-     die("Database query failed.");
-   }
+    include "connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
@@ -50,6 +43,7 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item active current-page">
+                                    <a href="html/lms/index.php" class="nk-menu-link">
                                     <a href="html/lms/index.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Statistics</span>
@@ -216,11 +210,11 @@
                                                             </th>
                                                             <th class="nk-tb-col"><span class="sub-text">Course Name</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Category</span></th>
-                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">AdminName    </span></th>
-                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Quiz</span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Admin Name</span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Quiz Name</span></th>
                                                             <!-- <th class="nk-tb-col tb-col-xxl"><span class="sub-text">Enrole Student</span></th> -->
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Progre</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Progress</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">startTime</span></th>
                                                             <th class="nk-tb-col nk-tb-col-tools text-end">
                                                                 <ul class="nk-tb-actions gx-1">
@@ -240,95 +234,65 @@
                                                         </tr><!-- .nk-tb-item -->
                                                     </thead>
                                                     <tbody>
-                                                    <?php
-
-// Generate HTML dynamically based on the retrieved data
-while ($row = $result->fetch_assoc()) {
-    echo '<tr class="nk-tb-item">
-            <td class="nk-tb-col nk-tb-col-check">
-                <div class="custom-control custom-control-sm custom-checkbox notext">
-                    <input type="checkbox" class="custom-control-input" id="pid-all" />
-                    <label class="custom-control-label" for="pid-all"></label>
-                </div>
-            </td>
-            <td class="nk-tb-col"><a href="http://localhost/Quizix/user-interface/src/html/lms/passcour.php?courId=' . $row['courId'] . '"><span class="sub-text">' . $row['courName'] . '</span></a></td>
-            <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['category'] . '</span></td>
-            <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['adminName'] . '</span></td>
-            <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['courName'] . "quiz" . '</span></td>
-            <td class="nk-tb-col tb-col-md"><span class="badge badge-dim bg-success">Active</span></td>
-            <td class="nk-tb-col tb-col-mb"><span>50%</span></td>
-            <td class="nk-tb-col tb-col-mb"><span class="sub-text">' . $row['startTime'] . '</span></td>
-            <td class="nk-tb-col nk-tb-col-tools">
-                <ul class="nk-tb-actions gx-1">
-                    <li>
-                        <div class="drodown">
-                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <ul class="link-list-opt no-bdr">
-                                    <li><a href="http://localhost/Quizix/Admin/src/html/lms/Editcour.php?id=' . $row["courId"] . '"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                    <li><a href="http://localhost/Quizix/Admin/src/html/lms/Deletecour.php?id=' . $row["courId"] . '"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </td>
-          </tr>';
-}
-
-?>
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-10">
-                                                                    <label class="custom-control-label" for="pid-10"></label>
+                                                    <?php                                                               
+                                                    // Generate HTML dynamically based on the retrieved data
+                                                    $selected = "SELECT * FROM cours JOIN administrateur ON cours.adminId = administrateur.adminId JOIN quiz ON cours.courId = quiz.courId";
+                                                    $result = $conn->query($selected);
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "
+                                                        <tr class='nk-tb-item'>
+                                                        <td class='nk-tb-col nk-tb-col-check'>
+                                                            <div class='custom-control custom-control-sm custom-checkbox notext'>
+                                                                <input type='checkbox' class='custom-control-input' id='pid-10'>
+                                                                <label class='custom-control-label' for='pid-10'></label>
+                                                            </div>
+                                                        </td>
+                                                        <td class='nk-tb-col'>
+                                                            <a href='#' class='project-title'>
+                                                                <div class='user-avatar sq bg-purple'><span>". substr($row['courName'], 0, 2) ."</span></div>
+                                                                <div class='project-info'>
+                                                                    <h6 class='title'>courName</h6>
                                                                 </div>
-                                                            </td>
-                                                            <td class="nk-tb-col">
-                                                                <a href="#" class="project-title">
-                                                                    <div class="user-avatar sq bg-purple"><span>WT</span></div>
-                                                                    <div class="project-info">
-                                                                        <h6 class="title">WordPress Theme Development</h6>
-                                                                    </div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Web Development</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Mark Smith</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-lg">
-                                                                <span>Total lesson: 18</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-xxl">
-                                                                <span>Total enrolment: 6</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="badge badge-dim bg-success">Active</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>50%</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span>20.4.2021</span>
-                                                            </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <ul class="nk-tb-actions gx-1">
-                                                                    <li>
-                                                                        <div class="drodown">
-                                                                            <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                                <ul class="link-list-opt no-bdr">
-                                                                                    <li><a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a></li>
-                                                                                    <li><a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a></li>
-                                                                                </ul>
-                                                                            </div>
+                                                            </a>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-lg'>
+                                                            <span>".$row["category"]."</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-lg'>
+                                                            <span>".$row["adminName"]."</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-lg'>
+                                                            <span>".$row["quizName"]."</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-xxl'>
+                                                            <span>Total enrolment: 6</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-md'>
+                                                            <span class='badge badge-dim bg-success'>Active</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-mb'>
+                                                            <span>$50</span>
+                                                        </td>
+                                                        <td class='nk-tb-col tb-col-mb'>
+                                                            <span>20.4.2021</span>
+                                                        </td>
+                                                        <td class='nk-tb-col nk-tb-col-tools'>
+                                                            <ul class='nk-tb-actions gx-1'>
+                                                                <li>
+                                                                    <div class='drodown'>
+                                                                        <a href='#' class='dropdown-toggle btn btn-sm btn-icon btn-trigger' data-bs-toggle='dropdown'><em class='icon ni ni-more-h'></em></a>
+                                                                        <div class='dropdown-menu dropdown-menu-end'>
+                                                                            <ul class='link-list-opt no-bdr'>
+                                                                                <li><a data-bs-toggle='modal' href='#modalDelete' onclick='transferId(" . $row["quizId"] . ")'><em class='icon ni ni-delete'></em><span>Delete Student</span></a></li>
+                                                                            </ul>
                                                                         </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item -->
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>";
+                                                      }
+                                                    ?>
                                                     </tbody>
                                                 </table><!-- .nk-tb-list -->
                                             </div>

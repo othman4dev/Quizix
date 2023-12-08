@@ -61,7 +61,7 @@ session_start();
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                                    <a href="html/lms/instructor-list.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
@@ -188,61 +188,91 @@ session_start();
                                                         <div class="nk-tb-col"><span class="sub-text">UserId</span></div>
                                                         <div class="nk-tb-col"><span class="sub-text">UserName</span></div>
                                                         <div class="nk-tb-col tb-col-mb"><span class="sub-text d-lg-flex d-none">Email</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">PhoneNumber</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">DateOfBirth</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Gender</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Phone Number</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Date Of Birth</span></div>
                                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Nationality</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">RoleUser</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Actions</span></div>
                                                     </div> 
                                                 <?php
-                                                $servername = "localhost";
-                                                $username = "root";
-                                                $password = "";
-                                                $database = "quizex";
-                                                // Create connection
-                                                $connection = new mysqli($servername, $username, $password, $database);
-
-                                                // Check connection
-                                                if ($connection->connect_error) {
-                                                    die("Connection failed: " . $connection->connect_error);
-                                                }
+                                                include "connection.php";
+                                                $i = 0;
                                                 //read (récuperer)all row from database table
                                                 $sql = "SELECT * FROM utilisateur";
-                                                $result = $connection->query($sql);
-
-                                                if (!$result) {
-                                                    die("Invalid query:" . $connection->error);
+                                                $result = $conn->query($sql);
+                                                while ($row = $result->fetch_assoc()) {
+                                                    $i++;
+                                                    echo "
+                                                    <div class='nk-tb-item'>
+                                                    <div class='nk-tb-col nk-tb-col-check'>
+                                                        <div class='custom-control custom-control-sm custom-checkbox'>
+                                                            ".$i."
+                                                        </div>
+                                                    </div>
+                                                    <div class='nk-tb-col'>
+                                                        <a href='html/lms/instructor-details.html'>
+                                                            <div class='user-card'>
+                                                                <div class='user-avatar bg-primary'>
+                                                                    <span>". substr($row["userName"], 0, 2) . "</span>
+                                                                </div>
+                                                                <div class='user-info'>
+                                                                    <span class='tb-lead'>" . $row["userName"] . "<span class='dot dot-success d-md-none ms-1'></span></span>
+                                                                    <span>" . $row["email"] . "</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class='nk-tb-col tb-col-md'>
+                                                        <span>" . $row["email"] . "</span>
+                                                    </div>
+                                                    <div class='nk-tb-col tb-col-lg'>
+                                                        <span>" . $row["gender"] . "</span>
+                                                    </div>
+                                                    <div class='nk-tb-col tb-col-lg'>
+                                                        <span>
+                                                        ";
+                                                        if( $row["phoneNumber"] == null ) {
+                                                            echo "No phone number";
+                                                        } else {
+                                                            echo $row["phoneNumber"];
+                                                        }
+                                                        echo "
+                                                        </span>
+                                                    </div>
+                                                    <div class='nk-tb-col tb-col-mb'>
+                                                        <span>" .$row["dateOfBirth"]."</span>
+                                                    </div>
+                                                    <div class='nk-tb-col tb-col-md'>
+                                                        <span class='tb-status text-success'>" .$row["nationality"]."</span>
+                                                    </div>
+                                                    <div class='nk-tb-col nk-tb-col-tools'>
+                                                        <ul class='nk-tb-actions gx-1'>
+                                                            <li>
+                                                                <div class='drodown'>
+                                                                    <a href='#' class='dropdown-toggle btn btn-sm btn-icon btn-trigger' data-bs-toggle='dropdown'><em class='icon ni ni-more-h'></em></a>
+                                                                    <div class='dropdown-menu dropdown-menu-end'>
+                                                                        <ul class='link-list-opt no-bdr'>
+                                                                            <li><a href='html/lms/delete.php?userId=". $row["userId"] ."' ><em class='icon ni ni-delete'></em><span>Delete User</span></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                    ";
                                                 }
-                                                while ($row = $result->fetch_assoc()):
                                                     ?>
-                          
-                              <div class='nk-tb-item nk-tb-head'>
-                              <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userId"] ?></span></div>
-                              <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userName"] ?></span></div>
-                              <div class='nk-tb-col tb-col-mb'><span class='sub-text d-lg-flex d-none'><?php echo $row["email"] ?></span></div>
-                              <div class='nk-tb-col tb-col-lg'><span class='sub-text'><?php echo $row["phoneNumber"] ?></span></div>
-                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["dateOfBirth"] ?></span></div>
-                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["nationality"] ?></span></div>
-                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["role_user"] ?></span></div>
-                              <div>
-
-                              <a class='btn btn-primary' href='/Quizix/Admin/src/html/lms/edit.php?id=<?php echo $row["userId"] ?>'>Edit</a>
-                              <a class='btn btn-primary' href='/Quizix/Admin/src/html/lms/delete.php?id=<?php echo $row["userId"] ?>'>Delete</a>
-
-                               </div>
-                               </div>
-                          
-                          <?php
-                                                endwhile;
-                                                ?>
                                                                                  
                                                   </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                 
-                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
                         
                                 
                 <div class="nk-footer">
@@ -390,61 +420,68 @@ session_start();
             <div class="modal-content">
                 <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-md">
-                    <h5 class="title">Add Utilisateurs</h5>
+                    <h5 class="title">Add Users</h5>
                     <ul class="nk-nav nav nav-tabs mt-n2">
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#student-info">utilisateur Info</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#student-info">User Info</a>
                         </li>
                        
                     </ul><!-- .nav-tabs -->
 
                     <div class="tab-content">
-                        <form action="html\lms/add.php" method="POST">
+                        <form action="html/lms/adduser.php" method="post">
                         <div class="tab-pane active" id="student-info">
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="full-name">userName</label>
-                                        <input type="text" class="form-control" id="full-name" placeholder=" name" name="username">
+                                        <label class="form-label" for="full-name">Full Name</label>
+                                        <input type="text" class="form-control" id="full-name" placeholder="Full Name" name="username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="display-name">nationality</label>
-                                        <input type="text" class="form-control" id="display-name" placeholder="nationality" name="nationality">
+                                        <label class="form-label" for="display-name">Nationality</label>
+                                        <input type="text" class="form-control" id="display-name" placeholder="Nationality" name="nationality">
                                     </div>
                                 </div>
                                
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="email">email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">phoneNumber</label>
-                                        <input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number" name="phone">
+                                        <label class="form-label" for="phone-no">Phone Number</label>
+                                        <input type="text" class="form-control" id="phone-no" placeholder="Phone Number" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="birth-day">Date of Birth</label>
-                                        <input type="text" class="form-control date-picker" id="birth-day" placeholder="Date of Birth" name="date">
+                                        <input type="text" class="form-control date-picker" id="birth-day" placeholder="Date of Birth" name="date"-->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="birth-day">ROLE</label>
-                                        <input type="text" name="role">
+                                        <label class="form-label" for="role">New Password</label>
+                                        <input type="text" class="form-control" id="role" placeholder="New Password" name="password">
                                     </div>
                                 </div>
-                             
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="role">Gender</label>
+                                        <div class="new-">
+                                            <label><input type="radio" name="gender" value="Male"> Male </label>
+                                            <label><input type="radio" name="gender" value="Female"> Female </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-
+                                        <button type="submit" name="submit" class="btn btn-primary"  href='delete.php'>Submit</button>
                                         </li>
                                         <li>
                                             <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
