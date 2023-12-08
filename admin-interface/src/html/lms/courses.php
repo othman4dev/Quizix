@@ -1,3 +1,12 @@
+<?php
+  $conn = new mysqli("localhost","root","","quizex");
+   $query = "SELECT * FROM cours";
+   $result = mysqli_query($your_db_connection, $query);
+
+   if (!$result) {
+     die("Database query failed.");
+   }
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -840,96 +849,43 @@
                               <!-- .nk-tb-item -->
                             </thead>
                             <tbody>
-                              <tr class="nk-tb-item">
+                            <?php
+
+                              // Generate HTML dynamically based on the retrieved data
+                              while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<tr class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">
-                                  <div
-                                    class="custom-control custom-control-sm custom-checkbox notext"
-                                  >
-                                    <input
-                                      type="checkbox"
-                                      class="custom-control-input"
-                                      id="pid-01"
-                                    />
-                                    <label
-                                      class="custom-control-label"
-                                      for="pid-01"
-                                    ></label>
-                                  </div>
+                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                <input type="checkbox" class="custom-control-input" id="pid-all" />
+                                <label class="custom-control-label" for="pid-all"></label>
+                                </div>
                                 </td>
-                                <td class="nk-tb-col">
-                                  <a href="#" class="project-title">
-                                    <div class="user-avatar sq bg-purple">
-                                      <span>RD</span>
-                                    </div>
-                                    <div class="project-info">
-                                      <h6 class="title">Responsive Design</h6>
-                                    </div>
-                                  </a>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Web Development</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Alex Ashley</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-lg">
-                                  <span>Total lesson: 32</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-xxl">
-                                  <span>Total enrolment: 25</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-md">
-                                  <span class="badge badge-dim bg-success"
-                                    >Active</span
-                                  >
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>$30</span>
-                                </td>
-                                <td class="nk-tb-col tb-col-mb">
-                                  <span>20.4.2021</span>
-                                </td>
-                                <td class="nk-tb-col nk-tb-col-tools">
-                                  <ul class="nk-tb-actions gx-1">
-                                    <li>
-                                      <div class="drodown">
-                                        <a
-                                          href="#"
-                                          class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
-                                          data-bs-toggle="dropdown"
-                                          ><em class="icon ni ni-more-h"></em
-                                        ></a>
-                                        <div
-                                          class="dropdown-menu dropdown-menu-end"
-                                        >
-                                          <ul class="link-list-opt no-bdr">
-                                            <li>
-                                              <a
-                                                data-bs-toggle="modal"
-                                                href="#modalEdit"
-                                                ><em
-                                                  class="icon ni ni-edit"
-                                                ></em
-                                                ><span>Edit Course</span></a
-                                              >
-                                            </li>
-                                            <li>
-                                              <a
-                                                data-bs-toggle="modal"
-                                                href="#modalDelete"
-                                                ><em
-                                                  class="icon ni ni-delete"
-                                                ></em
-                                                ><span>Delete Course</span></a
-                                              >
-                                            </li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </td>
-                              </tr>
+                                <td class="nk-tb-col"><span class="sub-text">' . $row['courName'] . '</span></td>
+                                <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['category'] . '</span></td>
+                                <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['adminId'] . '</span></td>
+                                <td class="nk-tb-col tb-col-lg"><span class="sub-text">' . $row['lesson'] . '</span></td>
+                                <td class="nk-tb-col tb-col-xxl"><span class="sub-text">' . $row['enrolled_students'] . '</span></td>
+                                <td class="nk-tb-col tb-col-md"><span class="sub-text">' . $row['status'] . '</span></td>
+                                <td class="nk-tb-col tb-col-mb"><span class="sub-text">' . $row['price'] . '</span></td>
+                                <td class="nk-tb-col tb-col-mb"><span class="sub-text">' . $row['startTime'] . '</span></td>
+                                <td class="nk-tb-col nk-tb-col-tools text-end">
+                                <ul class="nk-tb-actions gx-1">
+                                <li>
+                                <div class="dropdown">
+                                <a href="#" class="btn btn-sm btn-trigger btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-more-h"></em></a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                <li><a href="#"><em class="icon ni ni-archive"></em><span>Mark As Archive</span></a></li>
+                                <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Category</span></a></li>
+                                </ul>
+                                </div>
+                                </div>
+                                </li>
+                                </ul>
+                                </th>
+                                </tr>';
+                              }
+                              ?>
                               <!-- .nk-tb-item -->
                               <tr class="nk-tb-item">
                                 <td class="nk-tb-col nk-tb-col-check">

@@ -1,15 +1,24 @@
 <?php
 include("connect.php");
-if(isset($_POST["submit"])){
-    $username=htmlspecialchars(strtolower(trim($_POST['username'])));
-    $email=htmlspecialchars(strtolower(trim($_POST['email'])));
-    $password=htmlspecialchars(strtolower(trim($_POST['password'])));
-    $query="INSERT INTO utilisateur (userName,email,password_user)value('$username','$email','$password')";
-    if(mysqli_query($con,$query)){
-echo"bienvenue";
+
+if (isset($_POST["submit"])) {
+    $username = htmlspecialchars(strtolower(trim($_POST['username'])));
+    $email = htmlspecialchars(strtolower(trim($_POST['email'])));
+    $password = htmlspecialchars(strtolower(trim($_POST['password'])));
+
+    // Hacher le mot de passe
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO utilisateur (userName, email, password_user) VALUES ('$username', '$email', '$hashedPassword')";
+
+    if (mysqli_query($con, $query)) {
+        echo "Bienvenue";
+    } else {
+        echo "Erreur d'inscription : " . mysqli_error($con);
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -62,7 +71,7 @@ echo"bienvenue";
                                 </div><!-- .nk-block-head -->
                                 <form action="html/pages/auths/auth-register.php" method="POST">
                                     <div class="form-group">
-                                        <label class="form-label" for="name">userName</label>
+                                        <label class="form-label" for="name">user</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your username"  name="username" required>
                                         </div>
@@ -83,6 +92,16 @@ echo"bienvenue";
                                             <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your password"  name="password" required>
                                         </div>
                                     </div>
+                                    <!-- <div class="form-group">
+                                         <label class="form-label" for="role">Role</label>
+                                         <div class="form-control-wrap">
+                                            <select class="form-select form-control-lg" id="role" name="role" required>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">Utilisateur</option>
+                                            </select>
+                                         </div>
+                                    </div> -->
+
                                     <div class="form-group">
                                         <div class="custom-control custom-control-xs custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="checkbox">
@@ -93,7 +112,7 @@ echo"bienvenue";
                                         <button type="submit" name="submit" class="btn btn-lg btn-primary btn-block">Register</button>
                                     </div>
                                 </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> Already have an account ? <a href="html/pages/auths/auth-login.html"><strong>Sign in instead</strong></a>
+                                <div class="form-note-s2 pt-4"> Already have an account ? <a href="html/pages/auths/auth-login.php"><strong>Sign in instead</strong></a>
                                 </div>
                               
                             </div><!-- .nk-block -->

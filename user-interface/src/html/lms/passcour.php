@@ -628,10 +628,10 @@
           <!-- main header @e -->
           <!-- content @s -->
           <div class="nk-content">
-            <div class="container-fluid">
-              <div class="nk-content-inner">
-                <div class="nk-content-body">
-                  <div class="content-page wide-md m-auto">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="content-page wide-md m-auto">
                     <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
                       <div class="nk-block-head-content text-center">
                         <h2 class="nk-block-title fw-normal"><?php 
@@ -655,7 +655,6 @@
                             Category : <?php echo $row['category']; ?> , By <?php echo $row['adminName'] ?>
                           </p>
                         </div>
-                      </div>
                     </div>
                     <!-- .nk-block-head -->
                     <div class="nk-block">
@@ -673,12 +672,12 @@
                       </div>
                     </div>
                     <!-- .nk-block -->
-                  </div>
-                  <!-- .content-page -->
                 </div>
-              </div>
+                <!-- .content-page -->
             </div>
-          </div>
+        </div>
+    </div>
+</div>
           <!-- content @e -->
           <!-- footer @s -->
           <div class="nk-footer">

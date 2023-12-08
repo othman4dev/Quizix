@@ -9,8 +9,6 @@
     box-sizing: border-box;
     flex-wrap: wrap;
     height: fit-content;
-    padding: 15px;
-    box-sizing: border-box;
 }
 .answer {
     display: flex;
@@ -25,9 +23,18 @@
     display: flex;
     gap: 10px;
     padding-left: 25px;
+    margin: 5px;
     box-sizing: border-box;
     flex-grow: 1;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+}
+.question {
+    flex-grow: 1;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
 }
 .question-num {
     margin-left: 15px;

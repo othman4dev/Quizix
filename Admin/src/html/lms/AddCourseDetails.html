@@ -37,7 +37,7 @@
         >
           <div class="nk-sidebar-element nk-sidebar-head">
             <div class="nk-sidebar-brand">
-              <a href="html/index.php" class="logo-link nk-sidebar-logo">
+              <a href="html/index.html" class="logo-link nk-sidebar-logo">
                 <img
                   class="logo-light logo-img"
                   src="./images/logo.png"
@@ -79,50 +79,44 @@
               <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                   <li class="nk-menu-item">
-                    <a href="html/lms/index.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-dashboard-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Dashboard</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
+                      <a href="html/lms/index.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+                          <span class="nk-menu-text">Statistics</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/category.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-book-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Courses</span>
-                    </a>
+                      <a href="html/lms/courses.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
+                          <span class="nk-menu-text">Courses</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
+                  <li class="nk-menu-item">
+                      <a href="html/lms/category.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                          <span class="nk-menu-text">Quizzes</span>
+                      </a>
                   </li>
                   <li class="nk-menu-item">
-                    <a href="html/lms/quizzes.php" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-file-docs"></em
-                      ></span>
-                      <span class="nk-menu-text">Quizzes</span>
-                    </a>
-                  </li>
-
+                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                          <span class="nk-menu-text">Instructors</span>
+                      </a>
+                  </li><!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-account-setting-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Profile</span>
-                    </a>
+                      <a href="html/lms/students.html" class="nk-menu-link">
+                          <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                          <span class="nk-menu-text">Students</span>
+                      </a>
                   </li>
-                  <!-- .nk-menu-item -->
                   <li class="nk-menu-item">
-                    <a href="html/lms/settings.html" class="nk-menu-link">
-                      <span class="nk-menu-icon"
-                        ><em class="icon ni ni-setting-alt-fill"></em
-                      ></span>
-                      <span class="nk-menu-text">Settings</span>
-                    </a>
-                  </li>
-                  <!-- .nk-menu-item -->
-                </ul>
+                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                        <span class="nk-menu-icon"
+                          ><em class="icon ni ni-account-setting-fill"></em
+                        ></span>
+                        <span class="nk-menu-text">Profile</span>
+                      </a>
+                    </li>
+              </ul>
                 <!-- .nk-menu -->
               </div>
               <!-- .nk-sidebar-menu -->
@@ -147,7 +141,7 @@
                   ></a>
                 </div>
                 <div class="nk-header-brand d-xl-none">
-                  <a href="html/index.php" class="logo-link">
+                  <a href="html/index.html" class="logo-link">
                     <img
                       class="logo-light logo-img"
                       src="./images/logo.png"
@@ -349,7 +343,7 @@
                     <div class="card card-stretch">
                       <div class="card-inner-group">
                         <div class="card-inner p-0">
-                          <div class="quiz">
+                          <form class="quiz">
                             <div class="row-table head">
                               <div class="question-num">N°</div>
                               <div class="question">Questions</div>
@@ -917,15 +911,176 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >9</div>
+                                <div   >Question : &nbsp&nbsp </div>
 
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
 
-                          </div>
-                          <div class="card-inner">
-                            <div class="nk-block-between-md g-3">
-                              <button class="cancel-it">Cancel</button>
-                              <button class="submit-it">Submit</button>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                            <div class="row-table">
+                              <div class="question">
+                                <div class="question-num" >10</div>
+                                <div   >Question : &nbsp&nbsp </div>
+
+                                <label for="customInput2">
+                                  <input
+                                    class="form-control"
+                                    type="text"
+                                    name="customAnswer2"
+                                    placeholder="Add Question"
+                                  />
+                                </label>
+                                
+                              </div>
+                              <div class="AllAnswers">
+                                
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="answers">
+                                  <input
+                                    type="radio"
+                                    name="answer2"
+                                    id="customInput2"
+                                  />
+                                  <label for="customInput2">
+                                    <input
+                                      class="form-control"
+                                      type="text"
+                                      name="customAnswer2"
+                                      placeholder="Your custom answer"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="card-inner">
+                              <div class="nk-block-between-md g-3">
+                                <input type="submit" value="Cancel" class="cancel-it">
+                                <input type="submit" value="Submit" class="submit-it">
+                              </div>
+                            </div>
+
+                          </form>
+                          
                           <!-- .nk-block-between -->
                         </div>
                         <!-- .card-inner -->

@@ -10,7 +10,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Students | LMS | DashLite Admin Template</title>
+    <title>Enroll History | LMS | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.2.3">
     <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=3.2.3">
@@ -68,15 +68,20 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Students</span>
                                     </a>
-                                </li>
+                                </li><!-- .nk-menu-item -->
+                                <!-- .nk-menu-item -->
+                               <!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="html/lms/admin-profile.html" class="nk-menu-link">
-                                      <span class="nk-menu-icon"
-                                        ><em class="icon ni ni-account-setting-fill"></em
-                                      ></span>
-                                      <span class="nk-menu-text">Profile</span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span>
+                                        <span class="nk-menu-text">Admin profile</span>
                                     </a>
-                                  </li>
+                                </li><!-- .nk-menu-item -->
+                                <!-- .nk-menu-item -->
+                                 <!-- .nk-menu-item -->
+                                <!-- .nk-menu-item -->
+                                <!-- .nk-menu-item -->
+                                <!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->
@@ -159,7 +164,7 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Students</h3>
+                                            <h3 class="nk-block-title page-title">Enrollment list</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -187,8 +192,8 @@
                                                             </div>
                                                         </li>
                                                         <li class="nk-block-tools-opt">
-                                                            <a class="btn btn-icon btn-primary d-md-none" data-bs-toggle="modal" href="#student-add"><em class="icon ni ni-plus"></em></a>
-                                                            <a class="btn btn-primary d-none d-md-inline-flex" data-bs-toggle="modal" href="#student-add"><em class="icon ni ni-plus"></em><span>Add</span></a>
+                                                            <a href="html/lms/enroll-student.html" class="btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                                                            <a href="html/lms/enroll-student.html" class="btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -209,19 +214,18 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col"><span class="sub-text">User</span></div>
-                                                        <div class="nk-tb-col tb-col-mb"><span class="sub-text d-lg-flex d-none">Enrolled Courses</span></div>
                                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Phone</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Country</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Payment</span></div>
+                                                        <div class="nk-tb-col tb-col-mb"><span class="sub-text">Enrolled Courses</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Enrollment date</span></div>
                                                         <div class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1 my-n1">
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                    
+                                                                                <li><a href="#"><em class="icon ni ni-mail"></em><span>Send Email to All</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-na"></em><span>Suspend Selected</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Seleted</span></a></li>
                                                                             </ul>
@@ -239,7 +243,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar bg-primary">
                                                                         <span>AB</span>
@@ -251,50 +255,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 758-756433</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Fornt-end Development</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 847-4958</span>
+                                                            <div class="text-primary tb-lead">UI/UX Design with Adobe XD</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>United State</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="badge badge-dot badge-dot bg-warning">Due</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-warning">Waiting</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -311,10 +301,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar">
-                                                                        <img src="./images/avatar/a-sm.jpg" alt="">
+                                                                        <img src="./images/avatar/c-sm.jpg" alt="">
                                                                     </div>
                                                                     <div class="user-info">
                                                                         <span class="tb-lead">Ashley Lawson <span class="dot dot-warning d-md-none ms-1"></span></span>
@@ -323,50 +313,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 758-756433</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Responsive Design</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+124 394-1787</span>
+                                                            <div class="text-primary tb-lead">Front-end Web Development with React</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>United Kindom</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-warning">Inactive</span>
+                                                            <span class="tb-status text-success">Accepted</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -383,7 +359,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar bg-info">
                                                                         <span>JL</span>
@@ -395,50 +371,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 987-4958</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Mobile Applicationn</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+168 603-2320</span>
+                                                            <div class="text-primary tb-lead">UI/UX Design with Adobe XD</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>India</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-success">Accepted</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -455,62 +417,46 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-danger">
-                                                                        <span>JM</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Jane Montgomery <span class="dot dot-danger d-md-none ms-1"></span></span>
-                                                                        <span>jane84@example.com</span>
-                                                                    </div>
+                                                            <div class="user-card">
+                                                                <div class="user-avatar bg-danger">
+                                                                    <span>JM</span>
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">UI/UX Design with Adobe XD</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">SEO Optimize</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="user-info">
+                                                                    <span class="tb-lead">Jane Mont<span class="dot dot-danger d-md-none ms-1"></span></span>
+                                                                    <span>jane84@example.com</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span>+439 271-5360</span>
+                                                            <span>+811 765-4958</span>
+                                                        </div>
+                                                        <div class="nk-tb-col tb-col-mb">
+                                                            <div class="text-primary tb-lead">Learn Android Development with project</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>Canada</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-danger">Cancelled</span>
+                                                            <span>10-07-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-danger">Suspend</span>
+                                                            <span class="tb-status text-warning">Waiting</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -527,62 +473,46 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/b-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Frances Burns <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>frances@example.com</span>
-                                                                    </div>
+                                                            <div class="user-card">
+                                                                <div class="user-avatar">
+                                                                    <img src="./images/avatar/a-sm.jpg" alt="">
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Application Management</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="user-info">
+                                                                    <span class="tb-lead">Frances Burns <span class="dot dot-success d-md-none ms-1"></span></span>
+                                                                    <span>frances@example.com</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
                                                             <span>+639 130-3150</span>
                                                         </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Australia</span>
+                                                        <div class="nk-tb-col tb-col-mb">
+                                                            <div class="text-primary tb-lead">Learn Android Development with project</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-08-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-danger">Rejected</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -599,7 +529,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar bg-primary">
                                                                         <span>AB</span>
@@ -611,50 +541,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 758-756433</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Fornt-end Development</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 847-4958</span>
+                                                            <div class="text-primary tb-lead">UI/UX Design with Adobe XD</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>United State</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="badge badge-dot badge-dot bg-warning">Due</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-warning">Waiting</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -671,10 +587,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar">
-                                                                        <img src="./images/avatar/a-sm.jpg" alt="">
+                                                                        <img src="./images/avatar/c-sm.jpg" alt="">
                                                                     </div>
                                                                     <div class="user-info">
                                                                         <span class="tb-lead">Ashley Lawson <span class="dot dot-warning d-md-none ms-1"></span></span>
@@ -683,50 +599,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 758-756433</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Learn Android Development with project </span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+124 394-1787</span>
+                                                            <div class="text-primary tb-lead">Front-end Web Development with React</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>United Kindom</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-warning">Inactive</span>
+                                                            <span class="tb-status text-success">Accepted</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -743,7 +645,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
+                                                            <a href="#">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar bg-info">
                                                                         <span>JL</span>
@@ -755,50 +657,36 @@
                                                                 </div>
                                                             </a>
                                                         </div>
+                                                        <div class="nk-tb-col tb-col-md">
+                                                            <span>+811 987-4958</span>
+                                                        </div>
                                                         <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">SEO Optimization</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+168 603-2320</span>
+                                                            <div class="text-primary tb-lead">UI/UX Design with Adobe XD</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>India</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-01-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-success">Accepted</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -815,62 +703,46 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-danger">
-                                                                        <span>JM</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Jane Montgomery <span class="dot dot-danger d-md-none ms-1"></span></span>
-                                                                        <span>jane84@example.com</span>
-                                                                    </div>
+                                                            <div class="user-card">
+                                                                <div class="user-avatar bg-danger">
+                                                                    <span>JM</span>
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Responsive Design </span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="user-info">
+                                                                    <span class="tb-lead">Jane Mont<span class="dot dot-danger d-md-none ms-1"></span></span>
+                                                                    <span>jane84@example.com</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span>+439 271-5360</span>
+                                                            <span>+811 765-4958</span>
+                                                        </div>
+                                                        <div class="nk-tb-col tb-col-mb">
+                                                            <div class="text-primary tb-lead">Learn Android Development with project</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span>Canada</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-danger">Cancelled</span>
+                                                            <span>10-07-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-danger">Suspend</span>
+                                                            <span class="tb-status text-warning">Waiting</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -887,62 +759,46 @@
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/b-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Frances Burns <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>frances@example.com</span>
-                                                                    </div>
+                                                            <div class="user-card">
+                                                                <div class="user-avatar">
+                                                                    <img src="./images/avatar/a-sm.jpg" alt="">
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-lead d-lg-flex d-none">Android Development</span>
-                                                            <div class="d-lg-flex d-none">
-                                                                <div class="drodown">
-                                                                    <a href="#" class="dropdown-toggle pt-1 text-info" data-bs-toggle="dropdown"> <span>View More</span> </a>
-                                                                    <div class="dropdown-menu dropdown-menu-start">
-                                                                        <ul class="link-list-opt no-bdr p-3">
-                                                                            <li class="tb-lead p-1">Application Management</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                            <li class="tb-lead p-1">UI/UX Design with Adobe XD</li>
-                                                                            <li class="tb-lead p-1">Learn Android Development with project</li>
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="user-info">
+                                                                    <span class="tb-lead">Frances Burns <span class="dot dot-success d-md-none ms-1"></span></span>
+                                                                    <span>frances@example.com</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
                                                             <span>+639 130-3150</span>
                                                         </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Australia</span>
+                                                        <div class="nk-tb-col tb-col-mb">
+                                                            <div class="text-primary tb-lead">Learn Android Development with project</div>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status badge-dot bg-success">Paid</span>
+                                                            <span>10-08-21</span>
                                                         </div>
                                                         <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
+                                                            <span class="tb-status text-danger">Rejected</span>
                                                         </div>
                                                         <div class="nk-tb-col nk-tb-col-tools">
                                                             <ul class="nk-tb-actions gx-1">
                                                                 <li class="nk-tb-action-hidden">
-                                                                       
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
+                                                                        <em class="icon ni ni-mail-fill"></em>
+                                                                    </a>
                                                                 </li>
                                                                 <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
+                                                                    <a href="#" class="btn btn-sm btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
                                                                         <em class="icon ni ni-user-cross-fill"></em>
                                                                     </a>
                                                                 </li>
                                                                 <li>
                                                                     <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                        <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                         <div class="dropdown-menu dropdown-menu-end">
                                                                             <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                                                <li><a href="html/lms/students-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                                                 <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
                                                                             </ul>
                                                                         </div>
@@ -1175,153 +1031,6 @@
                 </div>
             </div><!-- .modal-content -->
         </div><!-- .modla-dialog -->
-    </div><!-- .modal -->
-    <!-- @@ Profile Edit Modal @e -->
-    <div class="modal fade" role="dialog" id="student-add">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-md">
-                    <h5 class="title">Add Students</h5>
-                    <ul class="nk-nav nav nav-tabs mt-n2">
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#student-info">Course Info</a>
-                        </li>
-                       
-                    </ul><!-- .nav-tabs -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="student-info">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Course Name</label>
-                                        <input type="text" class="form-control" id="full-name" placeholder="First name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">Course Description</label>
-                                        <input type="text" class="form-control" id="display-name" placeholder="Last name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Course category</label>
-                                        <div class="form-control-wrap">
-                                            <select class="form-select js-select2" data-placeholder="Select multiple options">
-                                                <option value="default_option">UI/UX Design with Adobe XD</option>
-                                                <option value="option_select_name">Front-end Web Development with React</option>
-                                                <option value="option_select_name">Learn Android Development with project</option>
-                                                <option value="option_select_name">Learn PHP Basic to Advance</option>
-                                                <option value="option_select_name">Learn Android Development with project</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="email">Email Address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Phone Number</label>
-                                        <input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="birth-day">Date of Birth</label>
-                                        <input type="text" class="form-control date-picker" id="birth-day" placeholder="Date of Birth">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Payment Methods</label>
-                                        <ul class="custom-control-group g-3 align-center">
-                                            <li>
-                                                <div class="custom-control custom-control-sm custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pay-card">
-                                                    <label class="custom-control-label" for="pay-card">Card</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="custom-control custom-control-sm custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pay-bitcoin">
-                                                    <label class="custom-control-label" for="pay-bitcoin">Bitcoin</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="custom-control custom-control-sm custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pay-cash">
-                                                    <label class="custom-control-label" for="pay-cash">Cash</label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-primary">Add Student</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane -->
-                        <div class="tab-pane" id="address-info">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Address Line 1</label>
-                                        <input type="text" class="form-control" id="address-l1" value="2337 Kildeer Drive">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Address Line 2</label>
-                                        <input type="text" class="form-control" id="address-l2" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-st">State</label>
-                                        <input type="text" class="form-control" id="address-st" value="Kentucky">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-county">Country</label>
-                                        <select class="form-select js-select2" id="address-county">
-                                            <option>Canada</option>
-                                            <option>United State</option>
-                                            <option>United Kindom</option>
-                                            <option>Australia</option>
-                                            <option>India</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-primary">Update Address</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane -->
-                    </div><!-- .tab-content -->
-                </div><!-- .modal-body -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
     </div><!-- .modal -->
     <!-- JavaScript -->
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
