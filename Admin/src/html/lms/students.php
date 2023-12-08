@@ -1,3 +1,6 @@
+<?php
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -10,7 +13,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Dashboard | LMS | DashLite Admin Template</title>
+    <title>Students | LMS | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.2.3">
     <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=3.2.3">
@@ -21,10 +24,10 @@
         <!-- main @s -->
         <div class="nk-main ">
             <!-- sidebar @s -->
-            <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
+             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.php" class="logo-link nk-sidebar-logo">
+                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
                             <img class="logo-light logo-img" src="./images/logo-dark.svg" srcset="./images/logo2x.png 2x" alt="logo">
                             <img class="logo-dark logo-img" src="./images/logo.svg" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             <img class="logo-small logo-img logo-img-small" src="./images/logo-small.svg" srcset="./images/logo-small2x.png 2x" alt="logo-small">
@@ -39,8 +42,8 @@
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
-                                <li class="nk-menu-item">
-                                    <a href="html/lms/index.php" class="nk-menu-link">
+                                <li class="nk-menu-item active current-page">
+                                    <a href="html/lms/index.html" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Statistics</span>
                                     </a>
@@ -93,7 +96,7 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.php" class="logo-link">
+                                <a href="html/index.html" class="logo-link">
                                     <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
@@ -139,7 +142,7 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
+                                                    <li><a href="/Quizix/Admin/src/html/lms/logout.php"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -159,169 +162,95 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Statistics</h3>
-                                            <div class="nk-block-des text-soft">
-                                                <p>Welcome to statistics.</p>
-                                            </div>
+                                            <h3 class="nk-block-title page-title">Utilisateurs</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="more-options"><em class="icon ni ni-more-v"></em></a>
+                                                <div class="toggle-expand-content" data-content="more-options">
+                                                    <ul class="nk-block-tools g-3">
+                                                        <li class="nk-block-tools-opt">
+                                                            <a class="btn btn-icon btn-primary d-md-none" data-bs-toggle="modal" href="#student-add"><em class="icon ni ni-plus"></em></a>
+                                                            <a class="btn btn-primary d-none d-md-inline-flex" data-bs-toggle="modal" href="#student-add"><em class="icon ni ni-plus"></em><span>Add</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
-                                    <div class="row g-gs">
-                                        <div class="col-xxl-6">
-                                            
-                                            <div class="row g-gs">
-                                                <div class="col-md-12">
-                                                    
-                                                    <div class="card">
-                                                        
-                                                        <div class="card card-bordered card-preview">
-                                                            
-                                                            <div class="card-inner">
-                                                                <h4>Regestred Users</h4>
-                                                                <table class="datatable-init table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Name</th>
-                                                                            <th>Email</th>
-                                                                            <th>Gender</th>
-                                                                            <th>Date Of Birth</th>
-                                                                            <th>Quizes Taken</th>
-                                                                            <th>Courses taken</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- PHP  -->
-                                                                        <?php 
-                                                                            include 'connection.php';
-                                                                            $sql = "SELECT utilisateur.*, COUNT(resultat.userId) as resultatCount
-                                                                            FROM utilisateur
-                                                                            LEFT JOIN resultat ON utilisateur.userId = resultat.userId
-                                                                            GROUP BY utilisateur.userId;";
-                                                                            $stmt = $conn->prepare($sql);
-                                                                            $stmt->execute();
-                                                                            $result = $stmt->get_result();
-                                                                            while($row = $result->fetch_assoc()) {
-                                                                                echo "
-                                                                                <tr>
-                                                                                    <td>".$row["userName"]."</td>
-                                                                                    <td>".$row["email"]."</td>
-                                                                                    <td>".$row["gender"]."</td>
-                                                                                    <td>".$row["dateOfBirth"]."</td>
-                                                                                    <td>".$row["resultatCount"]."</td>
-                                                                                    <td>".$row["resultatCount"]."</td>
-                                                                                </tr>
-                                                                                ";
-                                                                            }
-                                                                        ?>
-                                                                        <!-- PHP  -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .col -->
-                                                
-                                            </div><!-- .row -->
-                                        </div><!-- .col -->
-                                        
-                                        
-                                       
-                                        
-                                        
+                                    <div class="card">
+                                        <div class="card-inner-group">
+                                            <div class="card-inner p-0">
+                                                <div class="nk-tb-list nk-tb-ulist">
+                                                <div class="nk-tb-item nk-tb-head">
+                                                        <div class="nk-tb-col"><span class="sub-text">UserId</span></div>
+                                                        <div class="nk-tb-col"><span class="sub-text">UserName</span></div>
+                                                        <div class="nk-tb-col tb-col-mb"><span class="sub-text d-lg-flex d-none">Email</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">PhoneNumber</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">DateOfBirth</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Nationality</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">RoleUser</span></div>
+                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></div>
+                                                    </div> 
+                                                <?php
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $database = "quizex";
+                                                // Create connection
+                                                $connection = new mysqli($servername, $username, $password, $database);
 
-                                        
-                                        <div class="col-xxl-4 col-md-6">
-                                            <div class="card card-full overflow-hidden">
-                                                <div class="nk-ecwg nk-ecwg4 h-100">
-                                                    <div class="card-inner flex-grow-1">
-                                                        <div class="card-title-group mb-4">
-                                                            <div class="card-title">
-                                                                <h6 class="title">Traffic Sources</h6>
-                                                            </div>
-                                                            <div class="card-tools">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                        <div class="data-group">
-                                                            <div class="nk-ecwg4-ck">
-                                                                <canvas class="lms-doughnut-s1" id="trafficSources"></canvas>
-                                                            </div>
-                                                            <ul class="nk-ecwg4-legends">
-                                                                <li>
-                                                                    <div class="title">
-                                                                        <span class="dot dot-lg sq" data-bg="#9cabff"></span>
-                                                                        <span>Administator</span>
-                                                                    </div>
-                                                                    <div class="amount amount-xs">44</div>
-                                                                </li>
-                                                                
-                                                                
-                                                                <li>
-                                                                    <div class="title">
-                                                                        <span class="dot dot-lg sq" data-bg="#f9db7b"></span>
-                                                                        <span>Student</span>
-                                                                    </div>
-                                                                    <div class="amount amount-xs">456</div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .card-inner -->
-                                                    
-                                                </div>
-                                            </div><!-- .card -->
-                                        </div><!-- .col -->
+                                                // Check connection
+                                                if ($connection->connect_error) {
+                                                    die("Connection failed: " . $connection->connect_error);
+                                                }
+                                                //read (récuperer)all row from database table
+                                                $sql = "SELECT * FROM utilisateur";
+                                                $result = $connection->query($sql);
+
+                                                if (!$result) {
+                                                    die("Invalid query:" . $connection->error);
+                                                }
+                                                while ($row = $result->fetch_assoc()):
+                                                    ?>
+                          
+                              <div class='nk-tb-item nk-tb-head'>
+                              <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userId"] ?></span></div>
+                              <div class='nk-tb-col'><span class='sub-text'> <?php echo $row["userName"] ?></span></div>
+                              <div class='nk-tb-col tb-col-mb'><span class='sub-text d-lg-flex d-none'><?php echo $row["email"] ?></span></div>
+                              <div class='nk-tb-col tb-col-lg'><span class='sub-text'><?php echo $row["phoneNumber"] ?></span></div>
+                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["dateOfBirth"] ?></span></div>
+                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["nationality"] ?></span></div>
+                              <div class='nk-tb-col tb-col-md'><span class='sub-text'><?php echo $row["role_user"] ?></span></div>
+                              <div>
+
+                              <a class='btn btn-primary' href='/Quizix/Admin/src/html/lms/edit.php?id=<?php echo $row["userId"] ?>'>Edit</a>
+                              <a class='btn btn-primary' href='/Quizix/Admin/src/html/lms/delete.php?id=<?php echo $row["userId"] ?>'>Delete</a>
+
+                               </div>
+                               </div>
+                          
+                          <?php
+                                                endwhile;
+                                                ?>
+                                                                                 
+                                                  </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- content @e -->
-                <!-- footer @s -->
+                 
+                          
+                        
+                                
                 <div class="nk-footer">
                     <div class="container-fluid">
                         <div class="nk-footer-wrap">
-                            <div class="nk-footer-copyright"> &copy; 2023 DashLite. Template by <a href="https://softnio.com" target="_blank">Softnio</a>
+                            <div class="nk-footer-copyright"> &copy; Quizix. Template by <a href="https://softnio.com" target="_blank">Softnio</a>
                             </div>
-                            <div class="nk-footer-links">
-                                <ul class="nav nav-sm">
-                                    <li class="nav-item dropup">
-                                        <a href="#" class="dropdown-toggle dropdown-indicator has-indicator nav-link text-base" data-bs-toggle="dropdown" data-offset="0,10"><span>English</span></a>
-                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                            <ul class="language-list">
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <span class="language-name">English</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <span class="language-name">Español</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <span class="language-name">Français</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <span class="language-name">Türkçe</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -455,10 +384,131 @@
             </div><!-- .modal-content -->
         </div><!-- .modla-dialog -->
     </div><!-- .modal -->
+    <!-- @@ Profile Edit Modal @e -->
+    <div class="modal fade" role="dialog" id="student-add">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <div class="modal-body modal-body-md">
+                    <h5 class="title">Add Utilisateurs</h5>
+                    <ul class="nk-nav nav nav-tabs mt-n2">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#student-info">utilisateur Info</a>
+                        </li>
+                       
+                    </ul><!-- .nav-tabs -->
+
+                    <div class="tab-content">
+                        <form action="html\lms/add.php" method="POST">
+                        <div class="tab-pane active" id="student-info">
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">userName</label>
+                                        <input type="text" class="form-control" id="full-name" placeholder=" name" name="username">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="display-name">nationality</label>
+                                        <input type="text" class="form-control" id="display-name" placeholder="nationality" name="nationality">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="email">email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Email Address" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">phoneNumber</label>
+                                        <input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number" name="phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="birth-day">Date of Birth</label>
+                                        <input type="text" class="form-control date-picker" id="birth-day" placeholder="Date of Birth" name="date">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="birth-day">ROLE</label>
+                                        <input type="text" name="role">
+                                    </div>
+                                </div>
+                             
+                                <div class="col-md-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+
+                                        </li>
+                                        <li>
+                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- .tab-pane -->
+                        <div class="tab-pane" id="address-info">
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l1">Address Line 1</label>
+                                        <input type="text" class="form-control" id="address-l1" value="2337 Kildeer Drive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l2">Address Line 2</label>
+                                        <input type="text" class="form-control" id="address-l2" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-st">State</label>
+                                        <input type="text" class="form-control" id="address-st" value="Kentucky">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-county">Country</label>
+                                        <select class="form-select js-select2" id="address-county">
+                                            <option>Canada</option>
+                                            <option>United State</option>
+                                            <option>United Kindom</option>
+                                            <option>Australia</option>
+                                            <option>India</option>
+                                            <option>Bangladesh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <a href="#" class="btn btn-primary">Update Address</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- .tab-pane -->
+                    </div><!-- .tab-content -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal -->
+    
     <!-- JavaScript -->
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
-    <script src="./assets/js/charts/chart-lms.js?ver=3.2.3"></script>
 </body>
 
 </html>

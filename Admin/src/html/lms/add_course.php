@@ -36,6 +36,8 @@ if ($conn->query($sql) === TRUE) {
             header("Location: createcourse.html");
         } 
     }
+}
+
     if(isset($_GET['id'])){
     if(isset($_POST['submitupdate'])) {
         $courseIdToUpdate = $_GET['id']; // Assuming the course ID is passed in the URL
@@ -44,38 +46,21 @@ if ($conn->query($sql) === TRUE) {
         $updatedCourName = $_POST['courName'];
         $updatedCategory = $_POST['category'];
         $updatedStartTime = date("Y-m-d H:i:s"); // Update start time to current time
-    
-        $sqlUpdate = "UPDATE cours SET courName = '$updatedCourName', category = '$updatedCategory', startTime = '$updatedStartTime' WHERE courId = '$courseIdToUpdate'";
-    
-        if ($conn->query($sqlUpdate) === TRUE) {
-            // Update course description if applicable
-            if (
-                (isset($_POST['heading']) && is_array($_POST['heading'])) ||
-                (isset($_POST['subtitle']) && is_array($_POST['subtitle'])) ||
-                (isset($_POST['paragraph']) && is_array($_POST['paragraph']))
-            ) {
-                $coursDescription = '';
-                $numParts = count($_POST['heading']);
-                for ($i = 0; $i < $numParts; $i++) {
-                    $heading = isset($_POST["heading"][$i]) ? htmlspecialchars($_POST["heading"][$i]) : '';
-                    $subtitle = isset($_POST["subtitle"][$i]) ? htmlspecialchars($_POST["subtitle"][$i]) : '';
-                    $paragraph = isset($_POST["paragraph"][$i]) ? htmlspecialchars($_POST["paragraph"][$i]) : '';
+
+        $heading = $_POST["heading"] ;
+                    $subtitle = $_POST["subtitle"] ;
+                    $paragraph =$_POST["paragraph"] ;
     
                     $coursDescription .= "<h1>$heading</h1>" . "<h3>$subtitle</h3>" . "<p>$paragraph</p>";
-                }
-    
-                $sqlUpdateDescription = "UPDATE cours SET courDescription = '$coursDescription' WHERE courId = '$courseIdToUpdate'";
-                $conn->query($sqlUpdateDescription);
-            }
-    
-            header("Location: createcourse.html"); // Redirect after successful update
-        } else {
-            echo "Error updating course: " . $conn->error;
-        }
-    }
+               
 
-}
- }
+
+        $sqlUpdate = "UPDATE cours SET courName = '$updatedCourName', category = '$updatedCategory', startTime = '$updatedStartTime', courDescription = '$coursDescription' WHERE courId = '$courseIdToUpdate'";
+        
+        $conn->query($sqlUpdate)
+       
+    }
+    }
 
 
 

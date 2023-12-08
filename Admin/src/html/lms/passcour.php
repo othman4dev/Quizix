@@ -71,7 +71,7 @@
                 </li>
                 <!-- .nk-menu-item -->
                 <li class="nk-menu-item">
-                  <a href="html/lms/category.html" class="nk-menu-link">
+                  <a href="html/lms/category.php" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span>
                     <span class="nk-menu-text">Courses</span>
                   </a>
