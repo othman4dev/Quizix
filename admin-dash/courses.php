@@ -187,7 +187,7 @@
                                                     <tbody>
                                                         <?php
                                                         // Generate HTML dynamically based on the retrieved data
-                                                        $selected = "SELECT c.*, c.courId, a.*, q.*, COUNT(*) AS total_chapters, SUM(cc.passed) AS passed_chapters FROM cours c LEFT JOIN administrateur a ON c.adminId = a.adminId LEFT JOIN quiz q ON c.courId = q.courId INNER JOIN cour_chapters cc ON c.courId = cc.cour_id GROUP BY c.courId, a.adminId, q.quizId;";
+                                                        $selected = "SELECT c.*, a.*, q.*, COUNT(*) AS total_chapters, SUM(cc.passed) AS passed_chapters,c.courId FROM cours c LEFT JOIN administrateur a ON c.adminId = a.adminId LEFT JOIN quiz q ON c.courId = q.courId INNER JOIN cour_chapters cc ON c.courId = cc.cour_id GROUP BY c.courId, a.adminId, q.quizId;";
                                                         $result = $conn->query($selected);
                                                         while ($row = $result->fetch_assoc()) {
                                                             echo "
@@ -199,6 +199,7 @@
                                                             </div>
                                                         </td>
                                                         <td class='nk-tb-col'>
+                                                            
                                                             <a href='./passcour.php?courId=".$row["courId"]."' class='project-title'>
                                                                 <div class='user-avatar sq bg-purple'><span>" . substr($row['courName'], 0, 2) . "</span></div>
                                                                 <div class='project-info'>
