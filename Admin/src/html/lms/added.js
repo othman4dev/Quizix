@@ -1,10 +1,6 @@
-let d = 1;
-
 function addHeading() {
-    d++;
     const html = `
-        <span>Part ${d}</span>
-        <input type="text" name="heading[]" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
+        <input type="text" name="heading" class="heading para" placeholder="Add Heading" autocomplete="off" spellcheck="false" onkeyup="makeReady()">
     `;
     console.log(html);
     document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
@@ -12,14 +8,14 @@ function addHeading() {
 
 function addSubtitle() {
     const html = `
-        <input type="text" name="subtitle[]" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
+        <input type="text" name="subtitle" class="sub-title para" placeholder="Subtitle" autocomplete="off" spellcheck="false" onkeyup="MakeReady()">
     `;
     document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
 }
 
 function addParagraph() {
     const html = `
-        <textarea name="paragraph[]" class="paragraph" rows="10" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
+        <textarea name="paragraph" class="paragraph para" rows="10" placeholder="Add a paragraph" autocomplete="off" spellcheck="false" onkeyup="MakeReady()"></textarea>
     `;
     document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
 }

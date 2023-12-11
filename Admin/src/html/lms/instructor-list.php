@@ -1,5 +1,20 @@
-
-<?php  ?>
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -60,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                                    <a href="html/lms/instructor-list.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
@@ -72,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                                    <a href="html/lms/admin-profile.php" class="nk-menu-link">
                                       <span class="nk-menu-icon"
                                         ><em class="icon ni ni-account-setting-fill"></em
                                       ></span>
@@ -103,50 +118,78 @@
                             <!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
-                                    
-                                    
-                                    
-                                    <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
-                                            <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
-                                                <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-active">Administator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                                <div class="user-card">
-                                                    <div class="user-avatar">
-                                                        <span>AB</span>
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                                    </li>
-                                                    
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                <li class="dropdown user-dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle me-n1"
+                        data-bs-toggle="dropdown"
+                      >
+                        <div class="user-toggle">
+                          <div class="user-avatar sm">
+                            <em class="icon ni ni-user-alt"></em>
+                          </div>
+                          <div class="user-info d-none d-xl-block">
+                            <div class="user-status user-status-active">
+                              <?php echo $role ?>
+                            </div>
+                            <div class="user-name dropdown-indicator">
+                              <?php echo $fullname ?>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-md dropdown-menu-end"
+                      >
+                        <div
+                          class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block"
+                        >
+                          <div class="user-card">
+                            <div class="user-avatar">
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
+                            </div>
+                            <div class="user-info">
+                              <span class="lead-text"><?php echo $fullname ?></span>
+                              <span class="sub-text"
+                                ><?php echo $email ?></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-user-alt"></em
+                                ><span>View Profile</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-setting-alt"></em
+                                ><span>Account Setting</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="dark-switch" href="#"
+                                ><em class="icon ni ni-moon"></em
+                                ><span>Dark Mode</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="#"
+                                ><em class="icon ni ni-signout"></em
+                                ><span>Sign out</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
                                 </ul>
                             </div>
                         </div><!-- .nk-header-wrap -->
@@ -229,607 +272,68 @@
                                                             </ul>
                                                         </div>
                                                     </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid1">
-                                                                <label class="custom-control-label" for="uid1"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-primary">
-                                                                        <span>AB</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Abu Bin Ishtiyak <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>info@softnio.com</span>
-                                                                    </div>
+                                                    <?php 
+                                                        $sqlcode = 'SELECT * FROM administrateur';
+                                                        $resultcode = mysqli_query($conn, $sqlcode);
+                                                        while ($rowcode = mysqli_fetch_assoc($resultcode)) {
+                                                            $sqlcode2 = "SELECT COUNT(*) FROM cours WHERE adminId = ".$rowcode['adminId']."";
+                                                            $reslut2  = mysqli_query($conn, $sqlcode2);
+                                                            $row = mysqli_fetch_assoc($reslut2);
+                                                            echo "
+                                                            <div class='nk-tb-item'>
+                                                            <div class='nk-tb-col nk-tb-col-check'>
+                                                                <div class='custom-control custom-control-sm custom-checkbox notext'>
+                                                                    <input type='checkbox' class='custom-control-input' id='uid1'>
+                                                                    <label class='custom-control-label' for='uid1'></label>
                                                                 </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 758-756433</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>United State</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>12 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
+                                                            </div>
+                                                            <div class='nk-tb-col'>
+                                                                <a href='html/lms/instructor-details.html'>
+                                                                    <div class='user-card'>
+                                                                        <div class='user-avatar bg-primary'>
+                                                                            <span>" . substr($rowcode['adminName'],0,2) ."</span>
+                                                                        </div>
+                                                                        <div class='user-info'>
+                                                                            <span class='tb-lead'>". $rowcode['adminName'] ."<span class='dot dot-success d-md-none ms-1'></span></span>
+                                                                            <span>". $rowcode['email'] ."</span>
                                                                         </div>
                                                                     </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid2">
-                                                                <label class="custom-control-label" for="uid2"></label>
+                                                                </a>
+                                                            </div>
+                                                            <div class='nk-tb-col tb-col-md'>
+                                                                <span>". $rowcode['phoneNumber'] ."</span>
+                                                            </div>
+                                                            <div class='nk-tb-col tb-col-lg'>
+                                                                <span>". $rowcode['nationality'] ."</span>
+                                                            </div>
+                                                            <div class='nk-tb-col tb-col-lg'>
+                                                                <span>". $rowcode['dateOfBirth'] ."</span>
+                                                            </div>
+                                                            <div class='nk-tb-col tb-col-mb'>
+                                                                <span>". $row['COUNT(*)'] ." active courses</span>
+                                                            </div>
+                                                            <div class='nk-tb-col tb-col-md'>
+                                                                <span class='tb-status text-success'>Active</span>
+                                                            </div>
+                                                            <div class='nk-tb-col nk-tb-col-tools'>
+                                                                <ul class='nk-tb-actions gx-1'>
+                                                                    
+                                                                    <li>
+                                                                        <div class='drodown'>
+                                                                            <a href='#' class='dropdown-toggle btn btn-icon btn-trigger' data-bs-toggle='dropdown'><em class='icon ni ni-more-h'></em></a>
+                                                                            <div class='dropdown-menu dropdown-menu-end'>
+                                                                                <ul class='link-list-opt no-bdr'>
+                                                                                    <li><a href='html/lms/instructor-details.html'><em class='icon ni ni-eye'></em><span>View Details</span></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/a-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Ashley Lawson <span class="dot dot-warning d-md-none ms-1"></span></span>
-                                                                        <span>ashley@softnio.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 534-98324</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>United kingdom</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>24 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-warning">Pending</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid3">
-                                                                <label class="custom-control-label" for="uid3"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-info">
-                                                                        <span>JL</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Joe Larson <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>larson@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 987-4958</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>United State</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>2 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid4">
-                                                                <label class="custom-control-label" for="uid4"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-danger">
-                                                                        <span>JM</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Jane Montgomery <span class="dot dot-danger d-md-none ms-1"></span></span>
-                                                                        <span>jane84@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 765-4958</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Canada</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>14 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-danger">Suspend</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid5">
-                                                                <label class="custom-control-label" for="uid5"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/b-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Frances Burns <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>frances@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 987-9875</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Australia</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>20 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid6">
-                                                                <label class="custom-control-label" for="uid6"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/c-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Alan Butler <span class="dot dot-info d-md-none ms-1"></span></span>
-                                                                        <span>butler@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 847-4532</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Brazil</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>3 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-info">Inactive</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid7">
-                                                                <label class="custom-control-label" for="uid7"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-warning">
-                                                                        <span>VL</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Victoria Lynch <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>victoria@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 231-5463</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>India</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>5 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid8">
-                                                                <label class="custom-control-label" for="uid8"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-success">
-                                                                        <span>PN</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Patrick Newman <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>patrick@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 347-4958</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Bangladesh</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>29 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid9">
-                                                                <label class="custom-control-label" for="uid9"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar">
-                                                                        <img src="./images/avatar/d-sm.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Jane Harris <span class="dot dot-warning d-md-none ms-1"></span></span>
-                                                                        <span>harris@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 816-4958</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>India</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>6 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-warning">Pending</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input" id="uid10">
-                                                                <label class="custom-control-label" for="uid10"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="html/lms/instructor-details.html">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar bg-purple">
-                                                                        <span>EW</span>
-                                                                    </div>
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Emma Walker <span class="dot dot-success d-md-none ms-1"></span></span>
-                                                                        <span>walker@example.com</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span>+811 162-5647</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Brazil</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span>Lorem ipsum dolor sit amet.</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span>35 active courses</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Email">
-                                                                        <em class="icon ni ni-mail-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Suspend">
-                                                                        <em class="icon ni ni-user-cross-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="drodown">
-                                                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li><a href="html/lms/instructor-details.html"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                                                  
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
+                                                            ";
+                                                        }
+                                                    ?>
                                                 </div><!-- .nk-tb-list -->
                                             </div>
                                             <div class="card-inner">

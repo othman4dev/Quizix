@@ -1,22 +1,23 @@
-console.log("script exectue");
-
-let parts = 1;
 function addHeading() {
-    parts++;
-    document.getElementById("bottom").insertAdjacentHTML("beforebegin",`
-        <span>Part ${parts}</span>
-        <input type="text" name="heading" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
-    `);
+    const html = `
+        <input type="text" name="heading" class="heading para" placeholder="Add Heading" autocomplete="off" spellcheck="false" onkeyup="makeReady()">
+    `;
+    console.log(html);
+    document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
 }
+
 function addSubtitle() {
-    document.getElementById("bottom").insertAdjacentHTML("beforebegin",`
-        <input type="text" name="subtitle" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
-    `);
+    const html = `
+        <input type="text" name="subtitle" class="sub-title para" placeholder="Subtitle" autocomplete="off" spellcheck="false" onkeyup="makeReady()">
+    `;
+    document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
 }
+
 function addParagraph() {
-    document.getElementById("bottom").insertAdjacentHTML("beforebegin",`
-        <textarea name="paragraph" class="paragraph" rows="10" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
-    `);
+    const html = `
+        <textarea name="paragraph" class="paragraph para" rows="10" placeholder="Add a paragraph" autocomplete="off" spellcheck="false" onkeyup="makeReady()"></textarea>
+    `;
+    document.getElementById("bottom").insertAdjacentHTML("beforebegin", html);
 }
 function calculate() {
     let allRadios = document.querySelectorAll('input[type=radio]');

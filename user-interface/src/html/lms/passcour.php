@@ -1,4 +1,17 @@
-<?php include "connection.php" ;?>
+<?php 
+  session_start();
+  if (!isset($_SESSION['userId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "user") {
+    $role = "Student";
+  }
+  $userId = $_SESSION['userId'];
+  $email = $_SESSION["email"];
+  $fullname = $_SESSION["fullname"];
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -106,7 +119,7 @@
                   </li>
 
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                    <a href="html/lms/admin-profile.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-account-setting-fill"></em
                       ></span>
@@ -551,11 +564,11 @@
                             <em class="icon ni ni-user-alt"></em>
                           </div>
                           <div class="user-info d-none d-xl-block">
-                            <div class="user-status user-status-unverified">
-                              Unverified
+                            <div class="user-status user-status-active">
+                              <?php echo $role ?>
                             </div>
                             <div class="user-name dropdown-indicator">
-                              Othman Kharbouch
+                              <?php echo $fullname ?>
                             </div>
                           </div>
                         </div>
@@ -568,12 +581,12 @@
                         >
                           <div class="user-card">
                             <div class="user-avatar">
-                              <span>AB</span>
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
                             </div>
                             <div class="user-info">
-                              <span class="lead-text">Othman Kharbouch</span>
+                              <span class="lead-text"><?php echo $fullname ?></span>
                               <span class="sub-text"
-                                >otmankharbouch813@gmail.com</span
+                                ><?php echo $email ?></span
                               >
                             </div>
                           </div>
@@ -581,21 +594,15 @@
                         <div class="dropdown-inner">
                           <ul class="link-list">
                             <li>
-                              <a href="html/user-profile-regular.html"
+                              <a href="html/lms/admin-profile.php"
                                 ><em class="icon ni ni-user-alt"></em
                                 ><span>View Profile</span></a
                               >
                             </li>
                             <li>
-                              <a href="html/user-profile-setting.html"
+                              <a href="html/lms/admin-profile.php"
                                 ><em class="icon ni ni-setting-alt"></em
                                 ><span>Account Setting</span></a
-                              >
-                            </li>
-                            <li>
-                              <a href="html/user-profile-activity.html"
-                                ><em class="icon ni ni-activity-alt"></em
-                                ><span>Login Activity</span></a
                               >
                             </li>
                             <li>
@@ -628,57 +635,57 @@
           <!-- main header @e -->
           <!-- content @s -->
           <div class="nk-content">
-    <div class="container-fluid">
-        <div class="nk-content-inner">
-            <div class="nk-content-body">
-                <div class="content-page wide-md m-auto">
-                    <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
-                      <div class="nk-block-head-content text-center">
-                        <h2 class="nk-block-title fw-normal"><?php 
-                        $id = $_GET["courId"];
-                        
-                        $sql = "SELECT * FROM cours 
-                        JOIN administrateur ON cours.adminId = administrateur.adminId
-                        WHERE courId = ?";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("i", $id);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        $row = $result->fetch_assoc();
-                        if ($row) {
-                            echo $row['courName'];
-                        } else {
-                            echo "No course found with ID : $id";
-                        }
-                        ?></h2>
-                        <div class="nk-block-des">
-                          <p class="lead">
-                            Category : <?php echo $row['category']; ?> , By <?php echo $row['adminName'] ?>
-                          </p>
+            <div class="container-fluid">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="content-page wide-md m-auto">
+                            <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
+                              <div class="nk-block-head-content text-center">
+                                <h2 class="nk-block-title fw-normal"><?php 
+                                $id = $_GET["courId"];
+                                $sql = "SELECT * FROM cours 
+                                JOIN administrateur ON cours.adminId = administrateur.adminId
+                                WHERE courId = ?";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bind_param("i", $id);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                $row = $result->fetch_assoc();
+                                if ($row) {
+                                    echo $row['courName'];
+                                } else {
+                                    echo "No course found with ID : $id";
+                                }
+                                ?></h2>
+                                <div class="nk-block-des">
+                                  <p class="lead">
+                                    Category : <?php echo $row['category']; ?> , By <?php echo $row['adminName'] ?>
+                                  </p>
+                                </div>
+                            </div>
+                            <!-- .nk-block-head -->
+                            <div class="nk-block">
+                              <div class="card">
+                                <div class="card-inner card-inner-xl">
+                                  <article class="entry">
+                                  <?php echo $row['courDescription']; ?>
+                                  </article>
+                                </div>
+                                <div class="quiz-pass">
+                                  <a href="html/lms/passquiz.php?quizId=<?php echo $id; ?>"
+                                    ><button class="submit-it">Pass Quiz</button></a
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                            <!-- .nk-block -->
                         </div>
+                        <!-- .content-page -->
                     </div>
-                    <!-- .nk-block-head -->
-                    <div class="nk-block">
-                      <div class="card">
-                        <div class="card-inner card-inner-xl">
-                          <article class="entry">
-                          <?php echo $row['courDescription']; ?>
-                          </article>
-                        </div>
-                        <div class="quiz-pass">
-                          <a href="html/lms/passquiz.php?quizId=<?php echo $id; ?>"
-                            ><button class="submit-it">Pass Quiz</button></a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <!-- .nk-block -->
                 </div>
-                <!-- .content-page -->
             </div>
-        </div>
-    </div>
-</div>
+          </div>
+          </div>
           <!-- content @e -->
           <!-- footer @s -->
           <div class="nk-footer">

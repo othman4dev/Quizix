@@ -1,5 +1,19 @@
-<?php
-    include "connection.php";
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($role == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
 ?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
@@ -27,7 +41,7 @@
              <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <a href="html/index.php" class="logo-link nk-sidebar-logo">
+                        <a href="html/index.html" class="logo-link nk-sidebar-logo">
                             <img class="logo-light logo-img" src="./images/logo-dark.svg" srcset="./images/logo2x.png 2x" alt="logo">
                             <img class="logo-dark logo-img" src="./images/logo.svg" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             <img class="logo-small logo-img logo-img-small" src="./images/logo-small.svg" srcset="./images/logo-small2x.png 2x" alt="logo-small">
@@ -43,7 +57,6 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
                                 <li class="nk-menu-item active current-page">
-                                    <a href="html/lms/index.php" class="nk-menu-link">
                                     <a href="html/lms/index.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
                                         <span class="nk-menu-text">Statistics</span>
@@ -62,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                                    <a href="html/lms/instructor-list.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
@@ -74,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                                    <a href="html/lms/admin-profile.php" class="nk-menu-link">
                                       <span class="nk-menu-icon"
                                         ><em class="icon ni ni-account-setting-fill"></em
                                       ></span>
@@ -97,7 +110,7 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.php" class="logo-link">
+                                <a href="html/index.html" class="logo-link">
                                     <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
                                     <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                                 </a>
@@ -108,47 +121,78 @@
                                     
                                     
                                     
-                                    <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
-                                            <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
-                                                <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-active">Administator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                                <div class="user-card">
-                                                    <div class="user-avatar">
-                                                        <span>AB</span>
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                                    </li>
-                                                    
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                <li class="dropdown user-dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle me-n1"
+                        data-bs-toggle="dropdown"
+                      >
+                        <div class="user-toggle">
+                          <div class="user-avatar sm">
+                            <em class="icon ni ni-user-alt"></em>
+                          </div>
+                          <div class="user-info d-none d-xl-block">
+                            <div class="user-status user-status-active">
+                              <?php echo $role ?>
+                            </div>
+                            <div class="user-name dropdown-indicator">
+                              <?php echo $fullname ?>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-md dropdown-menu-end"
+                      >
+                        <div
+                          class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block"
+                        >
+                          <div class="user-card">
+                            <div class="user-avatar">
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
+                            </div>
+                            <div class="user-info">
+                              <span class="lead-text"><?php echo $fullname ?></span>
+                              <span class="sub-text"
+                                ><?php echo $email ?></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-user-alt"></em
+                                ><span>View Profile</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-setting-alt"></em
+                                ><span>Account Setting</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="dark-switch" href="#"
+                                ><em class="icon ni ni-moon"></em
+                                ><span>Dark Mode</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="#"
+                                ><em class="icon ni ni-signout"></em
+                                ><span>Sign out</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
                                 </ul>
                             </div>
                         </div><!-- .nk-header-wrap -->
@@ -165,7 +209,7 @@
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Courses</h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>You have total 20 Courses.</p>
+                                                <p>You have total <?php  ?> Courses.</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
@@ -203,10 +247,6 @@
                                                     <thead>
                                                         <tr class="nk-tb-item nk-tb-head">
                                                             <th class="nk-tb-col nk-tb-col-check">
-                                                                <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                    <input type="checkbox" class="custom-control-input" id="pid-all">
-                                                                    <label class="custom-control-label" for="pid-all"></label>
-                                                                </div>
                                                             </th>
                                                             <th class="nk-tb-col"><span class="sub-text">Course Name</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Category</span></th>
@@ -214,7 +254,7 @@
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Quiz Name</span></th>
                                                             <!-- <th class="nk-tb-col tb-col-xxl"><span class="sub-text">Enrole Student</span></th> -->
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Progress</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Views</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">startTime</span></th>
                                                             <th class="nk-tb-col nk-tb-col-tools text-end">
                                                                 <ul class="nk-tb-actions gx-1">
@@ -236,22 +276,22 @@
                                                     <tbody>
                                                     <?php                                                               
                                                     // Generate HTML dynamically based on the retrieved data
-                                                    $selected = "SELECT * FROM cours JOIN administrateur ON cours.adminId = administrateur.adminId JOIN quiz ON cours.courId = quiz.courId";
+                                                    $selected = "SELECT * FROM cours LEFT JOIN administrateur ON cours.adminId = administrateur.adminId LEFT JOIN quiz ON cours.courId = quiz.courId;";
                                                     $result = $conn->query($selected);
+                                                    $i = 0;
                                                     while ($row = $result->fetch_assoc()) {
+                                                        $i++;
+                                                        $sqlcode2 = "SELECT COUNT(*) FROM passedcours WHERE courId = " . $row["courId"] . ";";
                                                         echo "
                                                         <tr class='nk-tb-item'>
-                                                        <td class='nk-tb-col nk-tb-col-check'>
-                                                            <div class='custom-control custom-control-sm custom-checkbox notext'>
-                                                                <input type='checkbox' class='custom-control-input' id='pid-10'>
-                                                                <label class='custom-control-label' for='pid-10'></label>
-                                                            </div>
+                                                        <td class='nk-tb-col tb-col-lg'>
+                                                            " . $i . "
                                                         </td>
                                                         <td class='nk-tb-col'>
-                                                            <a href='#' class='project-title'>
+                                                            <a href='html/lms/passcour.php?courId=" . $row["courId"] . "' class='project-title'>
                                                                 <div class='user-avatar sq bg-purple'><span>". substr($row['courName'], 0, 2) ."</span></div>
                                                                 <div class='project-info'>
-                                                                    <h6 class='title'>courName</h6>
+                                                                    <h6 class='title'>".$row["courName"]."</h6>
                                                                 </div>
                                                             </a>
                                                         </td>
@@ -264,33 +304,32 @@
                                                         <td class='nk-tb-col tb-col-lg'>
                                                             <span>".$row["quizName"]."</span>
                                                         </td>
-                                                        <td class='nk-tb-col tb-col-xxl'>
-                                                            <span>Total enrolment: 6</span>
-                                                        </td>
                                                         <td class='nk-tb-col tb-col-md'>
                                                             <span class='badge badge-dim bg-success'>Active</span>
                                                         </td>
                                                         <td class='nk-tb-col tb-col-mb'>
-                                                            <span>$50</span>
+                                                            <span>" . $row["courId"] . "</span>
                                                         </td>
                                                         <td class='nk-tb-col tb-col-mb'>
-                                                            <span>20.4.2021</span>
+                                                            <span> ".$row["startTime"]."</span>
                                                         </td>
                                                         <td class='nk-tb-col nk-tb-col-tools'>
                                                             <ul class='nk-tb-actions gx-1'>
                                                                 <li>
-                                                                    <div class='drodown'>
+                                                                    <div class='dropdown'>
                                                                         <a href='#' class='dropdown-toggle btn btn-sm btn-icon btn-trigger' data-bs-toggle='dropdown'><em class='icon ni ni-more-h'></em></a>
                                                                         <div class='dropdown-menu dropdown-menu-end'>
                                                                             <ul class='link-list-opt no-bdr'>
-                                                                                <li><a data-bs-toggle='modal' href='#modalDelete' onclick='transferId(" . $row["quizId"] . ")'><em class='icon ni ni-delete'></em><span>Delete Student</span></a></li>
+                                                                                <li><a href='editcour.php?courId='" . $i . "'><em class='icon ni ni-edit'></em><span>Edit Course</span></a></li>
+                                                                                <li><a href=delete.php?courId='" . $i . "'><em class='icon ni ni-delete'></em><span>Delete Course</span></a></li>
                                                                             </ul>
                                                                         </div>
                                                                     </div>
                                                                 </li>
                                                             </ul>
                                                         </td>
-                                                    </tr>";
+                                                    </tr>
+                                                    ";
                                                       }
                                                     ?>
                                                     </tbody>
@@ -771,7 +810,7 @@
                         </div>
                         <ul class="d-flex justify-content-center gx-4 mt-4">
                             <li>
-                                <button data-bs-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
+                                <button id="deleteEvent" class="btn btn-success">Yes, Delete it</button>
                             </li>
                             <li>
                                 <button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editEventPopup" class="btn btn-danger btn-dim">Cancel</button>

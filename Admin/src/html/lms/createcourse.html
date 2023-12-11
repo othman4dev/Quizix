@@ -98,7 +98,7 @@
                       </a>
                   </li>
                   <li class="nk-menu-item">
-                      <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                      <a href="html/lms/instructor-list.php" class="nk-menu-link">
                           <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                           <span class="nk-menu-text">Instructors</span>
                       </a>
@@ -110,7 +110,7 @@
                       </a>
                   </li>
                   <li class="nk-menu-item">
-                      <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                      <a href="html/lms/admin-profile.php" class="nk-menu-link">
                         <span class="nk-menu-icon"
                           ><em class="icon ni ni-account-setting-fill"></em
                         ></span>
@@ -642,19 +642,18 @@
                         <form action="html/lms/add_course.php" method="post" id="form-add-course" class="course-form">
                             <label>Course name :<input type="text" class="paragraph" name="courName"></label>
                             <label>Course category : <input type="text" name="category" id="" class="paragraph"></label>
-                            <span>Part 1</span>
-                            <input type="text" name="heading[]" class="heading" placeholder="Add Heading" autocomplete="off" spellcheck="false">
-                            <input type="text" name="subtitle[]" id="" class="sub-title" placeholder="Subtitle" autocomplete="off" spellcheck="false">
-                            <textarea name="paragraph[]" class="paragraph" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false"></textarea>
-                            
+                            <input type="text" name="heading" class="heading para" placeholder="Add Heading" autocomplete="off" spellcheck="false" onkeyup="makeReady()">
+                            <input type="text" name="subtitle" id="" class="sub-title para" placeholder="Subtitle" autocomplete="off" spellcheck="false" onkeyup="makeReady()">
+                            <textarea name="paragraph" class="paragraph para" rows="7" placeholder="Add a paragraph" autocomplete="off" spellcheck="false" onkeyup="makeReady()"></textarea>
+                            <input type="text" name="body" value="" id="wholeBody" style="display: none;">
                             <div class="quiz-pass" id="bottom">
-                              <input class="submit-it" type="submit" value="Submit">
+                              <input class="submit-it" type="submit" value="Submit" onclick="makeReady()">
                             </div>
                         </form>
                         <div class="quiz-pass">
-                            <button class="add-head" onclick="addHeading()">Add heading<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addSubtitle()">Add Subtitle<img src="/user-interface/src/images/ex.svg" alt=""></button>
-                            <button class="add-head" onclick="addParagraph()">Add Paragraph <img src="/user-interface/src/images/ex.svg" alt=""></button>
+                            <button class="add-head" onclick="addHeading()">Add heading<img src="/Admin/src/images/ex.svg" alt=""></button>
+                            <button class="add-head" onclick="addSubtitle()">Add Subtitle<img src="/Admin/src/images/ex.svg" alt=""></button>
+                            <button class="add-head" onclick="addParagraph()">Add Paragraph <img src="/Admin/src/images/ex.svg" alt=""></button>
                         </div>
                         
                       </div>
@@ -934,8 +933,27 @@
     <!-- .modal -->
     <!-- JavaScript -->
     <script src="./js/added.js"></script>
-
     <script src="./assets/js/bundle.js?ver=3.2.3"></script>
     <script src="./assets/js/scripts.js?ver=3.2.3"></script>
   </body>
 </html>
+<script>
+  function makeReady() {
+    let total = document.getElementById('wholeBody');
+    total.value = '';
+    let allInputs = document.querySelectorAll('.para');
+    allInputs.forEach(element => {
+        if (element.classList[0] == 'heading') {
+            total.value = total.value + '<h1>' + element.value + '</h1>';
+        }
+        if (element.classList[0] == 'sub-title') {
+            total.value = total.value + '<h3>' +element.value + '</h3>';
+        }
+        if (element.classList[0] == 'paragraph') {
+            total.value = total.value + '<p>' +element.value + '</p>';
+        }
+        console.log(total.value);
+        console.log(allInputs);
+    });
+}
+</script>

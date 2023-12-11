@@ -1,29 +1,3 @@
-<?php
-include("connection.php");
-
-if (isset($_POST["submit"])) {
-    $username = htmlspecialchars(strtolower(trim($_POST['username'])));
-    $email = htmlspecialchars(strtolower(trim($_POST['email'])));
-    $password = htmlspecialchars(strtolower(trim($_POST['password'])));
-
-    $query2 = "SELECT * FROM utilisateur WHERE email = '$email'";
-    $result2 = mysqli_query($conn, $query2);
-
-    if (mysqli_num_rows($result2) > 0) {
-        $email_error = "Account Already Exists";
-    } else {
-        // Hacher le mot de passe
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $query = "INSERT INTO utilisateur (userName, email, password_user) VALUES ( ?, ?, ? )";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("sss", $username, $email, $hashedPassword);
-        $stmt->execute();
-        header(" Location: dashboard-u.php");
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -38,8 +12,8 @@ if (isset($_POST["submit"])) {
     <!-- Page Title  -->
     <title>Registration | Quizix Admin Template</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="../../assets/css/dashlite.css?ver=3.2.3">
-    <link id="skin-default" rel="stylesheet" href="../../assets/css/theme.css?ver=3.2.3">
+    <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.2.3">
+    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=3.2.3">
 </head>
 
 <body class="nk-body bg-white npc-default pg-auth">
@@ -74,39 +48,29 @@ if (isset($_POST["submit"])) {
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
-                                <form action="html/pages/auths/auth-register.php" method="POST">
+                                <form action="html/pages/auths/auth-success.html">
                                     <div class="form-group">
-                                        <label class="form-label" for="name">Full Name</label>
+                                        <label class="form-label" for="name">userName</label>
                                         <div class="form-control-wrap">
-                                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your full name"  name="username" required>
+                                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your username">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="email">Email</label>
                                         <div class="form-control-wrap">
-                                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter your email address " name="email" required>
+                                            <input type="text" class="form-control form-control-lg" id="email" placeholder="Enter your email address ">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="password">Password</label>
                                         <div class="form-control-wrap">
-                                            <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch lg" data-target="New password">
+                                            <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your password"  name="password" required>
+                                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your password">
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                         <label class="form-label" for="role">Role</label>
-                                         <div class="form-control-wrap">
-                                            <select class="form-select form-control-lg" id="role" name="role" required>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">Utilisateur</option>
-                                            </select>
-                                         </div>
-                                    </div> -->
-
                                     <div class="form-group">
                                         <div class="custom-control custom-control-xs custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="checkbox">
@@ -114,11 +78,10 @@ if (isset($_POST["submit"])) {
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+                                        <button class="btn btn-lg btn-primary btn-block">Register</button>
                                     </div>
                                 </form><!-- form -->
-                                <div><?php echo $email_error ?><a href="auth-login.php"></div>
-                                <div class="form-note-s2 pt-4"> Already have an account ? <a href="html/pages/auths/auth-login.php"><strong>Sign in instead</strong></a>
+                                <div class="form-note-s2 pt-4"> Already have an account ? <a href="html/pages/auths/auth-login.html"><strong>Sign in instead</strong></a>
                                 </div>
                               
                             </div><!-- .nk-block -->

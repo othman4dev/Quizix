@@ -1,3 +1,20 @@
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -84,7 +101,7 @@
                 </li>
 
                 <li class="nk-menu-item">
-                  <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                  <a href="html/lms/admin-profile.php" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span>
                     <span class="nk-menu-text">Profile</span>
                   </a>
@@ -427,58 +444,77 @@
                     </div>
                   </li>
                   <li class="dropdown user-dropdown">
-                    <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
-                      <div class="user-toggle">
-                        <div class="user-avatar sm">
-                          <em class="icon ni ni-user-alt"></em>
-                        </div>
-                        <div class="user-info d-none d-xl-block">
-                          <div class="user-status user-status-unverified">
-                            Unverified
+                      <a
+                        href="#"
+                        class="dropdown-toggle me-n1"
+                        data-bs-toggle="dropdown"
+                      >
+                        <div class="user-toggle">
+                          <div class="user-avatar sm">
+                            <em class="icon ni ni-user-alt"></em>
                           </div>
-                          <div class="user-name dropdown-indicator">
-                            Othman Kharbouch
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                      <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                        <div class="user-card">
-                          <div class="user-avatar">
-                            <span>AB</span>
-                          </div>
-                          <div class="user-info">
-                            <span class="lead-text">Othman Kharbouch</span>
-                            <span class="sub-text">otmankharbouch813@gmail.com</span>
+                          <div class="user-info d-none d-xl-block">
+                            <div class="user-status user-status-active">
+                              <?php echo $role ?>
+                            </div>
+                            <div class="user-name dropdown-indicator">
+                              <?php echo $fullname ?>
+                            </div>
                           </div>
                         </div>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-md dropdown-menu-end"
+                      >
+                        <div
+                          class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block"
+                        >
+                          <div class="user-card">
+                            <div class="user-avatar">
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
+                            </div>
+                            <div class="user-info">
+                              <span class="lead-text"><?php echo $fullname ?></span>
+                              <span class="sub-text"
+                                ><?php echo $email ?></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-user-alt"></em
+                                ><span>View Profile</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-setting-alt"></em
+                                ><span>Account Setting</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="dark-switch" href="#"
+                                ><em class="icon ni ni-moon"></em
+                                ><span>Dark Mode</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="#"
+                                ><em class="icon ni ni-signout"></em
+                                ><span>Sign out</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li>
-                            <a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a>
-                          </li>
-                          <li>
-                            <a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                          </li>
-                          <li>
-                            <a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a>
-                          </li>
-                          <li>
-                            <a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li>
-                            <a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                    </li>
                 </ul>
               </div>
             </div>
@@ -758,78 +794,5 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <script src="./assets/js/scripts.js?ver=3.2.3"></script>
-
-  <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "quizex";
-  echo "eyyysddddddddddddd";
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  // Check connection
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-  echo "eyyysddddddddddddd";
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    // Handle AJAX requests
-    if ($_POST['action'] === 'storeProgress') {
-      storeProgress();
-    }
-  } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
-    // Handle GET requests
-    if ($_GET['action'] === 'getScrollPosition') {
-      getScrollPosition();
-    }
-  }
-  echo "eyyysddddddddddddd";
-  function storeProgress()
-  {
-    echo "eyyysddddddddddddd";
-    // Assuming you have a table named 'progress' with columns 'userId', 'courId', and 'scrollPercentage'
-    $userId = $_POST['userId'];
-    $courId = $_POST['courId'];
-    $scrollPercentage = $_POST['scrollPercentage'];
-
-    $sql = "INSERT INTO progress (passedcourId, courId, courProgress) VALUES ('$userId', '$courId', '$scrollPercentage')";
-
-    global $conn;
-    if ($conn->query($sql) === TRUE) {
-      echo 'Progress stored successfully.';
-      echo "eyyysddddddddddddd";
-    } else {
-      echo 'Error storing progress: ' . $conn->error;
-      echo "eyyysddddddddddddd";
-    }
-  }
-
-  function getScrollPosition()
-  {
-    // Assuming you have a table named 'progress' with columns 'userId', 'courId', and 'scrollPercentage'
-    $userId = $_GET['userId'];
-    $courId = $_GET['courId'];
-    echo "eyyysddddddddddddd";
-
-    $sql = "SELECT courProgress FROM passedcours WHERE passedcourId = '$userId'";
-
-    global $conn;
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      $scrollPercentage = $row['scrollPercentage'];
-      echo $scrollPercentage;
-    } else {
-      echo '0'; // Default to top if no scroll position is found
-    }
-    echo "eyyysddddddddddddd";
-  }
-
-  $conn->close();
-  ?>
-
-
 </body>
-
 </html>

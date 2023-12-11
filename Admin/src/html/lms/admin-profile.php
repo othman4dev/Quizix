@@ -1,3 +1,20 @@
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 
@@ -58,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/instructor-list.html" class="nk-menu-link">
+                                    <a href="html/lms/instructor-list.php" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">Instructors</span>
                                     </a>
@@ -70,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li class="nk-menu-item">
-                                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                                    <a href="html/lms/admin-profile.php" class="nk-menu-link">
                                       <span class="nk-menu-icon"
                                         ><em class="icon ni ni-account-setting-fill"></em
                                       ></span>
@@ -104,47 +121,78 @@
                                     
                                     
                                     
-                                    <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
-                                            <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
-                                                <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-active">Administator</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                                <div class="user-card">
-                                                    <div class="user-avatar">
-                                                        <span>AB</span>
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                                    <li><a href="html/lms/admin-profile.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                                    </li>
-                                                    
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                <li class="dropdown user-dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle me-n1"
+                        data-bs-toggle="dropdown"
+                      >
+                        <div class="user-toggle">
+                          <div class="user-avatar sm">
+                            <em class="icon ni ni-user-alt"></em>
+                          </div>
+                          <div class="user-info d-none d-xl-block">
+                            <div class="user-status user-status-active">
+                              <?php echo $role ?>
+                            </div>
+                            <div class="user-name dropdown-indicator">
+                              <?php echo $fullname ?>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      <div
+                        class="dropdown-menu dropdown-menu-md dropdown-menu-end"
+                      >
+                        <div
+                          class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block"
+                        >
+                          <div class="user-card">
+                            <div class="user-avatar">
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
+                            </div>
+                            <div class="user-info">
+                              <span class="lead-text"><?php echo $fullname ?></span>
+                              <span class="sub-text"
+                                ><?php echo $email ?></span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-user-alt"></em
+                                ><span>View Profile</span></a
+                              >
+                            </li>
+                            <li>
+                              <a href="html/lms/admin-profile.php"
+                                ><em class="icon ni ni-setting-alt"></em
+                                ><span>Account Setting</span></a
+                              >
+                            </li>
+                            <li>
+                              <a class="dark-switch" href="#"
+                                ><em class="icon ni ni-moon"></em
+                                ><span>Dark Mode</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="dropdown-inner">
+                          <ul class="link-list">
+                            <li>
+                              <a href="#"
+                                ><em class="icon ni ni-signout"></em
+                                ><span>Sign out</span></a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
                                 </ul>
                             </div>
                         </div><!-- .nk-header-wrap -->
@@ -165,7 +213,7 @@
                                                         <div class="nk-block-head-content">
                                                             <h4 class="nk-block-title">Personal Information</h4>
                                                             <div class="nk-block-des">
-                                                                <p>Basic info, like your name and address, that you use on Nio Platform.</p>
+                                                                <p>Basic info, like your name and address, that you use on Quizix Platform.</p>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex align-center">
@@ -186,66 +234,59 @@
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Full Name</span>
-                                                                <span class="data-value">Abu Bin Ishtiyak</span>
+                                                                <span class="data-value"><?php echo $row['adminName'] ?></span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Display Name</span>
-                                                                <span class="data-value">Ishtiyak</span>
+                                                                <span class="data-value"><?php echo $row['adminName'] ?></span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
-                                                                <span class="data-value">info@softnio.com</span>
+                                                                <span class="data-value"><?php echo $row['email'] ?></span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Phone Number</span>
-                                                                <span class="data-value text-soft">Not add yet</span>
+                                                                <span class="data-value text-soft"><?php echo $row['phoneNumber'] ?></span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Date of Birth</span>
-                                                                <span class="data-value">29 Feb, 1986</span>
+                                                                <span class="data-value"><?php echo $row['dateOfBirth'] ?></span>
                                                             </div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Nationality</span>
-                                                                <span class="data-value">Canadian</span>
+                                                                <span class="data-value"><?php echo $row['nationality'] ?></span>
                                                             </div>
-                                                        </div><!-- data-item -->
-                                                        <div class="data-item" data-tab-target="#address">
-                                                            <div class="data-col">
-                                                                <span class="data-label">Address</span>
-                                                                <span class="data-value">2337 Kildeer Drive,<br>Kentucky, Canada</span>
-                                                            </div>
-                                                        </div><!-- data-item -->
+                                                        </div><!-- data-item --><!-- data-item -->
                                                     </div><!-- data-list -->
                                                 </div><!-- .nk-block -->
                                             </div>
                                             <div class="card-aside card-aside-left user-aside toggle-slide toggle-slide-left toggle-break-lg" data-content="userAside" data-toggle-screen="lg" data-toggle-overlay="true">
                                                 <div class="card-inner-group" data-simplebar>
-                                                    <div class="card-inner">
+                                                    <div class="card-inner" style="height:300px">
                                                         <div class="user-card">
                                                             <div class="user-avatar bg-primary">
-                                                                <span>AB</span>
+                                                                <span><?php echo substr($row['adminName'], 0,2) ?></span>
                                                             </div>
                                                             <div class="user-info">
-                                                                <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                                <span class="sub-text">info@softnio.com</span>
+                                                                <span class="lead-text"><?php echo $row['adminName'] ?></span>
+                                                                <span class="sub-text"><?php echo $row['email'] ?></span>
                                                             </div>
                                                             <div class="user-action">
                                                                 <div class="dropdown">
                                                                     <a class="btn btn-icon btn-trigger me-n2" data-bs-toggle="dropdown" href="#"><em class="icon ni ni-more-v"></em></a>
                                                                     <div class="dropdown-menu dropdown-menu-end">
                                                                         <ul class="link-list-opt no-bdr">
-                                                                            <li><a href="#"><em class="icon ni ni-camera-fill"></em><span>Change Photo</span></a></li>
-                                                                            <li><a href="#"><em class="icon ni ni-edit-fill"></em><span>Update Profile</span></a></li>
+                                                                            <li><a href="#"><em class="icon ni ni-signout"></em><span>Change Account</span></a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

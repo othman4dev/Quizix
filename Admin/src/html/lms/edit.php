@@ -1,3 +1,20 @@
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,20 @@
-<?php include "connection.php"; ?>
+<?php 
+  session_start();
+  if (!isset($_SESSION['adminId']) || !isset($_SESSION['role'])) {
+    header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  include "connection.php";
+  $role = $_SESSION['role'];
+  if ($_SESSION['role'] == "Student") {
+    //header("Location: ../../../../../auth/src/html/pages/auths/auth-login.php");
+  }
+  $adminId = $_SESSION['adminId'];
+  $email = $_SESSION["email"];
+  $sqli = "SELECT * FROM administrateur WHERE adminId='$adminId'";
+  $result = mysqli_query($conn, $sqli);
+  $row = mysqli_fetch_assoc($result);
+  $fullname = $row['adminName'];
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="js">
   <head>
@@ -106,7 +122,7 @@
                   </li>
 
                   <li class="nk-menu-item">
-                    <a href="html/lms/admin-profile.html" class="nk-menu-link">
+                    <a href="html/lms/admin-profile.php" class="nk-menu-link">
                       <span class="nk-menu-icon"
                         ><em class="icon ni ni-account-setting-fill"></em
                       ></span>
@@ -243,10 +259,10 @@
                           </div>
                           <div class="user-info d-none d-xl-block">
                             <div class="user-status user-status-active">
-                              Student
+                              <?php echo $role ?>
                             </div>
                             <div class="user-name dropdown-indicator">
-                              Othman Kharbouch
+                              <?php echo $fullname ?>
                             </div>
                           </div>
                         </div>
@@ -259,12 +275,12 @@
                         >
                           <div class="user-card">
                             <div class="user-avatar">
-                              <span>AB</span>
+                                <span><?php echo substr($fullname, 0, 2); ?></span>
                             </div>
                             <div class="user-info">
-                              <span class="lead-text">Othman Kharbouch</span>
+                              <span class="lead-text"><?php echo $fullname ?></span>
                               <span class="sub-text"
-                                >otmankharbouch813@gmail.com</span
+                                ><?php echo $email ?></span
                               >
                             </div>
                           </div>
@@ -272,18 +288,17 @@
                         <div class="dropdown-inner">
                           <ul class="link-list">
                             <li>
-                              <a href="html/lms/admin-profile.html"
+                              <a href="html/lms/admin-profile.php"
                                 ><em class="icon ni ni-user-alt"></em
                                 ><span>View Profile</span></a
                               >
                             </li>
                             <li>
-                              <a href="html/lms/admin-profile.html"
+                              <a href="html/lms/admin-profile.php"
                                 ><em class="icon ni ni-setting-alt"></em
                                 ><span>Account Setting</span></a
                               >
                             </li>
-
                             <li>
                               <a class="dark-switch" href="#"
                                 ><em class="icon ni ni-moon"></em
