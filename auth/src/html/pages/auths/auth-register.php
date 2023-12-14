@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
         $stmt->execute();
-        header(" location: auth-login.php");
+        header("Location: http://localhost/quizix/auth/src/html/pages/auths/auth-login.php");
     }
 }
 ?>
